@@ -16,14 +16,23 @@ export type EstadisticaGrupo = [dia: DistanciaDesnivel, semana: DistanciaDesnive
 
 export class Grupo {
   private static _contadorGrupo = 1000;
-  private _id: string;
+  private _id: number;
   private _estadistica: EstadisticaGrupo;
   private _clasificacion: number[];
-  constructor(private nombre: string, private participantes: number[]) {
-    this._id = "GR_" + Grupo._contadorGrupo;
+  // Solo se puede borrar el grupo si id >= 1000 y si la id del creador coincide con el usuario q intenta borrar
+  private _creador: number;
+  constructor(private _nombre: string, private _participantes: number[], idCreador: number) {
+    this._id = Grupo._contadorGrupo;
     Grupo._contadorGrupo++;
+    this._creador = idCreador;
   }
 
-  get id(): number { return Number(this._id.split("_")[1]); }
+  get id(): number { return this._id; }
+  get nombre(): string { return this._nombre; }
+  // get rutaFavoritas(): number[] | undefined { return this._rutasFavoritas; }
+
+  // método que calcula la ruta favorita --> la que más veces se ha realizado en el vector de historico
+
+  // To-Do: Falta ver como hacer el historico 
   
 }

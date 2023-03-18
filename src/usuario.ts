@@ -1,3 +1,4 @@
+import { Grupo } from "./grupo";
 
 export enum Actividades { "Correr" = "Correr", "Bicicleta" = "Bicicleta" }
 
@@ -8,28 +9,26 @@ export type EstadisticaUsuario = [dia: DistanciaDesnivel, semana: DistanciaDesni
 
 export class Usuario {
   private static _contadorUsuario = 1000;
-  private _id: string;
+  private _id: number;
   private _actividades: Set<Actividades>;
   private _historicoRutas: Map<string, number[]> = new Map();
   private _estadistica: EstadisticaUsuario;
   private _amigos: number[] = [];
   private _gruposAmigos: number[] = [];
-  constructor(private _nombre: string, actividades: Actividades[], private _retosActivos?: number[]) {
-    this._id = "US_" + Usuario._contadorUsuario;
+
+  constructor(private _nombre: string, actividades: Actividades[], private _retosActivos: number[]) {
+    this._id = Usuario._contadorUsuario;
     Usuario._contadorUsuario++;
     this._actividades = new Set(actividades);
   }
 
-  get id(): string { return this._id; }
-  pepe(): string { return this._id.split("_")[0]; }
-  pepe2(): number { return Number(this._id.split("_")[1]); }
-  // get tipo(): string { return this._id.split("_")[0]; }
+  get id(): number { return this._id; }
+
   get nombre(): string { return this._nombre; }
   get actividades(): Set<Actividades> { return this._actividades; }
   get amigos(): number[] | string { return (this._amigos.length !== 0) ? this._amigos : "No tiene amigos" }
   get gruposAmigos(): number[] | string { return (this._gruposAmigos.length !== 0) ? this._gruposAmigos : "No tiene grupos amigos" }
   get estadistica(): EstadisticaUsuario { return this._estadistica; }
-  // get rutaFavoritas(): number[] | undefined { return this._rutasFavoritas; }
   get retosActivos(): number[] | undefined { return this._retosActivos; }
   get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
   
@@ -39,15 +38,13 @@ export class Usuario {
 
   // método que agrega la id de un amigo a la lista de amigos
   agregarAmigo(amigo: Usuario) {
-    if(amigo.pepe === "US") {
-      this._amigos.push(amigo.pepe2);
-    }
+    this._amigos.push(amigo.id);
   }
   // método que agrega la id de un grupoamigo a la lista de gruposamigos
-  agregarGrupoAmigo(id: number) {
-    this._gruposAmigos.push(id);
+  agregarGrupoAmigo(grupoAmigo: Grupo) {
+    this._gruposAmigos.push(grupoAmigo.id);
   }
-  // creamos un metodo que pregunte al usaurio si quiere meter retes,
-  // if(no quiere) {se deja el array de métodos vacíos}
+  // creamos un metodo que pregunte al usaurio si quiere meter retos,
+  // if(no quiere) {se deja el array de retos vacíos}
   // else {se le pregunta cuantos retos quiere meter y se le pide que los meta (el id de los retos)}
 }
