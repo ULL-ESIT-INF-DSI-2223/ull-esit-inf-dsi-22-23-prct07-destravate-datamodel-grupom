@@ -12,7 +12,7 @@ export class Usuario {
   private _id: number;
   private _actividades: Set<Actividades>;
   private _historicoRutas: Map<string, number[]> = new Map();
-  private _estadistica: EstadisticaUsuario;
+  private _estadistica: EstadisticaUsuario = [[0, 0], [0, 0], [0, 0]];
   private _amigos: number[] = [];
   private _gruposAmigos: number[] = [];
 
