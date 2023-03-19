@@ -1,11 +1,13 @@
 import { Grupo } from "./grupo";
+import { Ruta } from "./ruta";
 
 export enum Actividades { "Correr" = "Correr", "Bicicleta" = "Bicicleta" }
 
 export type DistanciaDesnivel = [distancia: number, desnivel: number];
 
-export type EstadisticaUsuario = [dia: DistanciaDesnivel, semana: DistanciaDesnivel, anio: DistanciaDesnivel];
+export type EstadisticaUsuario = [semana: DistanciaDesnivel, mes: DistanciaDesnivel, anio: DistanciaDesnivel];
 
+export type Fecha = [dia: number, mes: number, anio: number];
 
 export class Usuario {
   private static _contadorUsuario = 1000;
@@ -33,7 +35,33 @@ export class Usuario {
   get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
   
   // método que agrega a la lista de historicos, la ruta que realizó
-  
+  // cada vez que se agrega una ruta debemos actualizar las estadisticas
+  agregarRuta(ruta: Ruta) {
+    let fecha: Date = new Date();
+    let fechaString: string = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+    
+    let arrayFecha: number[] = [];
+    if (this.historicoRutas.get(fechaString) !== undefined) {
+      this.historicoRutas.get(fechaString)?.push(ruta.id);
+    } else {
+      arrayFecha = [ruta.id];
+      this.historicoRutas.set(fechaString, arrayFecha);
+    }
+    this.actualizarEstadisticas(ruta);
+  }
+
+  actualizarEstadisticas(ruta: Ruta) {
+    let distancia: number = ruta.distancia;
+    let desnivel: number = ruta.desnivel;
+
+    this.estadistica[0][0] += distancia;
+    this.estadistica[0][1] += desnivel;
+    this.estadistica[1][0] += distancia;
+    this.estadistica[1][1] += desnivel;
+    this.estadistica[2][0] += distancia;
+    this.estadistica[2][1] += desnivel;
+    
+  }
   // método que calcula la ruta favorita --> la que más veces se ha realizado en el vector de historico
 
   // método que agrega la id de un amigo a la lista de amigos
@@ -48,3 +76,5 @@ export class Usuario {
   // if(no quiere) {se deja el array de retos vacíos}
   // else {se le pregunta cuantos retos quiere meter y se le pide que los meta (el id de los retos)}
 }
+
+

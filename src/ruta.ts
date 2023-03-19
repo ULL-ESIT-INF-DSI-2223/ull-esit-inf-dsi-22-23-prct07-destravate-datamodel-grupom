@@ -26,5 +26,10 @@ export class Ruta {
     Ruta._contadorRuta++;
   }
 
-  
+  get id(): number { return this._id; }
+  get nombre(): string { return this._nombre; }
+  get geolocalizacionInicial(): Coordenadas { return this._geolocalizacionInicial; }
+  get geolocalizacionFinal(): Coordenadas { return this._geolocalizacionFinal; }
+  get distancia(): number { return this._distancia; }
+  get desnivel(): number { return this._desnivel; }
 }
