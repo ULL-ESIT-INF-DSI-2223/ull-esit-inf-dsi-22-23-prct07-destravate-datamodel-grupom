@@ -72,21 +72,21 @@ export class ColeccionUsuarios {
 
   ordenarDistanciaSemana(opcion: ManeraOrdenar) {
     ColeccionUsuarios.coleccionUsuarios.usuarios.sort((a, b) => a.estadistica[0][0] - b.estadistica[0][0]);
-    if (opcion === ManeraOrdenar.Descendente) {
+    if (opcion !== ManeraOrdenar.Descendente) {
       ColeccionUsuarios.coleccionUsuarios.usuarios.reverse();
     }
   }
 
   ordenarDistanciaMes(opcion: ManeraOrdenar) {
     ColeccionUsuarios.coleccionUsuarios.usuarios.sort((a, b) => a.estadistica[1][0] - b.estadistica[1][0]);
-    if (opcion === ManeraOrdenar.Descendente) {
+    if (opcion !== ManeraOrdenar.Descendente) {
       ColeccionUsuarios.coleccionUsuarios.usuarios.reverse();
     }
   }
 
   ordenarDistanciaAnio(opcion: ManeraOrdenar) {
     ColeccionUsuarios.coleccionUsuarios.usuarios.sort((a, b) => a.estadistica[2][0] - b.estadistica[2][0]);
-    if (opcion === ManeraOrdenar.Descendente) {
+    if (opcion !== ManeraOrdenar.Descendente) {
       ColeccionUsuarios.coleccionUsuarios.usuarios.reverse();
     }
   }

@@ -47,6 +47,7 @@ export class Usuario {
       arrayFecha = [ruta.id];
       this.historicoRutas.set(fechaString, arrayFecha);
     }
+    ruta.agregarUsuario(this.id);
     this.actualizarEstadisticas(ruta);
   }
 
