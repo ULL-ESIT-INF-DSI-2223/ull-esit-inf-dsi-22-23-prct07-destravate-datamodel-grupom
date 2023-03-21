@@ -1,13 +1,9 @@
 import { Grupo } from "./grupo";
 import { Ruta } from "./ruta";
+import { EstadisticaUsuario } from "../tipos/tipos";
+import { Actividades } from "../enumerados/enumerados";
 
-export enum Actividades { "Correr" = "Correr", "Bicicleta" = "Bicicleta" }
 
-export type DistanciaDesnivel = [distancia: number, desnivel: number];
-
-export type EstadisticaUsuario = [semana: DistanciaDesnivel, mes: DistanciaDesnivel, anio: DistanciaDesnivel];
-
-export type Fecha = [dia: number, mes: number, anio: number];
 
 export class Usuario {
   private static _contadorUsuario = 1000;

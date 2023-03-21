@@ -1,6 +1,7 @@
-import { Usuario } from './usuario';
+import { EstadisticaUsuario } from '../tipos/tipos';
+import { Usuario } from '../entidades/usuario';
+import { ManeraOrdenar } from '../enumerados/enumerados';
 
-export enum ManeraOrdenar { "Ascendente" = "Ascendente", "Descendente" = "Descendente" }
 
 
 export class ColeccionUsuarios {
@@ -34,6 +35,15 @@ export class ColeccionUsuarios {
       }
     }
     return undefined;
+  }
+
+  getEstadistica(id: number): EstadisticaUsuario {
+    for(let i = 0; i < ColeccionUsuarios.coleccionUsuarios.usuarios.length; i++) {
+      if (ColeccionUsuarios.coleccionUsuarios.usuarios[i].id == id) {
+        return ColeccionUsuarios.coleccionUsuarios.usuarios[i].estadistica;
+      }
+    }
+    return [[0, 0], [0,0], [0,0]];
   }
 
   agregarUsuario(usuario: Usuario): void {

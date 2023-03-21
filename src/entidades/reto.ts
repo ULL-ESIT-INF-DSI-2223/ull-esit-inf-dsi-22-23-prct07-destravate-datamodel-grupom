@@ -1,16 +1,5 @@
-// Los retos serán otra entidad dentro del sistema. Esta entidad deberá contener 
-// toda la información asociada a objetivos de entrenamientos:
-
-// ID único del reto.
-// Nombre del reto.
-// Rutas que forman parte del reto.
-// Tipo de actividad del reto: bicicleta o correr.
-// Km totales a realizar (como la suma de los kms de las rutas que lo engloban)
-// Usuarios que están realizando el reto.
-
-
-import { Actividades } from "./usuario";
 import { Ruta } from "./ruta";
+import { Actividades } from "../enumerados/enumerados";
 
 
 

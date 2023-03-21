@@ -1,6 +1,7 @@
-import { Grupo } from './grupo';
+import { ColeccionUsuarios } from './coleccionUsuarios';
+import { Grupo } from '../entidades/grupo';
+import { ManeraOrdenar } from '../enumerados/enumerados';
 
-export enum ManeraOrdenar { "Ascendente" = "Ascendente", "Descendente" = "Descendente" }
 
 
 export class ColeccionGrupos {
@@ -70,12 +71,17 @@ export class ColeccionGrupos {
     }
   }
 
-  // ordenarDistanciaSemana(opcion: ManeraOrdenar) {
-  //   ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => a.estadistica[0][0] - b.estadistica[0][0]);
-  //   if (opcion !== ManeraOrdenar.Descendente) {
-  //     ColeccionGrupos.coleccionGrupos.Grupos.reverse();
-  //   }
-  // }
+  ordenarDistanciaSemana(opcion: ManeraOrdenar) {  
+    const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
+    ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => 
+    a.participantes.reduce((acc, numUsuA) => acc + coleccionUsuarios.getEstadistica(numUsuA)[0][0], 0) - 
+    b.participantes.reduce((acc, numUsuB) => acc + coleccionUsuarios.getEstadistica(numUsuB)[0][0], 0));
+    if (opcion === ManeraOrdenar.Descendente) {
+      ColeccionGrupos.coleccionGrupos.Grupos.reverse();
+    }
+  }
+
+
 
   // ordenarDistanciaMes(opcion: ManeraOrdenar) {
   //   ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => a.estadistica[1][0] - b.estadistica[1][0]);
@@ -90,5 +96,12 @@ export class ColeccionGrupos {
   //     ColeccionGrupos.coleccionGrupos.Grupos.reverse();
   //   }
   // }
+
+  ordenarCantidadMiembros(opcion: ManeraOrdenar) {
+    ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => a.participantes.length - b.participantes.length);
+    if (opcion === ManeraOrdenar.Descendente) {
+      ColeccionGrupos.coleccionGrupos.Grupos.reverse();
+    }
+  }
 }
 

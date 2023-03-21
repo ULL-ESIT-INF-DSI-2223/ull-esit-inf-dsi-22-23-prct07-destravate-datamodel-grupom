@@ -1,18 +1,6 @@
-// Para cada ruta incluida dentro del sistema, se debe almacenar la información siguiente:
+import { Coordenadas } from "../tipos/tipos";
+import { Actividades } from "../enumerados/enumerados";
 
-// ID único de la ruta.
-// Nombre de la ruta.
-// Geolocalización del inicio (coordenadas).
-// Geolocalización del final de la ruta (coordenadas).
-// Longitud de la ruta en kilómetros.
-// Desnivel medio de la ruta.
-// Usuarios que han realizado la ruta (IDs).
-// Tipo de actividad: Indicador si la ruta se puede realizar en bicicleta o corriendo.
-// Calificación media de la ruta.
-
-import { Actividades } from "./usuario";
-
-export type Coordenadas = [latitud: number, longitud: number];
 
 
 export class Ruta {

@@ -1,7 +1,7 @@
-import { Ruta } from './ruta';
-import { Actividades } from './usuario';
+import { Ruta } from '../entidades/ruta';
+import { ManeraOrdenar } from '../enumerados/enumerados';
+import { Actividades } from '../enumerados/enumerados';
 
-export enum ManeraOrdenar { "Ascendente" = "Ascendente", "Descendente" = "Descendente" }
 
 
 export class ColeccionRutas {

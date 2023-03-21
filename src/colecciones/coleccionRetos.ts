@@ -1,6 +1,6 @@
-import { Reto } from './reto';
+import { Reto } from '../entidades/reto';
+import { ManeraOrdenar } from '../enumerados/enumerados';
 
-export enum ManeraOrdenar { "Ascendente" = "Ascendente", "Descendente" = "Descendente" }
 
 
 export class ColeccionRetos {
