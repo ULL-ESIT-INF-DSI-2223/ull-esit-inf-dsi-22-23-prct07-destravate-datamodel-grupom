@@ -1,0 +1,48 @@
+{
+  "Juan": {
+    "_nombre": "Juan",
+    "_retosActivos": [],
+    "_id": 1000,
+    "_actividades": {},
+    "_historicoRutas": {},
+    "_estadistica": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "Maria": {
+    "_nombre": "Maria",
+    "_retosActivos": [],
+    "_id": 1001,
+    "_actividades": {},
+    "_historicoRutas": {},
+    "_estadistica": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  }
+}

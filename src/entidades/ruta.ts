@@ -10,6 +10,7 @@ export class Ruta {
   constructor(private _nombre: string, private _geolocalizacionInicial: Coordenadas, private _geolocalizacionFinal: Coordenadas, 
     private _distancia: number, private _desnivel: number, private _tipoActividad: Actividades) {
     // no sabemos que hacer con la calificacion
+    // TODO
     this._id = Ruta._contadorRuta;
     Ruta._contadorRuta++;
   }
@@ -24,6 +25,7 @@ export class Ruta {
   get tipoActividad(): Actividades { return this._tipoActividad; }
 
   agregarUsuario(id: number) {
+    // TODO
     this._usuarios.push(id);
   }
 }

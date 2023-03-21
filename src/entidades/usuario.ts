@@ -2,7 +2,7 @@ import { Grupo } from "./grupo";
 import { Ruta } from "./ruta";
 import { EstadisticaUsuario } from "../tipos/tipos";
 import { Actividades } from "../enumerados/enumerados";
-
+import { ColeccionGrupos } from "../colecciones/coleccionGrupos";
 
 
 export class Usuario {
@@ -29,7 +29,9 @@ export class Usuario {
   get estadistica(): EstadisticaUsuario { return this._estadistica; }
   get retosActivos(): number[] | undefined { return this._retosActivos; }
   get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
-  
+  esGrupoAmigo(idGrupo: number): boolean {
+    return this._gruposAmigos.includes(idGrupo);
+  }
   // método que agrega a la lista de historicos, la ruta que realizó
   // cada vez que se agrega una ruta debemos actualizar las estadisticas
   agregarRuta(ruta: Ruta) {
@@ -45,6 +47,10 @@ export class Usuario {
     }
     ruta.agregarUsuario(this.id);
     this.actualizarEstadisticas(ruta);
+    // TODO revisar esta parte de abajo qeu se actualicen las estadisticas de los grupos
+    this._gruposAmigos.forEach((idGrupo) => {
+      ColeccionGrupos.getColeccionGrupos().getGrupo(idGrupo)?.actualizarEstadistica()
+    });
   }
 
   actualizarEstadisticas(ruta: Ruta) {
@@ -60,15 +66,18 @@ export class Usuario {
     
   }
   // método que calcula la ruta favorita --> la que más veces se ha realizado en el vector de historico
-
+  // TODO
   // método que agrega la id de un amigo a la lista de amigos
   agregarAmigo(amigo: Usuario) {
+    // TODO comprobar BDD
     this._amigos.push(amigo.id);
   }
   // método que agrega la id de un grupoamigo a la lista de gruposamigos
   agregarGrupoAmigo(grupoAmigo: Grupo) {
+    // TODO comprobar BDD
     this._gruposAmigos.push(grupoAmigo.id);
   }
+  // TODO
   // creamos un metodo que pregunte al usaurio si quiere meter retos,
   // if(no quiere) {se deja el array de retos vacíos}
   // else {se le pregunta cuantos retos quiere meter y se le pide que los meta (el id de los retos)}

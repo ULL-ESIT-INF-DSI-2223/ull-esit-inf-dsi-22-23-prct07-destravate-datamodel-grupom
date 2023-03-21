@@ -16,7 +16,7 @@ export class Grupo {
     Grupo._contadorGrupo++;
     this._creador = idCreador;
   }
-
+  // TODO clasificacion de usuarios
   get id(): number { return this._id; }
   get nombre(): string { return this._nombre; }
   get participantes(): number[] { return this._participantes; }
@@ -24,13 +24,18 @@ export class Grupo {
 
   // método que calcula la ruta favorita --> la que más veces se ha realizado en el vector de historico
 
-  // To-Do: Falta ver como hacer el historico 
+  // TODO: Falta ver como hacer el historico 
   agregarUsuario(id: number) {
+    // TODO comrpobar bdd
     this._participantes.push(id);
     this.actualizarEstadistica();
   }
 
-  private actualizarEstadistica() {
+  actualizarClasificacion() {
+    let a = 0;
+  }
+
+  actualizarEstadistica() {
     const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
     const distanciaSemana = this.participantes.reduce((acc, numUsuA) => acc + coleccionUsuarios.getEstadistica(numUsuA)[0][0], 0)
     const desnivelSemana = this.participantes.reduce((acc, numUsuA) => acc + coleccionUsuarios.getEstadistica(numUsuA)[0][1], 0)
