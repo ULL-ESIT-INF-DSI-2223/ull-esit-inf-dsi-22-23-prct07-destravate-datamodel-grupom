@@ -1,6 +1,7 @@
 import { EstadisticaUsuario } from '../tipos/tipos';
 import { Usuario } from '../entidades/usuario';
 import { ManeraOrdenar } from '../enumerados/enumerados';
+import { ManejadorJSON } from '../utilidades/manejadorJSON';
 
 
 
@@ -9,13 +10,13 @@ export class ColeccionUsuarios {
 
   private static coleccionUsuarios: ColeccionUsuarios;
   
-  private constructor() {
-    this.usuarios = [];
+  private constructor( usuariosDB: Usuario[]) {
+    this.usuarios = usuariosDB;
   }
 
   public static getColeccionUsuarios(): ColeccionUsuarios{
     if (!ColeccionUsuarios.coleccionUsuarios) {
-      ColeccionUsuarios.coleccionUsuarios = new ColeccionUsuarios();
+      ColeccionUsuarios.coleccionUsuarios = new ColeccionUsuarios(ManejadorJSON.extraccionUsuariosDB());
     }
     return ColeccionUsuarios.coleccionUsuarios;
   }
@@ -48,6 +49,7 @@ export class ColeccionUsuarios {
 
   agregarUsuario(usuario: Usuario): void {
     ColeccionUsuarios.coleccionUsuarios.usuarios.push(usuario);
+    ManejadorJSON.agregarUsuarioDB(usuario);
   }
   
   eliminarUsuario(usuario: Usuario): Usuario | undefined {
@@ -57,6 +59,7 @@ export class ColeccionUsuarios {
     if(tamanoFinal === tamanoOriginal) {
       return undefined;
     }
+    // ManejadorJSON.eliminarUsuarioDB(usuario);
     return usuario;
   }
 

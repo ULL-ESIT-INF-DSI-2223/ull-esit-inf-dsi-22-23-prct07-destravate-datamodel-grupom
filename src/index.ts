@@ -1,9 +1,9 @@
 // import * as lowdb from "lowdb";
 // import * as FileSync from "lowdb/adapters/FileSync";
 // import * as inquirer from 'inquirer';
-// import { Usuario } from "./entidades/usuario";
+import { Usuario } from "./entidades/usuario";
 // import { Grupo } from "./entidades/grupo";
-// import { Actividades } from "./enumerados/enumerados";
+import { Actividades } from "./enumerados/enumerados";
 // import { ColeccionUsuarios } from "./colecciones/coleccionUsuarios";
 
 // // Parte index ////////////////////////////////////
@@ -45,3 +45,23 @@
  * 3. se actualzia la base de datos de grupo
  * OJO Si
  */
+
+import { ManejadorJSON } from "./utilidades/manejadorJSON";
+import { ColeccionUsuarios } from "./colecciones/coleccionUsuarios";
+
+
+
+let juan = new Usuario('Juan', [Actividades.Correr], []);
+let maria = new Usuario('maria', [Actividades.Correr], []);
+const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
+coleccionUsuarios.agregarUsuario(maria);
+coleccionUsuarios.agregarUsuario(juan);
+
+// coleccionUsuarios.imprimirInformacion();
+// coleccionUsuarios.eliminarUsuario(juan);
+// coleccionUsuarios.eliminarUsuario(maria);
+// console.log(coleccionUsuarios.getUsuario(1000))
+
+ManejadorJSON.extraccionUsuariosDB();
+
+
