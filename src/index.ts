@@ -48,20 +48,23 @@ import { Actividades } from "./enumerados/enumerados";
 
 import { ManejadorJSON } from "./utilidades/manejadorJSON";
 import { ColeccionUsuarios } from "./colecciones/coleccionUsuarios";
+import { Ruta } from "./entidades/ruta";
 
 
 
-let juan = new Usuario('Juan', [Actividades.Correr], []);
-let maria = new Usuario('maria', [Actividades.Correr], []);
+let juan = new Usuario('Juan', [Actividades.Correr], [1,2,3]);
+let maria = new Usuario('maria', [Actividades.Bicicleta], []);
 const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
+let ruta1 = new Ruta('ruta1', [1,2], [3,4], 4, 5, Actividades.Correr);
+let ruta2 = new Ruta('ruta2', [1,2], [3,4], 4, 5, Actividades.Bicicleta);
+// juan.agregarRuta(ruta1);
+// coleccionUsuarios.agregarUsuario(juan);
+coleccionUsuarios.eliminarUsuario(juan);
 coleccionUsuarios.agregarUsuario(maria);
-coleccionUsuarios.agregarUsuario(juan);
-
-// coleccionUsuarios.imprimirInformacion();
+coleccionUsuarios.imprimirInformacion();
 // coleccionUsuarios.eliminarUsuario(juan);
 // coleccionUsuarios.eliminarUsuario(maria);
 // console.log(coleccionUsuarios.getUsuario(1000))
 
-ManejadorJSON.extraccionUsuariosDB();
-
-
+// ManejadorJSON.extraccionUsuariosDB();
+ManejadorJSON.ActualizarDB();

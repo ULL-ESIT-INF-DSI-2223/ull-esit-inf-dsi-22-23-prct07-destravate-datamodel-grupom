@@ -20,7 +20,7 @@ export class ColeccionRutas {
     return ColeccionRutas.coleccionRutas;
   }
 
-  getNumeroRutas(): number {
+  public static getNumeroRutas(): number {
     return ColeccionRutas.coleccionRutas.rutas.length;
   }
 
@@ -28,13 +28,14 @@ export class ColeccionRutas {
     return ColeccionRutas.coleccionRutas.rutas;
   }
 
-  getRuta(id: number): Ruta | undefined {
-    for(let i = 0; i < ColeccionRutas.coleccionRutas.rutas.length; i++) {
-      if (ColeccionRutas.coleccionRutas.rutas[i].id == id) {
-        return ColeccionRutas.coleccionRutas.rutas[i];
-      }
-    }
-    return undefined;
+  public static getRuta(id: number): Ruta {
+    // for(let i = 0; i < ColeccionRutas.coleccionRutas.rutas.length; i++) {
+    //   if (ColeccionRutas.coleccionRutas.rutas[i].id == id) {
+    //     return ColeccionRutas.coleccionRutas.rutas[i];
+    //   }
+    // }
+    // return undefined;
+    return ColeccionRutas.coleccionRutas.rutas[ColeccionRutas.coleccionRutas.rutas.indexOf(id)];
   }
 
   agregarRuta(Ruta: Ruta): void {

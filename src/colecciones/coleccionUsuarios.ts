@@ -10,7 +10,7 @@ export class ColeccionUsuarios {
 
   private static coleccionUsuarios: ColeccionUsuarios;
   
-  private constructor( usuariosDB: Usuario[]) {
+  private constructor(usuariosDB: Usuario[]) {
     this.usuarios = usuariosDB;
   }
 
@@ -49,7 +49,6 @@ export class ColeccionUsuarios {
 
   agregarUsuario(usuario: Usuario): void {
     ColeccionUsuarios.coleccionUsuarios.usuarios.push(usuario);
-    ManejadorJSON.agregarUsuarioDB(usuario);
   }
   
   eliminarUsuario(usuario: Usuario): Usuario | undefined {
@@ -59,7 +58,6 @@ export class ColeccionUsuarios {
     if(tamanoFinal === tamanoOriginal) {
       return undefined;
     }
-    // ManejadorJSON.eliminarUsuarioDB(usuario);
     return usuario;
   }
 

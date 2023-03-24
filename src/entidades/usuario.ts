@@ -20,12 +20,30 @@ export class Usuario {
     this._actividades = new Set(actividades);
   }
 
+  public ContructorDB(actividades: string[], historicoFechas: string[], historicoRutas: number[][], estadistica: EstadisticaUsuario, 
+    amigos: number[] | undefined, gruposAmigos: number[] | undefined) {
+    actividades.forEach((elem) => { this._actividades.add(elem as Actividades) })
+    for (let i = 0; i < historicoFechas.length; ++i) {
+      let fechaString = historicoFechas[i];
+      for (let j = 0; j < historicoRutas[i].length; ++j) {
+        if (this.historicoRutas.get(fechaString) !== undefined) {
+          this.historicoRutas.get(fechaString)?.push(historicoRutas[i][j])
+        } else {
+          this.historicoRutas.set(fechaString, [historicoRutas[i][j]]);
+        }
+      }
+    }
+    this._estadistica = estadistica;
+    this._amigos = amigos === undefined ? [] : amigos;
+    this._gruposAmigos = gruposAmigos === undefined ? [] : gruposAmigos;
+  }
+
   get id(): number { return this._id; }
 
   get nombre(): string { return this._nombre; }
   get actividades(): Set<Actividades> { return this._actividades; }
-  get amigos(): number[] | string { return (this._amigos.length !== 0) ? this._amigos : "No tiene amigos" }
-  get gruposAmigos(): number[] | string { return (this._gruposAmigos.length !== 0) ? this._gruposAmigos : "No tiene grupos amigos" }
+  get amigos(): number[] | undefined { return (this._amigos.length !== 0) ? this._amigos : undefined }
+  get gruposAmigos(): number[] | undefined { return (this._gruposAmigos.length !== 0) ? this._gruposAmigos : undefined }
   get estadistica(): EstadisticaUsuario { return this._estadistica; }
   get retosActivos(): number[] | undefined { return this._retosActivos; }
   get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
@@ -45,8 +63,8 @@ export class Usuario {
       arrayFecha = [ruta.id];
       this.historicoRutas.set(fechaString, arrayFecha);
     }
-    ruta.agregarUsuario(this.id);
     this.actualizarEstadisticas(ruta);
+    ruta.agregarUsuario(this.id);
     // TODO revisar esta parte de abajo qeu se actualicen las estadisticas de los grupos
     this._gruposAmigos.forEach((idGrupo) => {
       ColeccionGrupos.getColeccionGrupos().getGrupo(idGrupo)?.actualizarEstadistica()

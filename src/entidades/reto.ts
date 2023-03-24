@@ -20,11 +20,17 @@ export class Reto {
   get nombre(): string { return this._nombre; }
   get distanciaTotal(): number { return this._distanciaTotal; }
   get usuarios(): number[] { return this._usuarios; }
+  get tipoActividad(): Actividades { return this._tipoActividad; }
+  get rutas(): Ruta[] { return this._rutas; }
 
 
 
-  // la distancia total la tenemos que calcular con la distancia de cada una de las rutas del reto
+  // TODO: REVISAR QUE ESTE BIEN métodos que agregan y quitan usuarios al reto
+  agregarUsuario(id: number) {
+    this._usuarios.push(id);
+  }
 
-  // métodos que agregan y quitan usuarios al reto
-  
+  quitarUsuario(id: number) {
+    this._usuarios = this._usuarios.filter((usuario) => usuario !== id);
+  }
 }
