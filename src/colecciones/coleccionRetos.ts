@@ -1,5 +1,6 @@
 import { Reto } from '../entidades/reto';
 import { ManeraOrdenar } from '../enumerados/enumerados';
+import { ManejadorJSON } from '../utilidades/manejadorJSON';
 
 
 
@@ -8,13 +9,13 @@ export class ColeccionRetos {
 
   private static coleccionRetos: ColeccionRetos;
   
-  private constructor() {
-    this.retos = [];
+  private constructor(retosDB: Reto[]) {
+    this.retos = retosDB;
   }
 
   public static getColeccionRetos(): ColeccionRetos{
     if (!ColeccionRetos.coleccionRetos) {
-      ColeccionRetos.coleccionRetos = new ColeccionRetos();
+      ColeccionRetos.coleccionRetos = new ColeccionRetos(ManejadorJSON.extraccionRetosDB());
     }
     return ColeccionRetos.coleccionRetos;
   }

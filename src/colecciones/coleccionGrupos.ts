@@ -83,21 +83,26 @@ export class ColeccionGrupos {
     }
   }
 
+  ordenarDistanciaMes(opcion: ManeraOrdenar) {  
+    const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
+    ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => 
+    a.participantes.reduce((acc, numUsuA) => acc + coleccionUsuarios.getEstadistica(numUsuA)[1][0], 0) - 
+    b.participantes.reduce((acc, numUsuB) => acc + coleccionUsuarios.getEstadistica(numUsuB)[1][0], 0));
+    if (opcion === ManeraOrdenar.Descendente) {
+      ColeccionGrupos.coleccionGrupos.Grupos.reverse();
+    }
+  }
 
+  ordenarDistanciaAnio(opcion: ManeraOrdenar) {  
+    const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
+    ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => 
+    a.participantes.reduce((acc, numUsuA) => acc + coleccionUsuarios.getEstadistica(numUsuA)[2][0], 0) - 
+    b.participantes.reduce((acc, numUsuB) => acc + coleccionUsuarios.getEstadistica(numUsuB)[2][0], 0));
+    if (opcion === ManeraOrdenar.Descendente) {
+      ColeccionGrupos.coleccionGrupos.Grupos.reverse();
+    }
+  }
 
-  // ordenarDistanciaMes(opcion: ManeraOrdenar) {
-  //   ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => a.estadistica[1][0] - b.estadistica[1][0]);
-  //   if (opcion !== ManeraOrdenar.Descendente) {
-  //     ColeccionGrupos.coleccionGrupos.Grupos.reverse();
-  //   }
-  // }
-
-  // ordenarDistanciaAnio(opcion: ManeraOrdenar) {
-  //   ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => a.estadistica[2][0] - b.estadistica[2][0]);
-  //   if (opcion !== ManeraOrdenar.Descendente) {
-  //     ColeccionGrupos.coleccionGrupos.Grupos.reverse();
-  //   }
-  // }
 
   ordenarCantidadMiembros(opcion: ManeraOrdenar) {
     ColeccionGrupos.coleccionGrupos.Grupos.sort((a, b) => a.participantes.length - b.participantes.length);

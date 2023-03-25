@@ -1,5 +1,6 @@
 import { Ruta } from "./ruta";
 import { Actividades } from "../enumerados/enumerados";
+import { ColeccionUsuarios } from "../colecciones/coleccionUsuarios";
 
 
 
@@ -12,9 +13,7 @@ export class Reto {
     this._id = Reto._contadorReto;
     Reto._contadorReto++;
     this._distanciaTotal = this._rutas.reduce((acc, elem) => acc + elem.distancia, 0);
-    this._usuarios = this._rutas.map((ruta) => ruta.usuarios).reduce((acc, elem) => 
-    [...acc, ...elem], []).filter((valor, indice, arreglo) => arreglo.indexOf(valor) === indice);
-    // TODO console.log(this._usuarios)
+    
   }
 
   get id(): number { return this._id; }
@@ -29,13 +28,14 @@ export class Reto {
     this._usuarios = usuarios;
   }
 
-
   // TODO: REVISAR QUE ESTE BIEN métodos que agregan y quitan usuarios al reto
   agregarUsuario(id: number) {
     this._usuarios.push(id);
+    ColeccionUsuarios.getColeccionUsuarios().getUsuario(id)?.agregarReto(this._id);
   }
 
   quitarUsuario(id: number) {
     this._usuarios = this._usuarios.filter((usuario) => usuario !== id);
+    ColeccionUsuarios.getColeccionUsuarios().getUsuario(id)?.eliminarReto(this._id);
   }
 }

@@ -1,0 +1,60 @@
+{
+  "1000": {
+    "_id": 1000,
+    "_nombre": "ruta1",
+    "_geolocalizacionInicial": [
+      1,
+      2
+    ],
+    "_geolocalizacionFinal": [
+      3,
+      4
+    ],
+    "_distancia": 4,
+    "_desnivel": 5,
+    "_usuarios": [
+      1000
+    ],
+    "_tipoActividad": "Correr",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1001": {
+    "_id": 1001,
+    "_nombre": "ruta2",
+    "_geolocalizacionInicial": [
+      4,
+      8
+    ],
+    "_geolocalizacionFinal": [
+      30,
+      4
+    ],
+    "_distancia": 4,
+    "_desnivel": 7,
+    "_usuarios": [
+      1001
+    ],
+    "_tipoActividad": "Bicicleta",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1002": {
+    "_id": 1002,
+    "_nombre": "ruta3",
+    "_geolocalizacionInicial": [
+      1,
+      6
+    ],
+    "_geolocalizacionFinal": [
+      3,
+      4
+    ],
+    "_distancia": 4,
+    "_desnivel": 3,
+    "_usuarios": [],
+    "_tipoActividad": "Bicicleta",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  }
+}

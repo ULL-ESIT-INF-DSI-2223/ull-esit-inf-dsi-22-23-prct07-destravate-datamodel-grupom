@@ -62,36 +62,43 @@ const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
 const coleccionGrupos = ColeccionGrupos.getColeccionGrupos();
 const coleccionRetos = ColeccionRetos.getColeccionRetos();
 
-let ruta1 = new Ruta('ruta1', [1,2], [3,4], 4, 5, Actividades.Correr);
-let ruta2 = new Ruta('ruta2', [4,8], [30,4], 4, 7, Actividades.Bicicleta);
-let ruta3 = new Ruta('ruta3', [1,6], [3,4], 4, 3, Actividades.Bicicleta);
-coleccionRutas.agregarRuta(ruta1);
-coleccionRutas.agregarRuta(ruta2);
-coleccionRutas.agregarRuta(ruta3);
+// let ruta1 = new Ruta('ruta1', [1,2], [3,4], 4, 5, Actividades.Correr);
+// let ruta2 = new Ruta('ruta2', [4,8], [30,4], 4, 7, Actividades.Bicicleta);
+// let ruta3 = new Ruta('ruta3', [1,6], [3,4], 4, 3, Actividades.Bicicleta);
+// coleccionRutas.agregarRuta(ruta1);
+// coleccionRutas.agregarRuta(ruta2);
+// coleccionRutas.agregarRuta(ruta3);
 
-let reto1 = new Reto("reto1", [ruta1, ruta3], Actividades.Bicicleta)
-let reto2 = new Reto("reto2", [ruta2], Actividades.Correr)
-coleccionRetos.agregarReto(reto1);
-coleccionRetos.agregarReto(reto2);
 
-let juan = new Usuario('Juan', [Actividades.Correr], [reto1.id]);
-let maria = new Usuario('maria', [Actividades.Bicicleta], []);
-let pepe = new Usuario('pepe', [Actividades.Bicicleta], [reto2.id]);
-let roberto = new Usuario('roberto', [Actividades.Bicicleta], [reto1.id]);
-coleccionUsuarios.agregarUsuario(juan);
-coleccionUsuarios.agregarUsuario(maria);
-coleccionUsuarios.agregarUsuario(pepe);
-coleccionUsuarios.agregarUsuario(roberto);
+// let juan = new Usuario('Juan', [Actividades.Correr]);
+// let maria = new Usuario('maria', [Actividades.Bicicleta]);
+// let pepe = new Usuario('pepe', [Actividades.Bicicleta]);
+// let roberto = new Usuario('roberto', [Actividades.Bicicleta]);
+// coleccionUsuarios.agregarUsuario(juan);
+// coleccionUsuarios.agregarUsuario(maria);
+// coleccionUsuarios.agregarUsuario(pepe);
+// coleccionUsuarios.agregarUsuario(roberto);
 
-let grupo1 = new Grupo('grupo1', juan.id);
-let grupo2 = new Grupo('grupo2', maria.id);
-coleccionGrupos.agregarGrupo(grupo1);
-coleccionGrupos.agregarGrupo(grupo2)
-grupo1.agregarUsuario(pepe.id);
-grupo2.agregarUsuario(roberto.id);
+// let reto1 = new Reto("reto1", [ruta1, ruta3], Actividades.Bicicleta)
+// let reto2 = new Reto("reto2", [ruta2], Actividades.Correr)
+// coleccionRetos.agregarReto(reto1);
+// coleccionRetos.agregarReto(reto2);
 
-juan.agregarRuta(ruta1);
-maria.agregarRuta(ruta2);
+// reto1.agregarUsuario(juan.id);
+// reto2.agregarUsuario(maria.id);
+// reto2.agregarUsuario(pepe.id);
+
+
+// let grupo1 = new Grupo('grupo1', juan.id);
+// let grupo2 = new Grupo('grupo2', maria.id);
+// coleccionGrupos.agregarGrupo(grupo1);
+// coleccionGrupos.agregarGrupo(grupo2)
+// grupo1.agregarUsuario(pepe.id);
+// grupo2.agregarUsuario(roberto.id);
+
+
+// juan.agregarRuta(ruta1);
+// maria.agregarRuta(ruta2);
 
 // coleccionUsuarios.agregarUsuario(juan);
 // // coleccionUsuarios.eliminarUsuario(juan);
@@ -102,7 +109,7 @@ maria.agregarRuta(ruta2);
 // console.log(coleccionUsuarios.getUsuario(1000))
 
 // console.log('usuarios########################')
-// coleccionUsuarios.imprimirInformacion();
+//  coleccionUsuarios.imprimirInformacion();
 // console.log('grupos########################')
 // coleccionGrupos.imprimirInformacion();
 // console.log('rutas########################')
@@ -110,7 +117,9 @@ maria.agregarRuta(ruta2);
 // console.log('retos########################')
 // coleccionRetos.imprimirInformacion();
 
-ManejadorJSON.actualizarUsuariosDB();
-ManejadorJSON.actualizarGruposDB();
-ManejadorJSON.actualizarRutasDB();
-ManejadorJSON.actualizarRetosDB();
+// ManejadorJSON.actualizarUsuariosDB();
+// ManejadorJSON.actualizarGruposDB();
+// ManejadorJSON.actualizarRutasDB();
+// ManejadorJSON.actualizarRetosDB();
+
+// console.log(coleccionUsuarios.getUsuario(1002)?.rutasFavoritas());

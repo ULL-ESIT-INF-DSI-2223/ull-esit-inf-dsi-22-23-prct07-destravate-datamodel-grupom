@@ -1,5 +1,6 @@
 import { ColeccionUsuarios } from "../colecciones/coleccionUsuarios";
 import { EstadisticaGrupo } from "../tipos/tipos";
+import { Ruta } from "./ruta";
 
 
 
@@ -37,7 +38,6 @@ export class Grupo {
     }
   }
   
-  // TODO clasificacion de usuarios
   get id(): number { return this._id; }
   get creador(): number { return this._creador; }
   get nombre(): string { return this._nombre; }
@@ -46,21 +46,57 @@ export class Grupo {
   get estadistica(): EstadisticaGrupo { return this._estadistica; }
   get clasificacion(): number[] { return this._clasificacion; }
 
-  // get rutaFavoritas(): number[] | undefined { return this._rutasFavoritas; }
-
-  // método que calcula la ruta favorita --> la que más veces se ha realizado en el vector de historico
-
-  // TODO: Falta ver como hacer el historico 
+  
   agregarUsuario(id: number) {
-    // TODO comrpobar bdd
     this._participantes.push(id);
     this.actualizarEstadistica();
   }
-
-  actualizarClasificacion() {
-    // TODO
-    let a = 0;
+  
+  // AQUI ULTIMO PASOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 987654321
+  // clasificacionUsuarios(): number[] {
+  //   this._clasificacion = this.participantes.sort((a, b) => ColeccionUsuarios.getColeccionUsuarios().getUsuario(a)?.distanciaTotal - ColeccionUsuarios.getColeccionUsuarios().getUsuario(b)?.distanciaTotal);
+  //   this.participantes.sort((a, b) => ColeccionUsuarios.getColeccionUsuarios() - a.distanciaTotal);
+  // }
+  
+  agregarRuta(ruta: Ruta) {
+    let fecha: Date = new Date();
+    let fechaString: string = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
+    let arrayFecha: number[] = [];
+    if (this.historicoRutas.get(fechaString) !== undefined) {
+      this.historicoRutas.get(fechaString)?.push(ruta.id);
+    } else {
+      arrayFecha = [ruta.id];
+      this.historicoRutas.set(fechaString, arrayFecha);
+    }
+    this.participantes.forEach((participante) => {
+      ColeccionUsuarios.getColeccionUsuarios().getUsuario(participante)?.agregarRuta(ruta)
+    });
   }
+
+  rutasFavoritas(): number[] {
+    const rutas: number[]= Array.from(this.historicoRutas.values()).flat();
+    const contador = new Map();
+    for (let ruta of rutas) {
+      if (contador.has(ruta)) {
+        contador.set(ruta, contador.get(ruta) + 1);
+      } else {
+        contador.set(ruta, 1);
+      }
+    }
+
+    // Paso 2
+    const entradas = Array.from(contador.entries());
+
+    // Paso 3
+    const entradasOrdenadas = entradas.sort((a, b) => b[1] - a[1]);
+
+    // Paso 5
+    const numerosMasRepetidos = entradasOrdenadas.slice(0, 3).map((entrada) => parseInt(entrada[0]));
+
+    return numerosMasRepetidos;
+  }
+
+
 
   actualizarEstadistica() {
     const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();

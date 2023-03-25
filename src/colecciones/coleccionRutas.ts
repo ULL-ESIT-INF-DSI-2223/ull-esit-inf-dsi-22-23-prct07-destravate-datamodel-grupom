@@ -92,5 +92,12 @@ export class ColeccionRutas {
       ColeccionRutas.coleccionRutas.rutas = parteCorredor.concat(parteCiclismo);
     }
   }
+
+  ordenarCalificacionMedia(opcion: ManeraOrdenar) {
+    ColeccionRutas.coleccionRutas.rutas.sort((a, b) => a.calificacionMedia - b.calificacionMedia);
+    if (opcion === ManeraOrdenar.Descendente) {
+      ColeccionRutas.coleccionRutas.rutas.reverse();
+    }
+  }
 }
 

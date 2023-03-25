@@ -65,8 +65,8 @@ export class ManejadorJSON {
     const usuariosDB = dbUsuario.toJSON();
 
     for (const id in usuariosDB) {
-      let usu = new Usuario(usuariosDB[id]._nombre, [], usuariosDB[id]._retosActivos);
-      usu.ContructorDBUsuario(usuariosDB[id]._actividades, usuariosDB[id]._historicoFechas, usuariosDB[id]._historicoRutas, usuariosDB[id]._estadistica, usuariosDB[id]._amigos, usuariosDB[id]._gruposAmigos)
+      let usu = new Usuario(usuariosDB[id]._nombre, []);
+      usu.ContructorDBUsuario(usuariosDB[id]._actividades, usuariosDB[id]._historicoFechas, usuariosDB[id]._historicoRutas, usuariosDB[id]._estadistica, usuariosDB[id]._amigos, usuariosDB[id]._gruposAmigos, usuariosDB[id]._retosActivos)
       usuarios.push(usu);
     }
     return usuarios;
@@ -162,16 +162,15 @@ export class ManejadorJSON {
     let retos: Reto[] = [];
     const retosDB = dbRetos.toJSON();
     for (const id in retosDB) {
-      let rutas: Ruta[] = [new Ruta('RUtaPOrDefecto', [0,0], [0,0], 0, 0, Actividades.Bicicleta)];
-      for (let i = 1; i < retosDB[i]._rutas.length; i++) {
-        const variable = ColeccionRutas.getRuta(retosDB[i]._rutas[i]);
+      let rutas: Ruta[] = [];
+      for (let i = 0; i < retosDB[id]._rutas.length; i++) {
+        const variable = ColeccionRutas.getRuta(retosDB[id]._rutas[i]);
         if (variable instanceof Ruta) {
           rutas.push(variable);
         }
         
       }
-      let nuevoArray: Ruta[] = rutas;
-      let reto = new Reto(retosDB[id]._nombre, nuevoArray, retosDB[id]._tipoActividad as Actividades);
+      let reto = new Reto(retosDB[id]._nombre, rutas, retosDB[id]._tipoActividad as Actividades);
       reto.ConstructorDBReto(retosDB[id]._distanciaTotal, retosDB[id]._usuarios)
       retos.push(reto);
     }

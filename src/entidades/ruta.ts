@@ -35,9 +35,13 @@ export class Ruta {
   get calificacion(): number[] { return this._calificacion; }
   
   calificar(calificacion: number): number {
-    this._calificacion.push(calificacion);
-    this._mediaCalificacion = this._calificacion.reduce((acc, elem) => acc + elem, 0) / this._calificacion.length;
-    return this._mediaCalificacion;
+    if(calificacion <= 10 && calificacion >= 0) {
+      this._calificacion.push(calificacion);
+      this._mediaCalificacion = this._calificacion.reduce((acc, elem) => acc + elem, 0) / this._calificacion.length;
+      return this._mediaCalificacion;
+    } else {
+      return -1;
+    }
   }
 
   agregarUsuario(id: number) {

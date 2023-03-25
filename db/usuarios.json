@@ -1,0 +1,124 @@
+{
+  "1000": {
+    "_nombre": "Juan",
+    "_retosActivos": [
+      1000
+    ],
+    "_id": 1000,
+    "_actividades": [
+      "Correr"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1000
+      ]
+    ],
+    "_estadistica": [
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        5
+      ],
+      [
+        4,
+        5
+      ]
+    ],
+    "_amigos": [ 1002 ],
+    "_gruposAmigos": []
+  },
+  "1001": {
+    "_nombre": "maria",
+    "_retosActivos": [
+      1001
+    ],
+    "_id": 1001,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1001
+      ]
+    ],
+    "_estadistica": [
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        7
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1002": {
+    "_nombre": "pepe",
+    "_retosActivos": [
+      1001
+    ],
+    "_id": 1002,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [],
+    "_historicoRutas": [],
+    "_estadistica": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1003": {
+    "_nombre": "roberto",
+    "_retosActivos": [],
+    "_id": 1003,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [],
+    "_historicoRutas": [],
+    "_estadistica": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  }
+}

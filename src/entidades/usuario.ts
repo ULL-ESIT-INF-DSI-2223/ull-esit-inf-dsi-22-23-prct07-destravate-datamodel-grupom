@@ -3,6 +3,7 @@ import { Ruta } from "./ruta";
 import { EstadisticaUsuario } from "../tipos/tipos";
 import { Actividades } from "../enumerados/enumerados";
 import { ColeccionGrupos } from "../colecciones/coleccionGrupos";
+import { ColeccionRutas } from "../colecciones/coleccionRutas";
 
 
 export class Usuario {
@@ -13,15 +14,16 @@ export class Usuario {
   private _estadistica: EstadisticaUsuario = [[0, 0], [0, 0], [0, 0]];
   private _amigos: number[] = [];
   private _gruposAmigos: number[] = [];
+  private _retosActivos: number[] = [];
 
-  constructor(private _nombre: string, actividades: Actividades[], private _retosActivos: number[]) {
+  constructor(private _nombre: string, actividades: Actividades[]) {
     this._id = Usuario._contadorUsuario;
     Usuario._contadorUsuario++;
     this._actividades = new Set(actividades);
   }
 
   public ContructorDBUsuario(actividades: string[], historicoFechas: string[], historicoRutas: number[][], estadistica: EstadisticaUsuario, 
-    amigos: number[] | undefined, gruposAmigos: number[] | undefined) {
+    amigos: number[] | undefined, gruposAmigos: number[] | undefined, retosActivos: number[]) {
     actividades.forEach((elem) => { this._actividades.add(elem as Actividades) })
     for (let i = 0; i < historicoFechas.length; ++i) {
       let fechaString = historicoFechas[i];
@@ -36,10 +38,10 @@ export class Usuario {
     this._estadistica = estadistica;
     this._amigos = amigos === undefined ? [] : amigos;
     this._gruposAmigos = gruposAmigos === undefined ? [] : gruposAmigos;
+    this._retosActivos = retosActivos;
   }
 
   get id(): number { return this._id; }
-
   get nombre(): string { return this._nombre; }
   get actividades(): Set<Actividades> { return this._actividades; }
   get amigos(): number[] | undefined { return (this._amigos.length !== 0) ? this._amigos : undefined }
@@ -47,11 +49,12 @@ export class Usuario {
   get estadistica(): EstadisticaUsuario { return this._estadistica; }
   get retosActivos(): number[] | undefined { return this._retosActivos; }
   get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
+
+  
+
   esGrupoAmigo(idGrupo: number): boolean {
     return this._gruposAmigos.includes(idGrupo);
   }
-  // método que agrega a la lista de historicos, la ruta que realizó
-  // cada vez que se agrega una ruta debemos actualizar las estadisticas
   agregarRuta(ruta: Ruta) {
     let fecha: Date = new Date();
     let fechaString: string = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
@@ -65,7 +68,6 @@ export class Usuario {
     }
     this.actualizarEstadisticas(ruta);
     ruta.agregarUsuario(this.id);
-    // TODO revisar esta parte de abajo qeu se actualicen las estadisticas de los grupos
     this._gruposAmigos.forEach((idGrupo) => {
       ColeccionGrupos.getColeccionGrupos().getGrupo(idGrupo)?.actualizarEstadistica()
     });
@@ -83,22 +85,59 @@ export class Usuario {
     this.estadistica[2][1] += desnivel;
     
   }
-  // método que calcula la ruta favorita --> la que más veces se ha realizado en el vector de historico
-  // TODO
-  // método que agrega la id de un amigo a la lista de amigos
+
+  agregarReto(id: number) {
+    this._retosActivos.push(id);
+  }
+
+  eliminarReto(id: number) {
+    this._retosActivos = this._retosActivos.filter((elem) => elem !== id);
+  }
+
+
   agregarAmigo(amigo: Usuario) {
-    // TODO comprobar BDD
     this._amigos.push(amigo.id);
   }
-  // método que agrega la id de un grupoamigo a la lista de gruposamigos
+
   agregarGrupoAmigo(grupoAmigo: Grupo) {
-    // TODO comprobar BDD
     this._gruposAmigos.push(grupoAmigo.id);
   }
-  // TODO
-  // creamos un metodo que pregunte al usaurio si quiere meter retos,
-  // if(no quiere) {se deja el array de retos vacíos}
-  // else {se le pregunta cuantos retos quiere meter y se le pide que los meta (el id de los retos)}
+
+  rutasFavoritas(): number[] {
+    const rutas: number[]= Array.from(this.historicoRutas.values()).flat();
+    const contador = new Map();
+    for (let ruta of rutas) {
+      if (contador.has(ruta)) {
+        contador.set(ruta, contador.get(ruta) + 1);
+      } else {
+        contador.set(ruta, 1);
+      }
+    }
+
+    // Paso 2
+    const entradas = Array.from(contador.entries());
+
+    // Paso 3
+    const entradasOrdenadas = entradas.sort((a, b) => b[1] - a[1]);
+
+    // Paso 5
+    const numerosMasRepetidos = entradasOrdenadas.slice(0, 3).map((entrada) => parseInt(entrada[0]));
+
+    return numerosMasRepetidos;
+  }
+
+  distanciaTotal(): number {
+    let distanciaTotal = 0;
+    this.historicoRutas.forEach((value, key) => {
+      value.forEach((idRuta) => {
+        let ruta = ColeccionRutas.getRuta(idRuta);
+        if (ruta !== undefined) {
+          distanciaTotal += ruta.distancia;
+        }
+      });
+    });
+    return distanciaTotal;
+  }
 }
 
 
