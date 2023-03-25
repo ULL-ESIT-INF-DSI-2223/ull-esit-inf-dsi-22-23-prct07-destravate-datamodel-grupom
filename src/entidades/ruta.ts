@@ -47,4 +47,8 @@ export class Ruta {
   agregarUsuario(id: number) {
     this._usuarios.push(id);
   }
+
+  toString(): string {
+    return `Ruta ${this._id}: ${this._nombre} (${this._tipoActividad})`;
+  }
 }

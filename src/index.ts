@@ -1,23 +1,3 @@
-// import * as lowdb from "lowdb";
-// import * as FileSync from "lowdb/adapters/FileSync";
-// import * as inquirer from 'inquirer';
-import { Usuario } from "./entidades/usuario";
-// import { Grupo } from "./entidades/grupo";
-import { Actividades } from "./enumerados/enumerados";
-// import { ColeccionUsuarios } from "./colecciones/coleccionUsuarios";
-
-// // Parte index ////////////////////////////////////
-
-// let juan = new Usuario('Juan', [Actividades.Correr], []);
-// let maria = new Usuario('Maria', [Actividades.Bicicleta], []);
-// // let pepe = new Usuario('Pepe', [Actividades.Bicicleta], []);
-
-
-// const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
-// coleccionUsuarios.agregarUsuario(juan);
-// coleccionUsuarios.agregarUsuario(maria);
-// coleccionUsuarios.agregarUsuario(pepe);
-
 /**
  * 1. se crea un juan a base de preguntas al usuario
  * 2. se hace un append a coleccionUsuarios
@@ -48,14 +28,10 @@ import { Actividades } from "./enumerados/enumerados";
 
 import { ManejadorJSON } from "./utilidades/manejadorJSON";
 import { ColeccionUsuarios } from "./colecciones/coleccionUsuarios";
-import { Ruta } from "./entidades/ruta";
-import { Reto } from "./entidades/reto";
 import { ColeccionGrupos } from "./colecciones/coleccionGrupos";
-import { Grupo } from "./entidades/grupo";
 import { ColeccionRutas } from "./colecciones/coleccionRutas";
 import { ColeccionRetos } from "./colecciones/coleccionRetos";
-
-//fs.writeFileSync('db/rutas.json', '');
+import { Gestor } from "./utilidades/gestor";
 
 // const coleccionRutas = ColeccionRutas.getColeccionRutas();
 // const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
@@ -145,14 +121,19 @@ import { ColeccionRetos } from "./colecciones/coleccionRetos";
 // console.log('retos########################')
 // coleccionRetos.imprimirInformacion();
 
-// ManejadorJSON.actualizarUsuariosDB();
-// ManejadorJSON.actualizarGruposDB();
-// ManejadorJSON.actualizarRutasDB();
-// ManejadorJSON.actualizarRetosDB();
 
 // // console.log(coleccionUsuarios.getUsuario(1002)?.rutasFavoritas());
 
 // coleccionGrupos.getGrupos().forEach(grupo => { 
-//   console.log(grupo.nombre)
-//   console.log(grupo.clasificacionUsuarios());
-// });
+  //   console.log(grupo.nombre)
+  //   console.log(grupo.clasificacionUsuarios());
+  // });
+  
+  
+// Gestor.registrarEnSistema();
+// Gestor.mostrarUsuarios();
+// ManejadorJSON.actualizarGruposDB();
+// ManejadorJSON.actualizarRutasDB();
+// ManejadorJSON.actualizarRetosDB();
+
+Gestor.inicio();

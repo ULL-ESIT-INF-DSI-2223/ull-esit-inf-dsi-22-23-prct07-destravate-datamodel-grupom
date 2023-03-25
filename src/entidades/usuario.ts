@@ -131,6 +131,16 @@ export class Usuario {
     });
     return distanciaTotal;
   }
+
+
+  public toString(): string {
+    let info = `Usuario ${this.nombre} tiene la ID ${this.id}\n`;
+    info += `Realiza las actividades: ${Array.from(this.actividades).join(", ")}\n`;
+    info += this.amigos !== undefined ? `Sus son amigos ${this.amigos.join(", ")}\n` : "No tiene amigos\n";
+    info += this.gruposAmigos !== undefined ? `Sus grupos de amigos son ${this.gruposAmigos.join(", ")}\n` : "No tiene grupos de amigos\n";
+    info += `Sus estadisticas son ${this.estadistica} \n`;
+    info += this.retosActivos !== undefined ? `Sus retos activos son ${this.retosActivos.join(", ")}\n` : "No tiene retos activos\n";
+    info += `Su histórico de rutas es ${Array.from(this.historicoRutas.keys()).join(", ")}\n\n`;
+    return info;
+  }
 }
-
-
