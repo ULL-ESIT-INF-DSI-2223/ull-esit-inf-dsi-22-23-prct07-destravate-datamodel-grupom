@@ -7,7 +7,7 @@ export class Grupo {
   private static _contadorGrupo = 1000;
   private _id: number;
   private _estadistica: EstadisticaGrupo = [[0, 0], [0, 0], [0, 0]];
-  private _clasificacion: number[];
+  private _clasificacion: number[] = [];
   private _participantes: number[] = [];
   // Solo se puede borrar el grupo si id >= 1000 y si la id del creador coincide con el usuario q intenta borrar
   private _creador: number;
@@ -17,11 +17,13 @@ export class Grupo {
     this._id = Grupo._contadorGrupo;
     Grupo._contadorGrupo++;
     this._creador = idCreador;
+    this.agregarUsuario(idCreador);
   }
 
-  public ContructorDB(participantes: number[], estadistica: EstadisticaGrupo, clasificacion: number[], historicoFechas: string[], historicoRutas: number[][]) {
+  public ContructorDBGrupo(participantes: number[], estadistica: EstadisticaGrupo, clasificacion: number[], historicoFechas: string[], historicoRutas: number[][]) {
     this._participantes = participantes;
     this._estadistica = estadistica;
+    this.actualizarEstadistica();
     this._clasificacion = clasificacion;
     for (let i = 0; i < historicoFechas.length; ++i) {
       let fechaString = historicoFechas[i];

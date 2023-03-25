@@ -43,6 +43,7 @@ export type RutaDB = {
   _desnivel: number,
   _usuarios: number[],
   _tipoActividad: string,
+  _calificacion: number[],
   _calificacionMedia: number
 }
 

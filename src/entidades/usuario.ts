@@ -20,7 +20,7 @@ export class Usuario {
     this._actividades = new Set(actividades);
   }
 
-  public ContructorDB(actividades: string[], historicoFechas: string[], historicoRutas: number[][], estadistica: EstadisticaUsuario, 
+  public ContructorDBUsuario(actividades: string[], historicoFechas: string[], historicoRutas: number[][], estadistica: EstadisticaUsuario, 
     amigos: number[] | undefined, gruposAmigos: number[] | undefined) {
     actividades.forEach((elem) => { this._actividades.add(elem as Actividades) })
     for (let i = 0; i < historicoFechas.length; ++i) {

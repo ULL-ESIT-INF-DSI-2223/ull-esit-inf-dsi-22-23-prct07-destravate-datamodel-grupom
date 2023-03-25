@@ -7,17 +7,19 @@ export class Ruta {
   private static _contadorRuta = 1000;
   private _id: number;
   private _usuarios: number[] = [];
-  private _calificacion: number[];
-  private _mediaCalificacion: number;
+  private _calificacion: number[] = [];
+  private _mediaCalificacion = 0;
+  
   constructor(private _nombre: string, private _geolocalizacionInicial: Coordenadas, private _geolocalizacionFinal: Coordenadas, 
     private _distancia: number, private _desnivel: number, private _tipoActividad: Actividades) {
     this._id = Ruta._contadorRuta;
     Ruta._contadorRuta++;
   }
   
-  public ConstructorDB(calificacion: number[], mediaCalificacion: number) {
+  public ConstructorDBRuta(usuarios: number[], calificacion: number[], mediaCalificacion: number) {
     this._calificacion = calificacion;
     this._mediaCalificacion = mediaCalificacion;
+    this._usuarios = usuarios;
   }
 
   

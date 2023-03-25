@@ -1,6 +1,7 @@
 import { Ruta } from '../entidades/ruta';
 import { ManeraOrdenar } from '../enumerados/enumerados';
 import { Actividades } from '../enumerados/enumerados';
+import { ManejadorJSON } from '../utilidades/manejadorJSON';
 
 
 
@@ -9,13 +10,13 @@ export class ColeccionRutas {
 
   private static coleccionRutas: ColeccionRutas;
   
-  private constructor() {
-    this.rutas = [];
+  private constructor(rutasDB: Ruta[]) {
+    this.rutas = rutasDB;
   }
 
   public static getColeccionRutas(): ColeccionRutas{
     if (!ColeccionRutas.coleccionRutas) {
-      ColeccionRutas.coleccionRutas = new ColeccionRutas();
+      ColeccionRutas.coleccionRutas = new ColeccionRutas(ManejadorJSON.extraccionRutasDB());
     }
     return ColeccionRutas.coleccionRutas;
   }
@@ -28,14 +29,8 @@ export class ColeccionRutas {
     return ColeccionRutas.coleccionRutas.rutas;
   }
 
-  public static getRuta(id: number): Ruta {
-    // for(let i = 0; i < ColeccionRutas.coleccionRutas.rutas.length; i++) {
-    //   if (ColeccionRutas.coleccionRutas.rutas[i].id == id) {
-    //     return ColeccionRutas.coleccionRutas.rutas[i];
-    //   }
-    // }
-    // return undefined;
-    return ColeccionRutas.coleccionRutas.rutas[ColeccionRutas.coleccionRutas.rutas.indexOf(id)];
+  public static getRuta(id: number): Ruta | undefined {
+    return ColeccionRutas.coleccionRutas.rutas.find((ruta) => ruta.id === id) || undefined;
   }
 
   agregarRuta(Ruta: Ruta): void {

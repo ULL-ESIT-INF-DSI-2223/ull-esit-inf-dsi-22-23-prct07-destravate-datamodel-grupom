@@ -23,7 +23,8 @@ export class ManejadorJSON {
   
   /////////// USUARIOS ///////////
   
-  static ActualizarUsuariosDB() {
+  // Pilla la coleccion de usuarios y la guarda en la bd
+  static actualizarUsuariosDB() {
     fs.writeFileSync('db/usuarios.json', '');
     const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
     coleccionUsuarios.getUsuarios().forEach((usuarios) => {
@@ -31,13 +32,14 @@ export class ManejadorJSON {
     });
   }
 
+  // Agrega un usuario a la bd
   static agregarUsuarioDB(usu: Usuario): void {
-    const array1: string[] = [];
-    const array2: number[][] = [];
+    const arrayFecha: string[] = [];
+    const arrayRuta: number[][] = [];
 
     for(let [key, value] of usu.historicoRutas) {
-      array1.push(key);
-      array2.push(value);
+      arrayFecha.push(key);
+      arrayRuta.push(value);
     }
 
     const usuario: UsuarioDB = {
@@ -45,8 +47,8 @@ export class ManejadorJSON {
       _retosActivos: usu.retosActivos === undefined ? [] : usu.retosActivos,
       _id: usu.id,
       _actividades: Array.from(usu.actividades),
-      _historicoFechas: array1,
-      _historicoRutas: array2,
+      _historicoFechas: arrayFecha,
+      _historicoRutas: arrayRuta,
       _estadistica: usu.estadistica,
       _amigos: usu.amigos === undefined ? [] : usu.amigos,
       _gruposAmigos: usu.gruposAmigos === undefined ? [] : usu.gruposAmigos
@@ -56,6 +58,7 @@ export class ManejadorJSON {
     dbUsuario.set(usuario._id, usuario).write();
   }
 
+  // Pilla la bd y la guarda en la coleccion de usuarios
   static extraccionUsuariosDB(): Usuario[] {
     const dbUsuario = lowdb(new FileSync('./db/usuarios.json'));
     let usuarios: Usuario[] = [];
@@ -63,7 +66,7 @@ export class ManejadorJSON {
 
     for (const id in usuariosDB) {
       let usu = new Usuario(usuariosDB[id]._nombre, [], usuariosDB[id]._retosActivos);
-      usu.ContructorDB(usuariosDB[id]._actividades, usuariosDB[id]._historicoRutas, usuariosDB[id]._historicoFechas, usuariosDB[id]._estadistica, usuariosDB[id]._amigos, usuariosDB[id]._gruposAmigos)
+      usu.ContructorDBUsuario(usuariosDB[id]._actividades, usuariosDB[id]._historicoFechas, usuariosDB[id]._historicoRutas, usuariosDB[id]._estadistica, usuariosDB[id]._amigos, usuariosDB[id]._gruposAmigos)
       usuarios.push(usu);
     }
     return usuarios;
@@ -71,14 +74,17 @@ export class ManejadorJSON {
 
   /////////// GRUPOS ///////////
 
-  static ActualizarGruposDB() {
+  // Pilla la coleccion de grupos y la guarda en la bd
+  static actualizarGruposDB() {
     fs.writeFileSync('db/grupos.json', '');
     const coleccionGrupos = ColeccionGrupos.getColeccionGrupos();
-    coleccionGrupos.getGrupos().forEach((grupos) => {
-      ManejadorJSON.agregarGrupoDB(grupos);
+    coleccionGrupos.getGrupos().forEach((grupo) => {
+      grupo.actualizarEstadistica();
+      ManejadorJSON.agregarGrupoDB(grupo);
     });
   }
 
+  // Agrega un grupo a la bd
   static agregarGrupoDB(grupo: Grupo): void {
     const array1: string[] = [];
     const array2: number[][] = [];
@@ -104,6 +110,7 @@ export class ManejadorJSON {
   }
   
 
+  // Pilla la bd y la guarda en la coleccion de grupos
   static extraccionGruposDB(): Grupo[] {
     const dbGrupo = lowdb(new FileSync('./db/grupos.json'));
     let grupos: Grupo[] = [];
@@ -111,15 +118,17 @@ export class ManejadorJSON {
 
     for (const id in gruposDB) {
       let grupo = new Grupo(gruposDB[id]._nombre, gruposDB[id]._creador);
-      grupo.ContructorDB(gruposDB[id]._participantes, gruposDB[id]._estadistica, gruposDB[id]._clasificacion, gruposDB[id]._historicoFechas, gruposDB[id]._historicoRutas)
+      grupo.ContructorDBGrupo(gruposDB[id]._participantes, gruposDB[id]._estadistica, gruposDB[id]._clasificacion, gruposDB[id]._historicoFechas, gruposDB[id]._historicoRutas)
       grupos.push(grupo);
     }
     return grupos;
   }
 
+
   /////////// RETOS ///////////
 
-  static ActualizarRetosDB() {
+  // Pilla la coleccion de retos y la guarda en la bd
+  static actualizarRetosDB() {
     fs.writeFileSync('db/retos.json', '');
     const coleccionRetos = ColeccionRetos.getColeccionRetos();
     coleccionRetos.getRetos().forEach((retos) => {
@@ -127,10 +136,11 @@ export class ManejadorJSON {
     });
   }
 
+  // Agrega un reto a la bd
   static agregarRetoDB(reto: Reto): void {
     let rutasID: number[] = []
     reto.rutas.forEach((ruta) => {
-      rutasID.push(reto.id)
+      rutasID.push(ruta.id)
     })
     const retoDB: RetoDB = {
       _id: reto.id,
@@ -146,27 +156,33 @@ export class ManejadorJSON {
   }
   
 
-  // static extraccionRetosDB(): Reto[] {
-    // const dbRetos = lowdb(new FileSync('./db/retos.json'));
-    // let retoss: Reto[] = [];
-    // const retosDB = dbRetos.toJSON();
+  // Pilla la bd y la guarda en la coleccion de retos
+  static extraccionRetosDB(): Reto[] {
+    const dbRetos = lowdb(new FileSync('./db/retos.json'));
+    let retos: Reto[] = [];
+    const retosDB = dbRetos.toJSON();
+    for (const id in retosDB) {
+      let rutas: Ruta[] = [new Ruta('RUtaPOrDefecto', [0,0], [0,0], 0, 0, Actividades.Bicicleta)];
+      for (let i = 1; i < retosDB[i]._rutas.length; i++) {
+        const variable = ColeccionRutas.getRuta(retosDB[i]._rutas[i]);
+        if (variable instanceof Ruta) {
+          rutas.push(variable);
+        }
+        
+      }
+      let nuevoArray: Ruta[] = rutas;
+      let reto = new Reto(retosDB[id]._nombre, nuevoArray, retosDB[id]._tipoActividad as Actividades);
+      reto.ConstructorDBReto(retosDB[id]._distanciaTotal, retosDB[id]._usuarios)
+      retos.push(reto);
+    }
+    return retos;
+  }
 
-    // for (const id in retosDB) {
-    //   let rutas: Ruta[] = []
-    //   let nuevoArray: Ruta[] = ColeccionRutas.getRuta(retosDB[id]._rutas[0]);
-    //   for (let i = 1; i < retosDB[i]._rutas.length; i++) {
-    //     const nuevoElemento = ColeccionRutas.getRuta(retosDB[id]._rutas[i]);
-    //     nuevoArray = [...rutas, nuevoElemento];
-    //   } 
-    //   let reto = new Reto(retosDB[id]._nombre, nuevoArray, retosDB[id]._tipoActividad as Actividades);
-    //   reto.ContructorDB(retossDB[id]._participantes, retossDB[id]._estadistica, retossDB[id]._clasificacion, retossDB[id]._historicoFechas, retossDB[id]._historicoRutas)
-    //   retoss.push(reto);
-    // }
-    // return retos;
-  // }
+
   /////////// RUTAS ///////////
 
-  static ActualizarRutasDB() {
+  // Pilla la coleccion de rutas y la guarda en la bd
+  static actualizarRutasDB() {
     fs.writeFileSync('db/rutas.json', '');
     const coleccionRutas = ColeccionRutas.getColeccionRutas();
     coleccionRutas.getRutas().forEach((rutas) => {
@@ -174,6 +190,7 @@ export class ManejadorJSON {
     });
   }
 
+  // Agrega una ruta a la bd
   static agregarRutaDB(ruta: Ruta): void {
     const rutaDB: RutaDB = {
       _id: ruta.id,
@@ -184,6 +201,7 @@ export class ManejadorJSON {
       _desnivel: ruta.desnivel,
       _usuarios: ruta.usuarios,
       _tipoActividad: ruta.tipoActividad,
+      _calificacion: ruta.calificacion,
       _calificacionMedia: ruta.calificacionMedia
     };
     
@@ -191,15 +209,16 @@ export class ManejadorJSON {
     dbRutas.set(rutaDB._id, rutaDB).write();
   }
   
-
+  // Pilla la bd y la guarda en la coleccion de rutas
   static extraccionRutasDB(): Ruta[] {
     const dbRutas = lowdb(new FileSync('./db/rutas.json'));
     let rutas: Ruta[] = [];
+
     const rutasDB = dbRutas.toJSON();    
     for (const id in rutasDB) {
       let ruta = new Ruta(rutasDB[id]._nombre, rutasDB[id]._geolocalizacionInicial, rutasDB[id]._geolocalizacionFinal, 
         rutasDB[id]._distancia, rutasDB[id]._desnivel, rutasDB[id]._tipoActividad);
-      ruta.ContructorDB(rutasDB[id].calificacion, rutasDB[id].calificacionMedia);
+      ruta.ConstructorDBRuta(rutasDB[id]._usuarios, rutasDB[id]._calificacion, rutasDB[id]._calificacionMedia);
       rutas.push(ruta);
     }
     return rutas;

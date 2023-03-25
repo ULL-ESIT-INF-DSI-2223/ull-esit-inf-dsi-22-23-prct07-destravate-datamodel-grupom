@@ -1,6 +1,7 @@
 import { ColeccionUsuarios } from './coleccionUsuarios';
 import { Grupo } from '../entidades/grupo';
 import { ManeraOrdenar } from '../enumerados/enumerados';
+import { ManejadorJSON } from '../utilidades/manejadorJSON';
 
 
 
@@ -9,13 +10,14 @@ export class ColeccionGrupos {
 
   private static coleccionGrupos: ColeccionGrupos;
   
-  private constructor() {
-    this.Grupos = [];
+  private constructor(gruposDB: Grupo[]) {
+    this.Grupos = gruposDB;
   }
 
   public static getColeccionGrupos(): ColeccionGrupos{
     if (!ColeccionGrupos.coleccionGrupos) {
-      ColeccionGrupos.coleccionGrupos = new ColeccionGrupos();
+      ColeccionGrupos.coleccionGrupos = new ColeccionGrupos(ManejadorJSON.extraccionGruposDB());
+
     }
     return ColeccionGrupos.coleccionGrupos;
   }

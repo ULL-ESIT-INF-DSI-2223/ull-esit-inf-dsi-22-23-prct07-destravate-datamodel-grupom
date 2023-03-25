@@ -14,6 +14,7 @@ export class Reto {
     this._distanciaTotal = this._rutas.reduce((acc, elem) => acc + elem.distancia, 0);
     this._usuarios = this._rutas.map((ruta) => ruta.usuarios).reduce((acc, elem) => 
     [...acc, ...elem], []).filter((valor, indice, arreglo) => arreglo.indexOf(valor) === indice);
+    // TODO console.log(this._usuarios)
   }
 
   get id(): number { return this._id; }
@@ -23,6 +24,10 @@ export class Reto {
   get tipoActividad(): Actividades { return this._tipoActividad; }
   get rutas(): Ruta[] { return this._rutas; }
 
+  public ConstructorDBReto(distanciaTotal: number, usuarios: number[]) {
+    this._distanciaTotal = distanciaTotal;
+    this._usuarios = usuarios;
+  }
 
 
   // TODO: REVISAR QUE ESTE BIEN métodos que agregan y quitan usuarios al reto
