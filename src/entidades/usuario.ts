@@ -113,22 +113,15 @@ export class Usuario {
         contador.set(ruta, 1);
       }
     }
-
-    // Paso 2
     const entradas = Array.from(contador.entries());
-
-    // Paso 3
     const entradasOrdenadas = entradas.sort((a, b) => b[1] - a[1]);
-
-    // Paso 5
     const numerosMasRepetidos = entradasOrdenadas.slice(0, 3).map((entrada) => parseInt(entrada[0]));
-
     return numerosMasRepetidos;
   }
 
   distanciaTotal(): number {
     let distanciaTotal = 0;
-    this.historicoRutas.forEach((value, key) => {
+    this.historicoRutas.forEach((value) => {
       value.forEach((idRuta) => {
         let ruta = ColeccionRutas.getRuta(idRuta);
         if (ruta !== undefined) {

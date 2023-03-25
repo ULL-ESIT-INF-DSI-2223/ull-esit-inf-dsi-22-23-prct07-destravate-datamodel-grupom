@@ -13,24 +13,25 @@
     ],
     "_historicoRutas": [
       [
-        1000
+        1000,
+        1001
       ]
     ],
     "_estadistica": [
       [
-        4,
-        5
+        8,
+        12
       ],
       [
-        4,
-        5
+        8,
+        12
       ],
       [
-        4,
-        5
+        8,
+        12
       ]
     ],
-    "_amigos": [ 1002 ],
+    "_amigos": [],
     "_gruposAmigos": []
   },
   "1001": {
@@ -39,6 +40,204 @@
       1001
     ],
     "_id": 1001,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1001,
+        1002
+      ]
+    ],
+    "_estadistica": [
+      [
+        47,
+        10
+      ],
+      [
+        47,
+        10
+      ],
+      [
+        47,
+        10
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1002": {
+    "_nombre": "pepe",
+    "_retosActivos": [
+      1001
+    ],
+    "_id": 1002,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1002,
+        1003
+      ]
+    ],
+    "_estadistica": [
+      [
+        83,
+        53
+      ],
+      [
+        83,
+        53
+      ],
+      [
+        83,
+        53
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1003": {
+    "_nombre": "roberto",
+    "_retosActivos": [],
+    "_id": 1003,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1003
+      ]
+    ],
+    "_estadistica": [
+      [
+        40,
+        50
+      ],
+      [
+        40,
+        50
+      ],
+      [
+        40,
+        50
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1004": {
+    "_nombre": "manuel",
+    "_retosActivos": [],
+    "_id": 1004,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1004,
+        1005
+      ]
+    ],
+    "_estadistica": [
+      [
+        12,
+        82
+      ],
+      [
+        12,
+        82
+      ],
+      [
+        12,
+        82
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1005": {
+    "_nombre": "alberto",
+    "_retosActivos": [],
+    "_id": 1005,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1005
+      ]
+    ],
+    "_estadistica": [
+      [
+        11,
+        31
+      ],
+      [
+        11,
+        31
+      ],
+      [
+        11,
+        31
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1006": {
+    "_nombre": "alfonso",
+    "_retosActivos": [],
+    "_id": 1006,
+    "_actividades": [
+      "Bicicleta"
+    ],
+    "_historicoFechas": [
+      "25/2/2023"
+    ],
+    "_historicoRutas": [
+      [
+        1000,
+        1001
+      ]
+    ],
+    "_estadistica": [
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        12
+      ],
+      [
+        8,
+        12
+      ]
+    ],
+    "_amigos": [],
+    "_gruposAmigos": []
+  },
+  "1007": {
+    "_nombre": "alvaro",
+    "_retosActivos": [],
+    "_id": 1007,
     "_actividades": [
       "Bicicleta"
     ],
@@ -62,60 +261,6 @@
       [
         4,
         7
-      ]
-    ],
-    "_amigos": [],
-    "_gruposAmigos": []
-  },
-  "1002": {
-    "_nombre": "pepe",
-    "_retosActivos": [
-      1001
-    ],
-    "_id": 1002,
-    "_actividades": [
-      "Bicicleta"
-    ],
-    "_historicoFechas": [],
-    "_historicoRutas": [],
-    "_estadistica": [
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        0
-      ]
-    ],
-    "_amigos": [],
-    "_gruposAmigos": []
-  },
-  "1003": {
-    "_nombre": "roberto",
-    "_retosActivos": [],
-    "_id": 1003,
-    "_actividades": [
-      "Bicicleta"
-    ],
-    "_historicoFechas": [],
-    "_historicoRutas": [],
-    "_estadistica": [
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        0
-      ],
-      [
-        0,
-        0
       ]
     ],
     "_amigos": [],

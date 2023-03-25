@@ -102,7 +102,7 @@ export class ColeccionUsuarios {
     }
   }
 
-  // TODO comprobar que esto está bien
+  // TODO no sabemos bien que hace esto
   ordenarNumeroRutas(id: number): [Usuario, Usuario, Usuario] {
     let coleccion = ColeccionUsuarios.coleccionUsuarios.usuarios.sort((a, b) => a.historicoRutas.size - b.historicoRutas.size);
     coleccion = coleccion.filter((user) => user.esGrupoAmigo(id));

@@ -52,11 +52,12 @@ export class Grupo {
     this.actualizarEstadistica();
   }
   
-  // AQUI ULTIMO PASOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO 987654321
-  // clasificacionUsuarios(): number[] {
-  //   this._clasificacion = this.participantes.sort((a, b) => ColeccionUsuarios.getColeccionUsuarios().getUsuario(a)?.distanciaTotal - ColeccionUsuarios.getColeccionUsuarios().getUsuario(b)?.distanciaTotal);
-  //   this.participantes.sort((a, b) => ColeccionUsuarios.getColeccionUsuarios() - a.distanciaTotal);
-  // }
+  clasificacionUsuarios(): number[] {
+    let arrayOrdenado = this.participantes;
+    arrayOrdenado.sort((a, b) => (ColeccionUsuarios.getColeccionUsuarios().getUsuario(b)?.distanciaTotal() ?? 0) - 
+    (ColeccionUsuarios.getColeccionUsuarios().getUsuario(a)?.distanciaTotal() ?? 0));
+    return arrayOrdenado;
+  }
   
   agregarRuta(ruta: Ruta) {
     let fecha: Date = new Date();
@@ -83,16 +84,9 @@ export class Grupo {
         contador.set(ruta, 1);
       }
     }
-
-    // Paso 2
     const entradas = Array.from(contador.entries());
-
-    // Paso 3
     const entradasOrdenadas = entradas.sort((a, b) => b[1] - a[1]);
-
-    // Paso 5
     const numerosMasRepetidos = entradasOrdenadas.slice(0, 3).map((entrada) => parseInt(entrada[0]));
-
     return numerosMasRepetidos;
   }
 
