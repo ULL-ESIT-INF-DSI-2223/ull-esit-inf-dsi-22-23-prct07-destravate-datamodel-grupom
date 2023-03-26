@@ -1,7 +1,7 @@
 {
   "1000": {
     "_id": 1000,
-    "_nombre": "ruta1",
+    "_nombre": "Vuelta al parque",
     "_geolocalizacionInicial": [
       1,
       2
@@ -14,6 +14,7 @@
     "_desnivel": 5,
     "_usuarios": [
       1000,
+      1011,
       1006
     ],
     "_tipoActividad": "Correr",
@@ -22,7 +23,7 @@
   },
   "1001": {
     "_id": 1001,
-    "_nombre": "ruta2",
+    "_nombre": "Desafio Colina",
     "_geolocalizacionInicial": [
       4,
       8
@@ -37,6 +38,9 @@
       1000,
       1001,
       1007,
+      1011,
+      1014,
+      1008,
       1006
     ],
     "_tipoActividad": "Bicicleta",
@@ -45,7 +49,7 @@
   },
   "1002": {
     "_id": 1002,
-    "_nombre": "ruta3",
+    "_nombre": "Ciudad",
     "_geolocalizacionInicial": [
       1,
       6
@@ -58,7 +62,9 @@
     "_desnivel": 3,
     "_usuarios": [
       1001,
-      1002
+      1002,
+      1014,
+      1009
     ],
     "_tipoActividad": "Bicicleta",
     "_calificacion": [],
@@ -66,10 +72,10 @@
   },
   "1003": {
     "_id": 1003,
-    "_nombre": "ruta4",
+    "_nombre": "Carrera puentes",
     "_geolocalizacionInicial": [
-      1,
-      2
+      10,
+      21
     ],
     "_geolocalizacionFinal": [
       3,
@@ -79,7 +85,9 @@
     "_desnivel": 50,
     "_usuarios": [
       1002,
-      1003
+      1009,
+      1003,
+      1015
     ],
     "_tipoActividad": "Correr",
     "_calificacion": [],
@@ -87,10 +95,10 @@
   },
   "1004": {
     "_id": 1004,
-    "_nombre": "ruta5",
+    "_nombre": "Vuelta al mundo",
     "_geolocalizacionInicial": [
-      1,
-      2
+      14,
+      12
     ],
     "_geolocalizacionFinal": [
       3,
@@ -99,7 +107,8 @@
     "_distancia": 1,
     "_desnivel": 51,
     "_usuarios": [
-      1004
+      1004,
+      1017
     ],
     "_tipoActividad": "Correr",
     "_calificacion": [],
@@ -107,21 +116,94 @@
   },
   "1005": {
     "_id": 1005,
-    "_nombre": "ruta6",
+    "_nombre": "Gran Ruta",
     "_geolocalizacionInicial": [
-      1,
-      2
+      75,
+      12
+    ],
+    "_geolocalizacionFinal": [
+      7,
+      21
+    ],
+    "_distancia": 12,
+    "_desnivel": 14,
+    "_usuarios": [
+      1004,
+      1005,
+      1018
+    ],
+    "_tipoActividad": "Bicicleta",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1006": {
+    "_id": 1006,
+    "_nombre": "La Larga",
+    "_geolocalizacionInicial": [
+      8,
+      78
     ],
     "_geolocalizacionFinal": [
       3,
+      7
+    ],
+    "_distancia": 12,
+    "_desnivel": 23,
+    "_usuarios": [],
+    "_tipoActividad": "Correr",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1007": {
+    "_id": 1007,
+    "_nombre": "La Playa",
+    "_geolocalizacionInicial": [
+      6,
+      35
+    ],
+    "_geolocalizacionFinal": [
+      5,
+      1
+    ],
+    "_distancia": 90,
+    "_desnivel": 20,
+    "_usuarios": [],
+    "_tipoActividad": "Bicicleta",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1008": {
+    "_id": 1008,
+    "_nombre": "Bosque",
+    "_geolocalizacionInicial": [
+      12,
+      56
+    ],
+    "_geolocalizacionFinal": [
+      2,
+      1
+    ],
+    "_distancia": 10,
+    "_desnivel": 23,
+    "_usuarios": [],
+    "_tipoActividad": "Bicicleta",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1009": {
+    "_id": 1009,
+    "_nombre": "Pueblos juntos",
+    "_geolocalizacionInicial": [
+      1,
+      8
+    ],
+    "_geolocalizacionFinal": [
+      8,
       4
     ],
     "_distancia": 11,
     "_desnivel": 31,
-    "_usuarios": [
-      1004,
-      1005
-    ],
+    "_usuarios": [],
     "_tipoActividad": "Correr",
     "_calificacion": [],
     "_calificacionMedia": 0

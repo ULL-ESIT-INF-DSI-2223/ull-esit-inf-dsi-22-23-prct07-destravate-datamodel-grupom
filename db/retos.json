@@ -1,7 +1,7 @@
 {
   "1000": {
     "_id": 1000,
-    "_nombre": "reto1",
+    "_nombre": "El Fin del Mundo",
     "_rutas": [
       1000,
       1002
@@ -14,14 +14,25 @@
   },
   "1001": {
     "_id": 1001,
-    "_nombre": "reto2",
+    "_nombre": "Universidad Reto",
     "_rutas": [
       1001
     ],
     "_tipoActividad": "Correr",
     "_distanciaTotal": 4,
     "_usuarios": [
-      1001,
+      1001
+    ]
+  },
+  "1002": {
+    "_id": 1002,
+    "_nombre": "LagrimasReto",
+    "_rutas": [
+      1001
+    ],
+    "_tipoActividad": "Correr",
+    "_distanciaTotal": 4,
+    "_usuarios": [
       1002
     ]
   }
