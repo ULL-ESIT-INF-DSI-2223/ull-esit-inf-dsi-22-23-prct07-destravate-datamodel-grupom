@@ -277,13 +277,20 @@ Finalemente, procedemos de la misma forma que lo hemos hecho antes en cuanto a l
 
 ### Utilidades
 
-Para la correcta implementación de la práctica tuvimos que hacer uso de unas clases que permitiesen la correcta manipulación de los datos en la base de datos y 
+Para la correcta implementación de la práctica tuvimos que hacer uso de unas clases que permitien la correcta manipulación de los datos en la base de datos y el correcto flujo de eventos del programa principal, es por esto que ahora pasaremos a explicar brevemente las dos clases encargadas de ello.
 
 
 #### Gestor
 
-La clase Gestor es el constructor de un rompecabezas, a lo largo del presente informe llevamos describiendo como desarrollamos cada una de las piezas y en esta clase nos hemos encargado de secuenciar las llamadas para definir cada uno de los posibles flujos de ejecución.g
+La clase Gestor es el constructor de un rompecabezas, a lo largo del presente informe llevamos describiendo como desarrollamos cada una de las piezas y en esta clase nos hemos encargado de secuenciar las llamadas para definir cada uno de los posibles flujos de ejecución.
 
+En esta clase hemos defindio diferentes dunciones que describen prompts del *inquirer* y luego hemos llamada a ccada función dentro de los *.then* para conseguir el resultado deseado. 
+
+Básicamente, hemos desarrollado un método inicio que preguntará al usuario si desea inciar sención o se quiere registrar. Logicamente esto no es logueo muy real, pues no existe ninguna barrera de seguridad. Posteriormente se manda a llamar al método principal. 
+
+Dentro del método principal Preguntaremos al usuario que desea realizar, para este punto ya tenemos un identificador que nos permite determinar quien está ejecutando el programa. 
+
+Según el flujo que el ususario tome al elegir las opciones se llamaran a distintos métodos, asi que destacaremos las opciones que se pueden llevar a cabo.
 
 
 #### ManejadorJSON
@@ -293,6 +300,11 @@ La clase Gestor es el constructor de un rompecabezas, a lo largo del presente in
 
 ### Enumerados
 
+Para la correcta estructuración del código hemos decidido implementar una serie de enumerados, como por ejemplo *Actividades* el cual permite acotar las distintas posibilidades que las Rutas (por ejemplo) pueden tomar, en este caso, Correr y Bicicleta.
+
+Por otra parte, creamos un enumerado para determinar la manera en la que se ordenan las colecciones, *ManeraOrdenar*, que puede ser Ascendente y Descendente.
+
+Para cada una de las clases entidades se creó un enumerado que acota  
 
 ### Interfaces
 
