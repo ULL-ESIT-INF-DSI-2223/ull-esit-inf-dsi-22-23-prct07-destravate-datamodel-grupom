@@ -1,14 +1,22 @@
-
+/**
+ * Enumerado que representa los tipos de actividades que se pueden realizar en una ruta o en un reto
+ */
 export enum Actividades { 
   "Correr" = "Correr",
   "Bicicleta" = "Bicicleta"
 }
 
+/**
+ * Enumerado que representa las maneras de ordenar
+ */
 export enum ManeraOrdenar { 
   "Ascendente" = "Ascendente",
   "Descendente" = "Descendente"
 }
 
+/**
+ * Enumerado que representa los tipos de ordenación de las rutas
+ */
 export enum OrdenarRuta {
   Alfabeticamente = "Alfabéticamente",
   CantidadUsuarios = "Cantidad de usuarios",
@@ -17,6 +25,9 @@ export enum OrdenarRuta {
   Actividad = "Actividad"
 }
 
+/**
+ * Enumerado que representa los tipos de ordenación de los usuarios
+ */
 export enum OrdenarUsuario {
   Alfabeticamente = "Alfabéticamente",
   CantidadKMSemana = "Cantidad de kilómetros semanal",
@@ -24,6 +35,9 @@ export enum OrdenarUsuario {
   CantidadKMAnio = "Cantidad de kilómetros anual"
 }
 
+/**
+ * Enumerado que representa los tipos de ordenación de los grupos
+ */
 export enum OrdenarGrupo {
   Alfabeticamente = "Alfabéticamente",
   CantidadKMSemana = "Cantidad de kilómetros semanal",
@@ -32,18 +46,27 @@ export enum OrdenarGrupo {
   CantidadUsuarios = "Cantidad de usuarios"
 }
 
+/**
+ * Enumerado que representa los tipos de ordenación de los retos
+ */
 export enum OrdenarReto {
   Alfabeticamente = "Alfabéticamente",
   CantidadKM = "Cantidad de kilómetros",
   CantidadUsuarios = "Cantidad de usuarios"
 }
 
+/**
+ * Enumerado que representa las opciones que se pueden elegir al iniciar el programa
+ */
 export enum ComandosInicio {
   IniciarSesion = "Iniciar sesión",
   Registrarse = "Registrarse",
   Salir = "Salir"
 }
 
+/**
+ * Enumerado que representa las opciones que se pueden elegir luego de iniciar sesión o registrarse
+ */
 export enum ComandosPrincipal {
   VerListaUsuarios = "Ver la lista de usuarios",
   VerListaRutas = "Ver la lista de rutas",

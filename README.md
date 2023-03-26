@@ -162,9 +162,21 @@ Una vez definidad las entidades que intervienen en nuestor programa, es interesa
 
 Es por esto que hemos decidido hacer colecciones de entidades, que agrupan a las entides y permiten desarrollar diferentes operaciones sobre las mismas.
 
-#### Singleton 
+#### Singleton el patrón de ahorro
+
+Tras meditar un rato llegamos a la conclusión que necesitabamos desarollar las clases colección, pero nos daba miedo el hecho de desarrollar una colección de elementos, ya que podrían abligarnos a tener datos dublicados en partes de l código y siempre deberíamos pasar una colección a determinadas funciones. Esto nos llevo a plantearnos hacer las colecciones como clases Singleton, el resultado sería ahorrar espacio, ganar en flexibilidad, entre otras ventajas.
+
+En definitiva consideramos que la inclusión de este patrón de diseño es de las mejores decisiones que tomamos. Gracias a tener una sola instancia, siempre sin importar en que parte delcódigo estemos, accedemos a la misma infromación de forma centralizada.
+
+A continuación pasaremos a describir más a fondo el comportamiento de cada una de estas clases.
 
 #### Coleccion Usuario
+
+Primeramente tengamos presente lo que vimos antes, hemos desarrollado la estructura de una clase Singleton, contamos con una colección de *Usuario* privada, con una variable de clase rpivada y estática *coleccionUsuarios* que almacena la única instancia de la clase. 
+
+Además contamos con el contructor privado, para impedir las llamadas desde fuera de la clase, ya que la creación de la única instancia se hace a partir del método público estático *getColeccionUsuarios* que en caso de ser la priemra vez que se llame, crea la isntancia y la retorna, en llamadas posteriores simplemente se retorna la isntancia almacenada en la variable de clase.
+
+En cuanto
 
 #### Coleccion Ruta
 

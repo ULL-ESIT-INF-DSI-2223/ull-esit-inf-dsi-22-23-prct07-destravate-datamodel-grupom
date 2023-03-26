@@ -1,15 +1,33 @@
-import { Ruta } from "../entidades/ruta";
 
+/**
+ * Tipo de dato que permite representar las coordenadas en un mapa
+ */
 export type Coordenadas = [latitud: number, longitud: number];
 
+/**
+ * Tipo de dato que permite representar la distancia y el desnivel de una ruta
+ */
 export type DistanciaDesnivel = [distancia: number, desnivel: number];
 
+/**
+ * Tipo de dato que permite representar la estadística de un usuario
+ */
 export type EstadisticaUsuario = [semana: DistanciaDesnivel, mes: DistanciaDesnivel, anio: DistanciaDesnivel];
 
+/**
+ * Tipo de dato que permite representar la estadística de un grupo
+ */
 export type EstadisticaGrupo = [semana: DistanciaDesnivel, mes: DistanciaDesnivel, anio: DistanciaDesnivel];
 
+/**
+ * Tipo de dato que permite representar la fecha
+ */
 export type Fecha = [dia: number, mes: number, anio: number];
 
+
+/**
+ * Tipo de dato que permite dar forma a los elementos que se encuentran en la base de datos (Usuarios)
+ */
 export type UsuarioDB = {
   _nombre: string,
   _retosActivos: number[],
@@ -22,6 +40,9 @@ export type UsuarioDB = {
   _gruposAmigos: number[] | undefined
 }
 
+/**
+ * Tipo de dato que permite dar forma a los elementos que se encuentran en la base de datos (Grupos)
+ */
 export type GrupoDB = {
   _id: number,
   _creador: number,
@@ -33,7 +54,9 @@ export type GrupoDB = {
   _historicoRutas: number[][]
 }
 
-
+/**
+ * Tipo de dato que permite dar forma a los elementos que se encuentran en la base de datos (Rutas)
+ */
 export type RutaDB = {
   _id: number,
   _nombre: string,
@@ -47,7 +70,9 @@ export type RutaDB = {
   _calificacionMedia: number
 }
 
-
+/**
+ * Tipo de dato que permite dar forma a los elementos que se encuentran en la base de datos (Retos)
+ */
 export type RetoDB = {
   _id: number,
   _nombre: string,

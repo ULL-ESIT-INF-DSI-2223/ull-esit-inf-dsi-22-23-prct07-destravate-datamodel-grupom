@@ -419,7 +419,7 @@ export class Gestor {
       message: "¿Qué quieres hacer? : ",
       choices: nombresRutas,
     }).then(answers => {
-      let rutas = ColeccionRutas.getRuta(Number(answers.RutasLista.split(' ')[0]));
+      let rutas = ColeccionRutas.getColeccionRutas().getRuta(Number(answers.RutasLista.split(' ')[0]));
       if(rutas !== undefined) {
         console.log(rutas.toString());
       }
@@ -658,7 +658,7 @@ export class Gestor {
       let rutas: Ruta[] = [];
       const arrayRutas = Array(answers.rutas);
       for (let i = 0; i < arrayRutas.length; i++) {
-        const ruta = ColeccionRutas.getRuta(Number(answers.rutas[i].split(' ')[0]))
+        const ruta = ColeccionRutas.getColeccionRutas().getRuta(Number(answers.rutas[i].split(' ')[0]))
         if(ruta !== undefined) {
           rutas.push(ruta);
         }

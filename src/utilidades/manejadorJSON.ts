@@ -18,10 +18,6 @@ import * as fs from 'fs';
 export class ManejadorJSON {
   private constructor() {};
 
-  // agregar a la bd usus, retos, rutas y grupos
-  // boolean ¿existe usus, retos, rutas y grupos?
-  
-  /////////// USUARIOS ///////////
   
   // Pilla la coleccion de usuarios y la guarda en la bd
   static actualizarUsuariosDB() {
