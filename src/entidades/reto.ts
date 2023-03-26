@@ -9,6 +9,7 @@ export class Reto {
   private _id: number;
   private _distanciaTotal: number;
   private _usuarios: number[] = [];
+  
   constructor(private _nombre: string, private _rutas: Ruta[], private _tipoActividad: Actividades) {
     this._id = Reto._contadorReto;
     Reto._contadorReto++;
@@ -36,5 +37,14 @@ export class Reto {
   quitarUsuario(id: number) {
     this._usuarios = this._usuarios.filter((usuario) => usuario !== id);
     ColeccionUsuarios.getColeccionUsuarios().getUsuario(id)?.eliminarReto(this._id);
+  }
+
+  public toString(): string {
+    let info = `Reto ${this.nombre} tiene la ID ${this.id}\n`;
+    info += `Sus rutas son ${Array.from(this.rutas.keys()).join(", ")}\n`;
+    info += `Su actividad es: ${this.tipoActividad}\n`;
+    info += `Sus participantes son ${this.usuarios.join(", ")}\n`;
+    info += `Su distancia total es ${this.distanciaTotal}\n`;
+    return info;
   }
 }

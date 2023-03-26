@@ -169,7 +169,7 @@ export class ManejadorJSON {
     for (const id in retosDB) {
       let rutas: Ruta[] = [];
       for (let i = 0; i < retosDB[id]._rutas.length; i++) {
-        const variable = ColeccionRutas.getRuta(retosDB[id]._rutas[i]);
+        const variable = ColeccionRutas.getColeccionRutas().getRuta(retosDB[id]._rutas[i]);
         if (variable instanceof Ruta) {
           rutas.push(variable);
         }

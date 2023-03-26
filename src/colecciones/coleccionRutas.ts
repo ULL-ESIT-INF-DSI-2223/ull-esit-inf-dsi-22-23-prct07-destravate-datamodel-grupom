@@ -29,9 +29,15 @@ export class ColeccionRutas {
     return ColeccionRutas.coleccionRutas.rutas;
   }
 
-  public static getRuta(id: number): Ruta | undefined {
-    return ColeccionRutas.coleccionRutas.rutas.find((ruta) => ruta.id === id) || undefined;
+  getRuta(id: number): Ruta | undefined {
+    for(let i = 0; i < ColeccionRutas.coleccionRutas.rutas.length; i++) {
+      if (ColeccionRutas.coleccionRutas.rutas[i].id == id) {
+        return ColeccionRutas.coleccionRutas.rutas[i];
+      }
+    }
+    return undefined;
   }
+
 
   agregarRuta(Ruta: Ruta): void {
     ColeccionRutas.coleccionRutas.rutas.push(Ruta);

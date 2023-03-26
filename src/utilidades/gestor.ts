@@ -10,7 +10,6 @@ import { Reto } from "../entidades/reto";
 import { Ruta } from "../entidades/ruta";
 import { Coordenadas } from "../tipos/tipos";
 import * as inquirer from 'inquirer';
-import * as fs from 'fs';
 
 
 export class Gestor {
@@ -471,7 +470,35 @@ export class Gestor {
   }
 
   private static verListaRetos() {
+    const nombresRetos = ColeccionRetos.getColeccionRetos().getRetos().map((reto) => {
+      return reto.id + ' ' + reto.nombre ;
+    });
+    inquirer.prompt({
+      type: "list",
+      name: "retosLista",
+      message: "¿Qué quieres hacer? : ",
+      choices: nombresRetos,
+    }).then(answers => {
+      let retos = ColeccionRetos.getColeccionRetos().getReto(Number(answers.retosLista.split(' ')[0]));
+      if(retos !== undefined) {
+        console.log(retos.toString());
+      }
+      inquirer.prompt({
+        type: "confirm",
+        name: "continuar",
+        message: "¿Volver? : ",
+      }).then((answers) => {
+        if(!answers.continuar) {
+          console.clear()
+          this.principal();
+        } else {
+          console.clear()
+          this.verListaRetos();
+        }
+      });
+    });
   }
+
 
   private static iniciarSesion() {
     inquirer.prompt([

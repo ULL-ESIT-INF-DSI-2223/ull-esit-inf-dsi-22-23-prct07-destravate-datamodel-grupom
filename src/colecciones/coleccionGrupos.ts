@@ -2,7 +2,6 @@ import { ColeccionUsuarios } from './coleccionUsuarios';
 import { Grupo } from '../entidades/grupo';
 import { ManeraOrdenar } from '../enumerados/enumerados';
 import { ManejadorJSON } from '../utilidades/manejadorJSON';
-import * as fs from 'fs';
 
 
 

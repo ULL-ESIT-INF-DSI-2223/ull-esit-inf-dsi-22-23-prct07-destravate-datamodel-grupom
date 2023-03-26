@@ -55,8 +55,7 @@ export class Usuario {
     return this._gruposAmigos.includes(idGrupo);
   }
 
-
-  agregarRuta(ruta: Ruta) {
+  agregarRuta(ruta: Ruta): number {
     let fecha: Date = new Date();
     let fechaString: string = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
     
@@ -72,9 +71,10 @@ export class Usuario {
     this._gruposAmigos.forEach((idGrupo) => {
       ColeccionGrupos.getColeccionGrupos().getGrupo(idGrupo)?.actualizarEstadistica()
     });
+    return ruta.id;
   }
 
-  actualizarEstadisticas(ruta: Ruta) {
+  actualizarEstadisticas(ruta: Ruta): number {
     let distancia: number = ruta.distancia;
     let desnivel: number = ruta.desnivel;
 
@@ -84,32 +84,38 @@ export class Usuario {
     this.estadistica[1][1] += desnivel;
     this.estadistica[2][0] += distancia;
     this.estadistica[2][1] += desnivel;
-    
+    return ruta.id;
   }
 
-  agregarReto(id: number) {
+  agregarReto(id: number): number {
     this._retosActivos.push(id);
+    return id;
   }
 
-  eliminarReto(id: number) {
+  eliminarReto(id: number): number {
     this._retosActivos = this._retosActivos.filter((elem) => elem !== id);
+    return id;
   }
 
-  agregarAmigo(amigo: number) {
+  agregarAmigo(amigo: number): number {
     this._amigos.push(amigo);
+    return amigo;
   }
 
-  eliminarAmigo(amigo: number) {
+  eliminarAmigo(amigo: number): number {
     this._amigos = this._amigos.filter((elem) => elem !== amigo);
+    return amigo;
   }
 
-  agregarGrupoAmigo(grupoAmigo: number) {
+  agregarGrupoAmigo(grupoAmigo: number): number {
     this._gruposAmigos.push(grupoAmigo);
     ColeccionGrupos.getColeccionGrupos().getGrupo(grupoAmigo)?.agregarUsuario(this.id);
+    return grupoAmigo;
   }
 
-  eliminarGrupoAmigo(grupoAmigo: number) {
+  eliminarGrupoAmigo(grupoAmigo: number): number {
     this._gruposAmigos = this._gruposAmigos.filter((elem) => elem !== grupoAmigo);
+    return grupoAmigo;
   }
 
   rutasFavoritas(): number[] {
@@ -132,7 +138,7 @@ export class Usuario {
     let distanciaTotal = 0;
     this.historicoRutas.forEach((value) => {
       value.forEach((idRuta) => {
-        let ruta = ColeccionRutas.getRuta(idRuta);
+        let ruta = ColeccionRutas.getColeccionRutas().getRuta(idRuta);
         if (ruta !== undefined) {
           distanciaTotal += ruta.distancia;
         }
