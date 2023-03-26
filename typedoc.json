@@ -1,6 +1,11 @@
 {
   "entryPoints": [
-    "./src/index.ts",
+    "./src/colecciones/*.ts",
+    "./src/entidades/*.ts",
+    "./src/enumerados/*.ts",
+    "./src/interfaces/*.ts",
+    "./src/tipos/*.ts",
+    "./src/utilidades/*.ts",
   ],
   "out": "./docs"
 }

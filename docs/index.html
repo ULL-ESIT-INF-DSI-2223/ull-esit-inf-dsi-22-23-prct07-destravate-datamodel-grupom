@@ -1,0 +1,382 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom</title><meta name="description" content="Documentation for ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2>ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom</h2></div>
+<div class="tsd-panel tsd-typography">
+<a href="#práctica-7--destravate" id="práctica-7--destravate" style="color: inherit; text-decoration: none;">
+  <h1>Práctica 7 : DeStravaTe</h1>
+</a>
+
+<a href="#por-daniel-felipe-gómez-aristizabal-y-facundo-josé-garcía-gallo" id="por-daniel-felipe-gómez-aristizabal-y-facundo-josé-garcía-gallo" style="color: inherit; text-decoration: none;">
+  <h2>Por Daniel Felipe Gómez Aristizabal y Facundo José García Gallo</h2>
+</a>
+<p><a href="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom/actions/workflows/node.js.yml"><img src="https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom/actions/workflows/node.js.yml/badge.svg" alt="Tests"></a></p>
+
+<a href="#índice" id="índice" style="color: inherit; text-decoration: none;">
+  <h3>Índice</h3>
+</a>
+<ol>
+<li><p><a href="#introducci%C3%B3n">Introducción</a></p>
+<p> 1.1. <a href="#hablemos-de-test">Hablemos de Test</a></p>
+<p> 1.2. <a href="#hablemos-de-lowdb">Hablemos de LowDB</a></p>
+<p> 1.3. <a href="#hablemos-de-inquirer">Hablemos de Inquirer</a></p>
+</li>
+<li><p><a href="#entidades">Entidades</a></p>
+<p> 2.1. <a href="#usuario">Usuario</a></p>
+<p> 2.2. <a href="#ruta">Ruta</a></p>
+<p> 2.3. <a href="#grupo">Grupo</a></p>
+<p> 2.4. <a href="#reto">Reto</a></p>
+</li>
+<li><p><a href="#colecciones">Colecciones</a></p>
+<p> 3.1. <a href="#singleton-el-patr%C3%B3n-de-ahorro">Singleton el patrón de ahorro</a></p>
+<p> 3.2. <a href="#coleccion-usuario">Coleccion Usuario</a></p>
+<p> 3.3. <a href="#coleccion-ruta">Coleccion Ruta</a></p>
+<p> 3.4. <a href="#coleccion-grupo">Coleccion Grupo</a></p>
+<p> 3.5. <a href="#coleccion-reto">Coleccion Reto</a></p>
+</li>
+<li><p><a href="#utilidades">Utilidades</a></p>
+<p> 4.1. <a href="#gestor">Gestor</a></p>
+<p> 4.2. <a href="#manejadorjson">ManejadorJSON</a></p>
+</li>
+<li><p><a href="#enumerados">Enumerados</a></p>
+</li>
+<li><p><a href="#interfaces">Interfaces</a></p>
+</li>
+<li><p><a href="#tipos">Tipos</a></p>
+</li>
+<li><p><a href="#conclusi%C3%B3n">Conclusión</a></p>
+</li>
+<li><p><a href="#bibliograf%C3%ADa">Bibliografía</a></p>
+</li>
+</ol>
+
+<a href="#introducción" id="introducción" style="color: inherit; text-decoration: none;">
+  <h3>Introducción</h3>
+</a>
+<p>Para la realización de la práctica se nos pide la implementación de un esqueleto de clases que representan las entidades de una aplicación de deporte. Para ello tenemos que hacer uso de un gestor de bases de datos como puede ser LowDB y un gestor de entrada como puede ser Inquirer. Es por esto que antes de comenzar a desarrollar, debimos investigar sobre estos dos gestores. </p>
+<p>Luego de conocer un poco mejor el entorno, debimos ponernos de acuerdo para elegir la mejor estructura del código, para esto nos basamos en el patrón de diseño Singleton, el cual nos permitió ahorrar memoria y tiempo de ejecución. </p>
+
+<a href="#hablemos-de-test" id="hablemos-de-test" style="color: inherit; text-decoration: none;">
+  <h4>Hablemos de Test</h4>
+</a>
+<p>A la hora de desarrollar un programa, es difícil llevar todo al mismo tiempo, inicialmente nos hicimos un boceto que permitía determinar las relaciones que existían entre entidades, pero a medida que el programa creció, necesitamos muchas nuevas funcionalidades y esto complica el desarrollo de test, quizás también por el absurdo afán que se tiene por avanzar, cuando al final tendrán que hacer todo.</p>
+<p>Sin embargo, todo se ha probado, bueno... Casi todo. Lamentablemente no hemos realizado pruebas para las clases colecciones, ya que debido a la implementación del patrón Singleton, estas se modificaban a medida que el programa se probará llegando siempre a obligarnos a modificar las pruebas. Al final optamos por no probarlas directamente, aunque su funcionamiento está comprobado al usarla en la recuperación de las bases de datos y el desarrollo de distintos métodos de búsqueda y ordenamiento.</p>
+
+<a href="#hablemos-de-lowdb" id="hablemos-de-lowdb" style="color: inherit; text-decoration: none;">
+  <h4>Hablemos de LowDB</h4>
+</a>
+<p>LowDB es una librería que nos permite crear bases de datos en formato JSON, la cual nos permite guardar y recuperar datos de forma sencilla. En nuestro caso, hemos decidido dividir los datos, creando cuatro bases de datos, una para cada entidad. En cada una de ellas se guarda información de las colecciones de cada una de las entidades.</p>
+
+<a href="#hablemos-de-inquirer" id="hablemos-de-inquirer" style="color: inherit; text-decoration: none;">
+  <h4>Hablemos de Inquirer</h4>
+</a>
+<p>Inquirer es una librería que nos permite crear interfaces de usuario de forma sencilla, la cual nos permite crear menús de opciones, preguntas y respuestas. En nuestro caso, hemos decidido usarla para crear un menú de opciones que permita al usuario interactuar con la aplicación, todo en la clase Gestor.</p>
+
+<a href="#entidades" id="entidades" style="color: inherit; text-decoration: none;">
+  <h3>Entidades</h3>
+</a>
+<p>El programa esta compuesto por cuatro entidades principales, las cuales hemos modelado a partir de cuatro clases. Dichas clases siguen los requisitos propuestos en el guion de la práctica. A continuación describiremos cada uno de ellos de forma detallada, explicando el funcionamiento y las decisiones de diseño que hemos tomado.</p>
+
+<a href="#usuario" id="usuario" style="color: inherit; text-decoration: none;">
+  <h4>Usuario</h4>
+</a>
+<p>La clase Usuario como su nombre indica modela el comportamiento de nuestras instancias de <em>Usuario</em> se pretende entonces agregar todas las propiedades que permitan describir su comportamiento.</p>
+<p>La clase cuenta con una propiedad privada y estática <em>_contadorUsuario</em> que permite de forma secuencial definir un <em>_id</em> único para cada usuario que permite identificar de forma única en toda la Base de Datos a cada usuario, este contador se consigue de ir incrementando el contador de usuarios.</p>
+<p>Los usuarios podrán realizar <em>Actividades</em>, estas actividades son montar en bicicleta o correr. Debido a que deseábamos evitar que por algún motivo se añada más de uan vez alguna de las actividades mencionadas, definimos el atributo <em>_actividades</em> como una propiedad privada de tipo <em>Set<Actividades></em>.</p>
+<p>(Para más información de <em>Actividades</em> véase <a href="#enumerados">Enumerados</a>)</p>
+<p>Un usuario podrá hacer <em>Rutas</em> y deseamos saber cuando las ha realizado. Teniendo en cuenta que se podría realizar más de una ruta al día, hemos considerado que un <em>Map&lt;string, number[]&gt;</em> sería perfecto. La idea es guardar como clave el día que el usuario realiza una ruta. Por otro lado nuestro valor será un <em>array</em> de números que permiten almacenar los <em>id&#39;s</em> de las <em>Rutas</em> realizadas. </p>
+<p>Veamos que lo anterior nos proporciona grandes ventajas, por ejemplo ahora podemos determinar de forma sencilla las rutas que a realizado el usuario en <strong>x</strong> día.</p>
+<p>Otra característica importante de un usuario son sus estadísticas, estas deseamos que sean calculadas en base a la semana, mes y año. Para conseguir esto hemos definido un <em>type</em> el cual se explicará más adelante. (Véase <a href="#tipos">Tipos</a>)</p>
+<p>Los usuarios podrán ser amigos de otros usuarios, para esto registraremos sus amigos en un arreglo de números <em>_amigos</em>, donde se guardarán los <em>îd&#39;s</em> de los amigos. Algo Similar se hará con los grupos, un usuario podrá pertenecer a grupos y para presenciar a cuales pertenece, lo almacenaremos en una propiedad <em>_gruposAmigos</em> que es un array de números.</p>
+<p>Finalmente, podrán hacer parte de <em>Retos</em>, los cuales estarán almacenados como <em>id&#39;s</em> en <em>_retosActivos</em>.</p>
+<p>El Constructor de la clase es realmente sencillo, define mediante los parámetros el nombre del usuario y el array de actividades que realiza.</p>
+<p>Luego simplemente haremos uso de la técnica que comentamos con la variable de clase <em>_contadorUsuario</em> para definir un <em>id</em> único a dicho usuario.</p>
+<p>Como hemos visto anteriormente, todas nuestras propiedades son <em>private</em>, sin embargo, necesitamos hacer uso de sus valores en ocasiones, es por esto que definimos <em>getters</em> para rodas las propiedades.</p>
+<p>Debemos tener presente siempre que este programa tendrá persistencia en memoria y esto significa que debemos estar preparados para recuperar datos que se han guardado de sesiones previas. Para esto nos apoyamos en clases que hablaremos más adelante como es el caso de ManejadorJSON o ColeccionUsuarios. De momento lo que debemos tener presente es que tenemos un <em>ContructorDBUsuario</em> este método reconstruye las propiedades de los usuarios a partir de los argumentos recibidos.</p>
+<p>Veamos que nuestra base de datos es un <em>JSON</em> que desafortunadamente no entiende de estructuras de datos complejas como puede ser un <em>Map</em> o un <em>Set</em>, para hacer frente a esta carencia, desglosamos dichas estructuras complejas antes de añadirlas a la base de datos y posteriormente en la recuperación &#39;volver a montar&#39; dichas piezas para poder definir las estructuras complejas que usamos en nuestras clases. Eso es exactamente lo que se consigue con el método <em>ContructorDBUsuario</em>.</p>
+<p>Podemos encontrar algunos métodos útiles como es el caso de <em>esGrupoAmigo</em> que nos permite determinar si el usuario pertenece o no a un grupo dado por parámetros.</p>
+<p>Cuando deseamos añadir una ruta a un usuario, debemos modificar el historial de rutas del usuarios y como hemos hablado previamente, pretendemos que las claves sean las fechas de realización de la ruta. Para conseguir esto, usamos el módulo <em>Date</em>, que nos permite manipular fechas, y saber la fecha actual. La idea se basa en rellenar el formato <strong>dia/mes/año</strong>, posteriormente comprobaremos si esa fecha ya existe, porque en dicho caso debemos modificar el array de rutas de dicho dia añadiendo la nueva ruta. en caso de no existir, creamos una nueva entrada a nuestro <em>Map</em> y con su respectiva clave/valor. </p>
+<p><em>Es importante tener en cuenta que las acciones que se lleven a cabo en una clase, pueden afectar a otras clases de forma indirecta.</em> </p>
+<p>Un ejemplo de lo anterior ocurre al añadir una <em>Ruta</em>, ya que debemos asegurarnos de actualizar las estadísticas del usuarios, esta acción hará que todos los grupos a los que pertenezca el usuario se vean afectados de forma indirecta, ya que sus estadísticas grupales también cambiarán. Por esto debemos recorrer cada uno de sus grupos actualizándolos.</p>
+<p>Respecto a la actualización de estadísticas antes mencionada, hemos desarrollado un método que nos permite actualizar cada uno de los campos de las estadísticas. Para esto simplemente sumamos a las estadísticas actuales, los valores que aportan la nueva ruta.</p>
+<p>El programa permitirá al usuario realizar acciones de gestión como puede ser la creación y borrado de <em>Retos y Amigos</em>. Desarrollamos diferentes funciones que nos permiten modificar nuestras propiedades según lo vayamos requiriendo.</p>
+<p>Algunos de los requisitos de la práctica para la clase <em>Usuarios</em> hemos decidido desarrollarlos a través de métodos en lugar de propiedades, esto se debe a que son propiedades muy cambiantes en el tiempo y que dependen directamente de otras propiedades, siendo mejor calcularlas cada vez que se requieran, ya que siempre se tendrá el dato actualizado sin abusar de memoria. </p>
+<p>Lo anterior hace presencia en el método <em>rutasFavoritas</em> y la <em>distanciaTotal</em>. Datos que son fáciles de calcular a partir de las demás propiedades.</p>
+<p>Finalmente, encontramos el método <em>toString</em> que nos permite poder definir un formato de impresión a la hora de convertir nuestros objetos <em>Usuario</em>, como por ejemplo al invocarlos con ${usu1}.</p>
+
+<a href="#ruta" id="ruta" style="color: inherit; text-decoration: none;">
+  <h4>Ruta</h4>
+</a>
+<p>Para modelar una <em>Ruta</em> debemos tener presente que necesitaremos algunos atributos ya mencionados en la clase <em>Usuario</em>. Un ejemplo de esto es el <em>_id</em> el cual sigue la misma lógica antes planteada, apoyándose de la variable de clase <em>_contadorRuta</em>.</p>
+<p>Nuestra <em>Ruta</em> tendrá un <em>array</em> <em>_usuarios</em> donde se almacenarán todos los <em>id&#39;s</em> de los integrantes de la Ruta. Además tendremos una calificación que será dado por los usuarios.</p>
+<p>Además, es importante destacar que las rutas cuentan con propiedades de localización como <em>_geolocalizacionInicial</em> y <em>_geolocalizacionFinal</em>. Propiedades de tipo <em>Coordenadas</em> que se describirán más adelante.</p>
+<p>Finalmente, sabemos que una <em>Ruta</em> debe tener una <em>_distancia</em> y un <em>_desnivel</em>, que será recorrido de una determinada forma, por tanto también contará con <em>_tipoActividad</em>.</p>
+<p>Como ya mencionamos Anteriormente, pretendemos trabajar con persistencia en memoria, por tanto debemos recuperar los datos del usuarios de forma correcta, para esto nos apoyamos del <em>ConstructorDBRuta</em>.</p>
+<p>Otro método interesante de destacar es <em>calificar</em> que no permite limitar la forma de calificar de un <em>Usuario</em> frente a la <em>Ruta</em>.</p>
+<p>Para permitir la interacción de Usuarios con entidades, añadimos los métodos <em>agregarUsuario</em> y <em>eliminarUsuario</em>, que como sus nombres indican, sirven para añadir y eliminar a un usuario de nuestra lista de usuarios.</p>
+<p>Finalmente, incluimos nuestro método <em>toString</em> que nos permite definir el formato de conversión a <em>String</em> para nuestro objeto, función interesante para las llamadas del tipo ${ruta1}.</p>
+
+<a href="#grupo" id="grupo" style="color: inherit; text-decoration: none;">
+  <h4>Grupo</h4>
+</a>
+<p>La clase grupo se encarga de reunir en una misma estructura de datos, diferentes usuarios. Esta clase es bastante simple aunque el hecho de tener que almacenar muchos usuarios nos pareció una carga innecesaria para la clase, ya que este trabajo debe hacerlo la base de datos, es por esto que en las instancias de grupo solo almacenamos el identificador de los usuarios. Al igual que las clases anteriormente mencionadas, cada instancia de la clase Grupo cuenta con un identificador único, que se asigna gracias a una variable de clase (variable estática _contadorGrupo).</p>
+<p>Inicialmente el constructor debe recibir dos atributos, el nombre del grupo, que se selecciona sin restricción alguna, y la ID del creador, esto nos permitirá tener un control a la hora de eliminar grupos, ya que solo el creador de un grupo puede borrar ese mismo grupo. Además, la clase cuenta con muchos atributos que representan funcionalidades o características de esta clase. Entonces podemos nombrar los atributos y su función en la clase: <em>_estadistica</em> permite almacenar la información de la estadística del grupo, que se irá actualizando a lo largo de la ejecución del programa; <em>_clasificacion</em>, como su propio nombre indica, nos permite saber el ranking de usuarios ordenados por el número de entrenamientos que han realizado, es decir, el número total de kilómetros que han recorrido; <em>_participantes</em>, representa la identificación de cada uno de los usuarios del grupo; <em>historicoRutas</em>, probablemente este es el atributo más interesante, ya que se encarga de almacenar la información correspondiente a las rutas que han recorrido en grupo, pero se almacena en un Map, esto nos permite almacenar tantas rutas como queramos, en función de la fecha en la que se hayan realizado.</p>
+<p>A continuación, lo que encontramos son los getters de la clase, que nos permiten acceder a los atributos de la clase, en esta clase hemos creado getters para los siguientes atributos: 
+<em>id</em>, <em>creador</em>, <em>nombre</em>, <em>participantes</em>, <em>historicoRutas</em>, <em>estadistica</em> y <em>clasificacion</em>.</p>
+<p>En cuanto a los métodos, el primero que distinguimos es el método llamado <em>ConstructorDBGrupo</em>, este método es una sobrecarga del constructor, y se encarga de crear un grupo a partir de la información que se le pasa por parámetro, es decir, a partir de la información que se encuentra en la base de datos, al igual que ocurre en las otras clases anteriormente mencionadas.</p>
+<p>El siguiente método se encarga de agregar un usuario al grupo, <em>agregarUsuario</em>, esto lo realiza haciendo un push del usuario pasado por parámetro en el array que representa a los usuarios, pero como explicamos antes, solo realiza un push del ID del mismo, ya la base de datos almacena toda la demás información. Esta función también se encarga de actualizar la información de la estadística, ya que este atributo representa la suma de todos sus integrantes.</p>
+<p>Si seguimos avanzando nos encontramos con el siguiente método, <em>clasificacionUsuarios</em>, el cual se encarga de devolver el ranking de usuarios ordenados en base a la cantidad de kilómetros que han recorrido, esto lo consigue gracias a ordenar el vector en base al atributo anteriormente mencionado.</p>
+<p>A continuación nos encontramos con el método <em>agregarRuta</em>, este método se encarga de agregar una ruta conjunta al Map <em>_historicoRutas</em>, como se ha acordado en el guion, cuando un grupo organiza hacer una ruta, por simplificación asumimos que todos y cada uno de los miembros del grupo la realizan. Es por esto que el método primero determina la fecha en la que se encuentra y hace una transformación de la fecha a un string, que será la key de nuestro Map. Luego se actualiza el <em>_historicoRutas</em> con la ruta que se pasó por parámetro y por último se actualiza cada usuario miembro del grupo, agregando esa misma ruta en su propiedad <em>_historicoRutas</em>.</p>
+<p>El siguiente método que podremos ver será <em>rutasFavoritas</em>, el cual inicialmente se encarga de rescatar todas las rutas del grupo, luego crea un Map que almacena pares de valores ruta - número de veces que se repite esa ruta, a continuación se lleva a cabo la cuenta, finalmente solo queda rescatar las tres rutas favoritas, ordenando el vector en base a los números de repeticiones de cada ruta y sacando los tres primeros elementos.</p>
+<p>La función <em>actualizarEstadistica</em>, como es de esperar, se encarga de actualizar cada uno de los campos de las estadísticas de los grupos, esto lo realiza fácilmente apoyándose en la clase <em>ColeccionUsuarios</em> que explicaremos más adelante. Simplemente hace uso de la función <em>reduce</em> para obtener la suma de cada una de las estadísticas por separado y finalmente las reúne formando un objeto de tipo <em>EstadisticaGrupo</em>.</p>
+<p>Y con esto, hemos llegado al final de la clase, al método <em>toString</em>, el cual se encarga de devolver una cadena con toda la información referente a un grupo.</p>
+
+<a href="#reto" id="reto" style="color: inherit; text-decoration: none;">
+  <h4>Reto</h4>
+</a>
+<p>Los <em>Retos</em> están conformados por una serie de <em>Rutas</em> <em>_rutas</em>, que determinados <em>Usuarios</em> <em>_usuarios</em> pretenden recorrer. Evidentemente podemos determinar una distancia total <em>_distanciaTotal</em> que se calcula de la suma de cada distancia individual de las <em>Rutas</em> que componen al <em>Reto</em>. Además, esta distancia se pretende recorrer de una forma en concreto, por lo que podemos definir un <em>_tipoActividad</em> del <em>Reto</em>.</p>
+<p>Finalmente, debemos tener los demás elementos básicos que incluyen las clases restantes como son el  identificador único de la instancia <em>_id</em>, calculado a partir de la variable de clase <em>_contadorReto</em>. Además el reto contará con un nombre <em>_nombre</em>.</p>
+<p>Incluimos todos los <em>getters</em> correspondientes a las propiedades antes mencionadas.</p>
+<p>Además incluiremos métodos de control de las propiedades como es el caso de <em>agregarUsuario</em> y <em>quitarUsuario</em>, que como sus nombres indican, nos permiten agregar y eliminar usuarios que participan en el <em>Reto</em>.</p>
+<p>Finalmente, como ya pasaba con las otras entidades mencionadas incluimos el método <em>toString</em>, que nos permite definir el formato de conversión a <em>String</em>, para nuestro objeto. Función interesante para las llamadas del tipo ${reto1}.</p>
+
+<a href="#colecciones" id="colecciones" style="color: inherit; text-decoration: none;">
+  <h3>Colecciones</h3>
+</a>
+<p>Una vez definidas las entidades que intervienen en nuestro programa, es interesante ver como trabajar con ellas de forma conjunta y relacionándolas. Tengamos presente entonces que deseamos trabajar con uan serie de <em>Usuarios</em> que pueden estar relacionados entre ellos en <em>Grupos</em>. Además podemos ver como los <em>Retos</em> se componen de <em>Rutas</em>. A su vez, los <em>Usuarios</em> pueden realizar <em>Rutas</em>, e incluso los <em>Grupos</em> realizan dichas <em>Rutas</em>. En definitiva nos encontramos frente a un programa que necesita de varias instancias de las entidades mencionadas y manipular estos datos puede llegar a ser complicado si hacemos solo uso de una estructura de datos que nos ofrezca el lenguaje. </p>
+<p>Es por esto que hemos decidido hacer colecciones de entidades, que agrupan a las entidades y permiten desarrollar diferentes operaciones sobre las mismas.</p>
+
+<a href="#singleton-el-patrón-de-ahorro" id="singleton-el-patrón-de-ahorro" style="color: inherit; text-decoration: none;">
+  <h4>Singleton el patrón de ahorro</h4>
+</a>
+<p>Tras meditar un rato llegamos a la conclusión que necesitábamos desarrollar las clases colección, pero nos daba miedo el hecho de desarrollar una colección de elementos, ya que podrían obligarnos a tener datos duplicados en partes de l código y siempre deberíamos pasar una colección a determinadas funciones. Esto nos llevo a plantearnos hacer las colecciones como clases Singleton, el resultado sería ahorrar espacio, ganar en flexibilidad, entre otras ventajas.</p>
+<p>En definitiva consideramos que la inclusión de este patrón de diseño es de las mejores decisiones que tomamos. Gracias a tener una sola instancia, siempre sin importar en que parte del código estemos, accedemos a la misma información de forma centralizada.</p>
+<p>A continuación pasaremos a describir más a fondo el comportamiento de cada una de estas clases.</p>
+
+<a href="#coleccion-usuario" id="coleccion-usuario" style="color: inherit; text-decoration: none;">
+  <h4>Coleccion Usuario</h4>
+</a>
+<p>Primeramente tengamos presente lo que vimos antes, hemos desarrollado la estructura de una clase Singleton, contamos con una colección de <em>Usuario</em> privada, con una variable de clase privada y estática <em>coleccionUsuarios</em> que almacena la única instancia de la clase. </p>
+<p>Además contamos con el constructor privado, para impedir las llamadas desde fuera de la clase, ya que la creación de la única instancia se hace a partir del método público estático <em>getColeccionUsuarios</em> que en caso de ser la primera vez que se llame, crea la instancia y la retorna, en llamadas posteriores simplemente se retorna la instancia almacenada en la variable de clase.</p>
+<p>En cuanto a los métodos, encontramos métodos como <em>getNumeroUsuarios</em> que como su nombre indica, retorna el número de usuarios en la colección. </p>
+<p>Contamos además con métodos que nos devuelven elementos de la colección como, <em>getUsuarios</em> que devuelve la colección entera o <em>getUsuario</em> que nos da un usuario determinado según un <em>id</em> dado por parámetros.</p>
+<p>También podemos conseguir información del conjunto de <em>Usuario</em> como las estadísticas de un determinado usuario dado su <em>id</em>.</p>
+<p>Para simplificar la manipulación de la colección hemos añadido métodos de manejo de la clase, como <em>agregarUsuario</em> y <em>eliminarUsuario</em> que como sus nombres indican agregan y eliminan a un usuario de la colección.</p>
+<p>De cara a la gestión de la base de datos y la depuración, hemos añadido el método <em>imprimirInformacion</em> que permite imprimir a cada usuario que conforma la colección.</p>
+<p>Además, para satisfacer la solicitud propuesta en el guion de la práctica de tener determinados métodos de ordenamiento de la información, hemos desarrollado uan serie de métodos que ordenan según:</p>
+<ul>
+<li><p>ordenarAlfabeticamente</p>
+</li>
+<li><p>ordenarId</p>
+</li>
+<li><p>ordenarDistanciaSemana</p>
+</li>
+<li><p>ordenarDistanciaMes</p>
+</li>
+<li><p>ordenarDistanciaAnio</p>
+</li>
+<li><p>ordenarNumeroRutas</p>
+</li>
+</ul>
+<p>Estos métodos a su vez se pueden ordenar de manera ascendente y descendente, para evitar crear los mismos métodos con la lógica inversa, hemos decidido incluir en sus parámetros la opción de ordenar. De esta forma mediante la instrucción ManeraOrdenar.Ascendente o ManeraOrdenar.Descendente, podemos definir el tipo de ordenamiento, donde siempre se ordena de uan forma <strong>x</strong> y se invierte con el método <em>.reverse</em> si se requiere por parámetros.</p>
+
+<a href="#coleccion-ruta" id="coleccion-ruta" style="color: inherit; text-decoration: none;">
+  <h4>Coleccion Ruta</h4>
+</a>
+<p>Veamos entonces que la idea de Singleton también se aplica para la <em>ColeccionRuta</em>.</p>
+<p>Destacar que también se han incluido los métodos que favorecen la manipulación de la colección como son <em>getRutas</em> y <em>getRuta</em>, funcionando del mismo modo que veíamos en la clase anterior.</p>
+<p>De la misma forma, hemos incluido los métodos <em>agregarRuta</em> y <em>eliminarRuta</em> e <em>imprimirInformacion</em>.</p>
+<p>Finalmente, procedemos de la misma forma que lo hemos hecho antes en cuanto a los métodos de ordenamiento de la colección, en este caso encontramos los siguientes:</p>
+<ul>
+<li><p>ordenarAlfabeticamente</p>
+</li>
+<li><p>ordenarId</p>
+</li>
+<li><p>ordenarCantidadUsuarios</p>
+</li>
+<li><p>ordenarDistancia</p>
+</li>
+<li><p>ordenarActividad</p>
+</li>
+<li><p>ordenarCalificacionMedia</p>
+</li>
+</ul>
+
+<a href="#coleccion-grupo" id="coleccion-grupo" style="color: inherit; text-decoration: none;">
+  <h4>Coleccion Grupo</h4>
+</a>
+<p>Veamos entonces que la idea de Singleton también se aplica para la <em>ColeccionGrupos</em>.</p>
+<p>También se han incluido los métodos que favorecen la manipulación de la colección como son <em>getGrupos</em> y <em>getGrupo</em>, funcionando del mismo modo que veíamos en la clase anterior.</p>
+<p>De la misma forma, hemos incluido los métodos <em>agregarGrupo</em> y <em>eliminarGrupo</em> e <em>imprimirInformacion</em>.</p>
+<p>Finalmente, procedemos de la misma forma que lo hemos hecho antes en cuanto a los métodos de ordenamiento de la colección, en este caso encontramos los siguientes:</p>
+<ul>
+<li><p>ordenarAlfabeticamente</p>
+</li>
+<li><p>ordenarId</p>
+</li>
+<li><p>ordenarCantidadUsuarios</p>
+</li>
+<li><p>ordenarDistancia</p>
+</li>
+<li><p>ordenarActividad</p>
+</li>
+<li><p>ordenarCalificacionMedia</p>
+</li>
+</ul>
+
+<a href="#coleccion-reto" id="coleccion-reto" style="color: inherit; text-decoration: none;">
+  <h4>Coleccion Reto</h4>
+</a>
+<p>Veamos entonces que la idea de Singleton también se aplica para la <em>ColeccionRetos</em>.</p>
+<p>También se han incluido los métodos que favorecen la manipulación de la colección como son <em>getRetos</em> y <em>getReto</em>, funcionando del mismo modo que veíamos en la clase anterior.</p>
+<p>De la misma forma, hemos incluido los métodos <em>agregarReto</em> y <em>eliminarReto</em> e <em>imprimirInformacion</em>.</p>
+<p>Finalmente, procedemos de la misma forma que lo hemos hecho antes en cuanto a los métodos de ordenamiento de la colección, en este caso encontramos los siguientes:</p>
+<ul>
+<li><p>ordenarAlfabeticamente</p>
+</li>
+<li><p>ordenarId</p>
+</li>
+<li><p>ordenarCantidadUsuarios</p>
+</li>
+<li><p>ordenarDistancia</p>
+</li>
+<li><p>ordenarActividad</p>
+</li>
+<li><p>ordenarCalificacionMedia</p>
+</li>
+</ul>
+
+<a href="#utilidades" id="utilidades" style="color: inherit; text-decoration: none;">
+  <h3>Utilidades</h3>
+</a>
+<p>Para la correcta implementación de la práctica tuvimos que hacer uso de unas clases que permiten la correcta manipulación de los datos en la base de datos y el correcto flujo de eventos del programa principal, es por esto que ahora pasaremos a explicar brevemente las dos clases encargadas de ello.</p>
+
+<a href="#gestor" id="gestor" style="color: inherit; text-decoration: none;">
+  <h4>Gestor</h4>
+</a>
+<p>La clase Gestor es el constructor de un rompecabezas, a lo largo del presente informe llevamos describiendo como desarrollamos cada una de las piezas y en esta clase nos hemos encargado de secuenciar las llamadas para definir cada uno de los posibles flujos de ejecución.</p>
+<p>En esta clase hemos definido diferentes funciones que describen prompts del <em>inquirer</em> y luego hemos llamada a cada función dentro de los <em>.then</em> para conseguir el resultado deseado. </p>
+<p>Básicamente, hemos desarrollado un método inicio que preguntará al usuario si desea iniciar sesión o se quiere registrar. Lógicamente esto no es logueo muy real, pues no existe ninguna barrera de seguridad. Posteriormente se manda a llamar al método principal. </p>
+<p>Dentro del método principal Preguntaremos al usuario que desea realizar, para este punto ya tenemos un identificador que nos permite determinar quien está ejecutando el programa. </p>
+<p>Según el flujo que el usuario tome al elegir las opciones se llamaran a distintos métodos, asi que destacaremos las opciones que se pueden llevar a cabo.</p>
+<ul>
+<li><p>verListaUsuarios</p>
+</li>
+<li><p>verListaRutas</p>
+</li>
+<li><p>verListaGrupos</p>
+</li>
+<li><p>verListaRetos</p>
+</li>
+<li><p>OrdenarListaUsuarios</p>
+</li>
+<li><p>OrdenarListaRutas</p>
+</li>
+<li><p>OrdenarListaGrupo</p>
+</li>
+<li><p>OrdenarListaRetos</p>
+</li>
+<li><p>agregarAmigo</p>
+</li>
+<li><p>eliminarAmigo</p>
+</li>
+<li><p>unirseGrupo</p>
+</li>
+<li><p>crearGrupo</p>
+</li>
+<li><p>eliminarGrupo</p>
+</li>
+<li><p>crearReto</p>
+</li>
+<li><p>crearRuta</p>
+</li>
+<li><p>eliminarReto</p>
+</li>
+<li><p>eliminarRuta</p>
+</li>
+</ul>
+
+<a href="#manejadorjson" id="manejadorjson" style="color: inherit; text-decoration: none;">
+  <h4>ManejadorJSON</h4>
+</a>
+<p>La clase ManejadorJSON se encarga de toda la manipulación de las bases de datos, es decir, de leer y escribir en los archivos JSON. Decidimos implementar esta clase evitando cualquier creación de instancia de la misma, de este modo, esta clase solo trabaja con métodos estáticos.</p>
+<p>La estructura es básica, para cada colección existen diversas funciones que la manipulan. Por ejemplo, para la colección de usuarios, tenemos las siguientes funciones: <em>actualizarUsuariosDB</em>, <em>agregarUsuarioDB</em> y <em>extraccionUsuariosDB</em>. La primera de ellas se encarga de actualizar el conjunto de usuarios en la base de datos gracias al uso de la segunda función, que agrega un usuario a la base de datos. La última función simplemente extrae los usuarios de la base de datos y los devuelve en un arreglo de objetos, el cual será gestionado por la clase ColeccionUsuarios.</p>
+<p>Para las demás colecciones se aplica la misma lógica, por lo que no se detallarán más.</p>
+
+<a href="#enumerados" id="enumerados" style="color: inherit; text-decoration: none;">
+  <h3>Enumerados</h3>
+</a>
+<p>Para la correcta estructuración del código hemos decidido implementar una serie de enumerados, como por ejemplo <em>Actividades</em> el cual permite acotar las distintas posibilidades que las Rutas (por ejemplo) pueden tomar, en este caso, Correr y Bicicleta.</p>
+<p>Por otra parte, creamos un enumerado para determinar la manera en la que se ordenan las colecciones, <em>ManeraOrdenar</em>, que puede ser Ascendente y Descendente.</p>
+<p>Para cada una de las clases entidades se creó un enumerado que acota las posibles opciones que puede tomar como criterio de ordenación, por ejemplo, <em>OrdenarRuta</em> puede ser alfabéticamente, por cantidad de usuarios, por distancia, etc. Lo mismo ocurre con <em>OrdenarUsuario</em>, <em>OrdenarGrupo</em> y <em>OrdenarReto</em>.</p>
+<p>Por último se agregaron dos enumerado para controlar las opciones que se pueden ejecutar en el programa principal, como son <em>ComandosInicio</em> y <em>ComandoPrincipal</em> </p>
+
+<a href="#interfaces" id="interfaces" style="color: inherit; text-decoration: none;">
+  <h3>Interfaces</h3>
+</a>
+<p>En cuanto a las interfaces no hay mucho que decir, simplemente se han implementado las necesarias para que las bases de datos cumplan con un contrato, es decir, que cumplan con un diseño que permita que la clase ManejadorJSON pueda manipularlas sin problema.</p>
+<p>Por ejemplo para la clase ColeccionUsuarios, se implementó la interfaz <em>interfazUsuarioDB</em>, la cual contiene la propiedad <em>usuarios</em>, que es de tipo <em>UsuarioDB[]</em>, esto quiere decir que todos los elementos que se inserten en la base de datos deben tener esta forma, para luego poder rescatarlos de la misma sin ningún problema.</p>
+<p>Con las demás colecciones se ha hecho lo mismo, por lo que no se detallarán más.</p>
+
+<a href="#conclusión" id="conclusión" style="color: inherit; text-decoration: none;">
+  <h3>Conclusión</h3>
+</a>
+<p>Ingeniería Informática es toda una experiencia, muchas veces salimos de clase de ver temas interesantes, de aprender el por qué de algo que llevamos haciendo todo el tiempo, de ver una nueva forma de pensar o incluso de cosas tan simples pero sorprendentes como hacer un programa interactivo. El grado de importancia que le damos a los proyectos viene desde nuestro propio interés por aprender y esa curiosidad el motor de las grandes cosas. </p>
+<p>El proyecto grupal era sin duda una de esas prácticas que cuando te la mencionan estás impaciente por poder hacerle frente y demostrar todo lo que sabes. Al comenzarla teníamos bastante energía e interés por hacerla lo mejor posible. Lo hemos hablado mucho y consideramos que es posiblemente la práctica más relevante de nuestra carrera hasta la fecha y no porque esté muy bien o por el tiempo dedicado, es mucho más que eso. Esta práctica nos ha llevado a investigar distintas herramientas, nos ha permitido implementar técnicas nuevas como los patrones de diseño, la programación funcional, conceptos de base de datos, entre muchas otras. </p>
+<p>Estamos orgullosos del resultado final de la práctica aunque sinceramente consideramos que el tiempo no era suficiente, consideramos que si se nos brindaran unos días más, podríamos hacer muchas otras funcionalidades a nuestro programa. Sin embargo, sabemos que dedicar más tiempo a la práctica nos repercutiría en otras asignaturas.</p>
+<p>En definitiva la práctica nos ha permitido reflejar muchos conocimientos adquiridos y ha sido toda una experiencia de trabajo en equipo que se aprecia, ya que se acerca cada vez más a lo que se ve en un entorno laboral. Solo destacar nuevamente el esfuerzo que requiere la práctica, hemos calculado una media de más de 35 horas requeridas para el trabajo, tiempo que para distribuir en dos semanas es bastante complicado. Esperamos la próxima práctica con muchas ganas.</p>
+
+<a href="#bibliografía" id="bibliografía" style="color: inherit; text-decoration: none;">
+  <h3>Bibliografía</h3>
+</a>
+<p><a href="https://refactoring.guru/es/design-patterns/singleton">Patrón singleton</a></p>
+<p><a href="https://snyk.io/advisor/npm-package/inquirer/example">Ejemplos de utilización del módulo Inquirer</a></p>
+<p><a href="https://stackoverflow.com/questions/52063654/how-to-create-lowdb-in-typescriptmain-ts-angular">Ejemplo de utilización del módulo LowDB</a></p>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">ull-<wbr/>esit-<wbr/>inf-<wbr/>dsi-<wbr/>22-<wbr/>23-<wbr/>prct07-<wbr/>destravate-<wbr/>datamodel-<wbr/>grupom</a>
+<ul>
+<li class="tsd-kind-module"><a href="modules/colecciones_coleccionGrupos.html">colecciones/coleccion<wbr/>Grupos</a></li>
+<li class="tsd-kind-module"><a href="modules/colecciones_coleccionRetos.html">colecciones/coleccion<wbr/>Retos</a></li>
+<li class="tsd-kind-module"><a href="modules/colecciones_coleccionRutas.html">colecciones/coleccion<wbr/>Rutas</a></li>
+<li class="tsd-kind-module"><a href="modules/colecciones_coleccionUsuarios.html">colecciones/coleccion<wbr/>Usuarios</a></li>
+<li class="tsd-kind-module"><a href="modules/entidades_grupo.html">entidades/grupo</a></li>
+<li class="tsd-kind-module"><a href="modules/entidades_reto.html">entidades/reto</a></li>
+<li class="tsd-kind-module"><a href="modules/entidades_ruta.html">entidades/ruta</a></li>
+<li class="tsd-kind-module"><a href="modules/entidades_usuario.html">entidades/usuario</a></li>
+<li class="tsd-kind-module"><a href="modules/enumerados_enumerados.html">enumerados/enumerados</a></li>
+<li class="tsd-kind-module"><a href="modules/interfaces_interfaces.html">interfaces/interfaces</a></li>
+<li class="tsd-kind-module"><a href="modules/tipos_tipos.html">tipos/tipos</a></li>
+<li class="tsd-kind-module"><a href="modules/utilidades_gestor.html">utilidades/gestor</a></li>
+<li class="tsd-kind-module"><a href="modules/utilidades_manejadorJSON.html">utilidades/manejadorJSON</a></li></ul></li></ul></div></details></nav></div></div>
+<div class="container tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>
