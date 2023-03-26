@@ -80,7 +80,21 @@ Como hemos visto anteriormente, todas nuestras propiedades son *private*, sin em
 
 Debemos tener presente siempre que este programa tendrá persistencia en memoria y esto significa que debemos estar preparados apra recurperar datos que se han guardado de sesiones previas. Para esto nos apoyamos en clases que hablaremos más adelante como es el caso de ManejadorJSON o ColeccionUsuarios. De momento lo que debemos tener presente es que tenemos un *ContructorDBUsuario* este método reconstruye las propiedades de los usarios a partir de los argumentos recibidos.
 
-Vea
+Veamos que nuestra base de datos es un *JSON* que desafortuandamente no entiende de estructuras de datos complejas como puede ser un *Map* o un *Set*, para hacer frente a esta carencia, desglosamos dichas estruturas complejas antes de añadirlas a la base de datos y posteriormente en la recuperación 'reensablemos' dichas piezas para poder definir las estructuras complejas que usamos en nuestras clases. Eso es exactamente lo que se ocnsigue con el método *ContructorDBUsuario*.
+
+Podemos encontrar algunas funciones de utilería como es el caso de *esGrupoAmigo* que nos permite determinar si el usuario pertenece o no a un grupo dado por parámetros.
+
+Cuando deseamos añadir una ruta a un usuario, debemos modificar el historial de rutas del usuarios y como hemos hablado previamente, pretendemos que las claves sean las fechas de realización de la ruta. Para conseguir esto, usamos el módulo *Date*, que nos permite manipular fechas, y saber la fecha actual. La idea se basa en rellenar el formato **dia/mes/año**, posteriomente comprobaremos si esa fecha ya existe, porque en dicho caso debemos modificar el array de rutas de dicho dia añadiendo la nueva ruta. en caso de no existir, creamos una nueva entrada a nuestro *Map* y con su respectiva clave/valor. 
+
+*Es importante tener en cuenta que las acciones que se lleven a cabo en una clase, pueden afectar a otras clases de forma indirecta.* 
+
+Un ejemplo de lo anterior ocurre al añadir una *Ruta*, ya que debemos asegurarnos de actualziar las estadísticas del usuarios, esta acción hará que todos los grupos a los que pertenezca el usuario se vean afectados de forma indirecta, ya que sus estadísticas grupales también cambiarán. Por esto debemos recorrer cada uno de sus grupos actualizandolos.
+
+Respecto a la actualización de estadísiticas antes mencionada, hemos desarrollado un método que nos permite actualizar cada uno de los campos de las estadisticas. Para esto simplemente sumamos a las estadisticas actuales, los valores que aportan la nueva ruta.
+
+El programa permitirá al usuario reliazar acciones de gestión como puede ser la creación y borraod de *Retos y Amigos*. Desarrollamos diferentes funciones que nos permiten modificar nuestras prpiedades según lo vayamos requiriendo.
+
+Algunos de los
 
 #### Ruta
 
