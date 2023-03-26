@@ -6,7 +6,11 @@
 
 1. [Introducción](#introducción)
 
-    1.1. [Idea General](#idea-general)
+    1.1. [Hablemos de Test](#hablemos-de-test)
+
+    1.2. [Hablemos de LowDB](#hablemos-de-lowdb)
+
+    1.3. [Hablemos de Inquirer](#hablemos-de-inquirer)
 
 2. [Entidades](#entidades)
     
@@ -42,20 +46,39 @@
 
 7. [Tipos](#tipos)
 
-
 8. [Conclusión](#conclusión)
 
 9. [Bibliografía](#bibliografía)
 
+
 ### Introducción
 
+Para la realización de la práctica se nos pide la implementación de un esqueleto de clases que representan las entidades de una aplicación de deporte. Para ello tenemos que hacer uso de un gestor de bases de datos como puede ser LowDB y un gestor de entrada como puede ser Inquirer. Es por esto que antes de comenzar a desarrollar, debimos investigar sobre estos dos gestores. 
+
+Luego de conocer un poco mejor el entorno, debimos ponernos de acuerdo para elegir la mejor estructura del código, para esto nos basamos en el patrón de diseño Singleton, el cual nos permitió ahorrar memoria y tiempo de ejecución. 
 
 
-#### Idea General
+#### Hablemos de Test
+
+A la hora de desarrollar un programa, es dificil llevar todo al mismo tiempo, inicialmente nos hicimos un boceto que permitía determinar las relaciones que existian entre entidades, pero a medida que el programa crecio, necesitamos muchas nuevas funcionalidades y esto complica el desarrollo de testeo, quizas también por el absurdo afán que se tiene por avanzar, cuando al final tendrán que hacer todo.
+
+Sin embargo, todo se ha testeado, bueno... Casi todo. Lamentablemente no hemos realizado pruebas para las clases colecciones, ya que debido a la implementación del patron Singleton, estas se modificaban a medida que el programa se probará llegando siempre a obligarnos a modificar las pruebas. Al final obtamos por no probarlar directamente, aunque su funcionamiento está comprobado al usarla en la recuperación de las bases de datos y el desarrollo de distintios métodos de busqueda y ordenamiento.
+
+
+#### Hablemos de LowDB
+
+LowDB es una librería que nos permite crear bases de datos en formato JSON, la cual nos permite guardar y recuperar datos de forma sencilla. En nuestro caso, hemos decidido dividir los datos, creando cuatro bases de datos, una para cada entidad. En cada una de ellas se guarda información de las colecciones de cada una de las entidades.
+
+
+#### Hablemos de Inquirer
+
+Inquirer es una librería que nos permite crear interfaces de usuario de forma sencilla, la cual nos permite crear menús de opciones, preguntas y respuestas. En nuestro caso, hemos decidido usarla para crear un menú de opciones que permita al usuario interactuar con la aplicación, todo en la clase Gestor.
+
 
 ### Entidades
 
 El programa esta compuesto por cuatro entidades principales, las cuales hemos modelado a partir de cuatro clases. Dichas clases siguen los requisitos propuestos en el guión de la práctica. A continuación describiremos cada uno de ellos de forma detallada, explicando el funcioanmeinto y las decisiones de diseño que hemos tomado.
+
 
 #### Usuario
 
@@ -293,9 +316,49 @@ Dentro del método principal Preguntaremos al usuario que desea realizar, para e
 Según el flujo que el ususario tome al elegir las opciones se llamaran a distintos métodos, asi que destacaremos las opciones que se pueden llevar a cabo.
 
 
+- verListaUsuarios
+
+- verListaRutas
+
+- verListaGrupos
+
+- verListaRetos
+
+- OrdenarListaUsuarios
+
+- OrdenarListaRutas
+
+- OrdenarListaGrupo
+
+- OrdenarListaRetos
+
+- agregarAmigo
+
+- eliminarAmigo
+
+- unirseGrupo
+
+- crearGrupo
+
+- eliminarGrupo
+
+- crearReto
+
+- crearRuta
+
+- eliminarReto
+
+- eliminarRuta
+
+
+
 #### ManejadorJSON
 
+La clase ManejadorJSON se encarga de toda la manipulación de las bases de datos, es decir, de leer y escribir en los archivos JSON. Decidimos implementar esta clase evitando cualquier creación de instancia de la misma, de este modo, esta clase solo trabaja con métodos estáticos.
 
+La estructura es básica, para cada colección existen diversas funciones que la manipulan. Por ejemplo, para la colección de usuarios, tenemos las siguientes funciones: *actualizarUsuariosDB*, *agregarUsuarioDB* y *extraccionUsuariosDB*. La primera de ellas se encarga de actualizar el conjunto de usuarios en la base de datos gracias al uso de la segunda función, que agrega un usuario a la base de datos. La última función simplemente extrae los usuarios de la base de datos y los devuelve en un arreglo de objetos, el cual será gestionado por la clase ColeccionUsuarios.
+
+Para las demás colecciones se aplica la misma lógica, por lo que no se detallarán más.
 
 
 ### Enumerados
@@ -304,14 +367,28 @@ Para la correcta estructuración del código hemos decidido implementar una seri
 
 Por otra parte, creamos un enumerado para determinar la manera en la que se ordenan las colecciones, *ManeraOrdenar*, que puede ser Ascendente y Descendente.
 
-Para cada una de las clases entidades se creó un enumerado que acota  
+Para cada una de las clases entidades se creó un enumerado que acota las posibles opciones que puede tomar como criterio de ordenación, por ejemplo, *OrdenarRuta* puede ser alfabéticamente, por cantidad de usuarios, por distancia, etc. Lo mismo ocurre con *OrdenarUsuario*, *OrdenarGrupo* y *OrdenarReto*.
+
+Por último se agregaron dos enumerador para controlar las opciones que se pueden ejecutar en el programa principal, como son *ComandosInicio* y *ComandoPrincipal* 
 
 ### Interfaces
 
+En cuanto a las interfaces no hay mucho que decir, simplemente se han implementado las necesarias para que las bases de datos cumplan con un contrato, es decir, que cumplan con un diseño que permita que la clase ManejadorJSON pueda manipularlas sin problema.
 
+Por ejemplo para la clase ColeccionUsuarios, se implementó la interfaz *interfazUsuarioDB*, la cual contiene la propiedad *usuarios*, que es de tipo *UsuarioDB[]*, esto quiere decir que todos los elementos que se inserten en la base de datos deben tener esta forma, para luego poder rescatarlos de la misma sin ningún problema.
+
+Con las demás colecciones se ha hecho lo mismo, por lo que no se detallarán más.
 
 
 ### Conclusión
+
+Ingeniería Informática es toda una experiencia, muchas veces salimos de clase de ver temas interesantes, de aprender el por qué de algo que llevamos haciendo todo el tiempo, de ver una nueva forma de pensar o incluso de cosas tan simples pero sorprendentes como hacer un programa interactivo. El grado de importancia que le damos a los proyectos viene desde nuestro propio interes por aprender y esa curiosidad el motor de las grandes cosas. 
+
+El proyecto grupal era sin duda una de esas prácticas que cuando te la mencionan estás impaciente por poder hacerle frente y demostrar todo lo que sabes. Al comenzarla teniamos bastante energía e interés por hacerla lo mejor posible. Lo hemos hablado mucho y consideramos que es posiblemente la práctica más relevante de nuestra carrera hasta la fecha y no porque esté muy bien o por el tiempo dedicado, es mucho más que eso. Esta práctica nos ha llevado a investigar distintas herramientas, nos ha permitido implementar técnicas nuevas como los patrones de diseño, la programación funcional, conceptos de base de datos, entre muchas otras. 
+
+Estamos orgullosos del resultado final de la práctica aunque sinceramente consideramos que el tiempo no era suficiente, consideramos que si se nos brindaran unos dias más, podríamos hacer muchas otras funcionalidades a nuestor programa. Sin embargo, sabemos que dedicar más tiempo a la práctica nos repercutiría en otras asignaturas.
+
+En definitiva la práctica nos ha permitido reflejar muchos conocimientos adquiridos y ha sido toda una experiencia de trabajo en equipo que se aprecia, ya que se acerca cada vez más a lo que se ve en un entorno laboral. Solo destacar nuevamente el esfuerzo que requiere la práctica, hemos calculado una media de más de 35 horas requeridas para el trabajo, tiempo que para distribuir en dos semanas es bastante complicado. Esperamos la próxima práctica con muchas ganas.
 
 
 ### Bibliografía
