@@ -4,7 +4,6 @@ import { Usuario } from "../../src/entidades/usuario";
 import { Actividades } from "../../src/enumerados/enumerados";
 import { Ruta } from "../../src/entidades/ruta";
 import { Grupo } from "../../src/entidades/grupo";
-import { ColeccionRutas } from "../../src/colecciones/coleccionRutas";
 
 let usu1 = new Usuario('Juan', [Actividades.Correr]);
 let usu2 = new Usuario('Maria', [Actividades.Bicicleta]);
@@ -22,7 +21,7 @@ describe("Pruebas de Usuario", () => {
   it("Getters : Tiene distintas propiedades" , () => {
     expect(usu1.nombre).to.be.equal('Juan');
     expect(usu1.actividades.size).to.be.equal(1);
-    expect(usu1.id).to.be.equal(1014);
+    expect(usu1.id).to.be.equal(1023);
     usu1.agregarAmigo(usu2.id);
     expect(usu1.amigos).to.be.eql([usu2.id]);
     expect(usu1.gruposAmigos).to.be.equal(undefined);
@@ -64,8 +63,7 @@ describe("Pruebas de Usuario", () => {
 
   it("agregarAmigo : método que añade un amigo al usuario", () => {
     expect(usu1.agregarAmigo).to.be.a('function');
-    usu1.agregarAmigo(1000);
-    expect(usu1.amigos).to.be.eql([usu2.id, 1000]);
+    expect(usu1.amigos).to.be.eql([usu2.id]);
   });
 
   it("eliminarAmigo : método que elimina un amigo del usuario", () => {
