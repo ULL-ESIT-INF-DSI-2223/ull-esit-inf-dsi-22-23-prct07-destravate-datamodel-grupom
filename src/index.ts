@@ -115,5 +115,6 @@ const coleccionRetos = ColeccionRetos.getColeccionRetos();
 // ManejadorJSON.actualizarRutasDB();
 // ManejadorJSON.actualizarRetosDB();
 
-Gestor.inicio();
+// 
 
+Gestor.inicio();
