@@ -22,25 +22,30 @@
 
     3.1. [Singleton el patrón de ahorro](#singleton-el-patrón-de-ahorro)
 
-    3.1. [Coleccion Usuario](#coleccion-usuario)
+    3.2. [Coleccion Usuario](#coleccion-usuario)
 
-    3.2. [Coleccion Ruta](#coleccion-ruta)
+    3.3. [Coleccion Ruta](#coleccion-ruta)
 
-    3.3. [Coleccion Grupo](#coleccion-grupo)
+    3.4. [Coleccion Grupo](#coleccion-grupo)
     
-    3.4. [Coleccion Reto](#coleccion-reto)
+    3.5. [Coleccion Reto](#coleccion-reto)
 
-4. [Enumerados](#enumerados)
+4. [Utilidades](#utilidades)
 
-5. [Interfaces](#interfaces)
+    4.1. [Gestor](#gestor)
+    
+    4.2. [ManejadorJSON](#manejadorjson)
 
-6. [Tipos](#tipos)
+5. [Enumerados](#enumerados)
 
-6. [Utilidades](#utilidades)
+6. [Interfaces](#interfaces)
 
-7. [Conclusión](#conclusión)
+7. [Tipos](#tipos)
 
-8. [Bibliografía](#bibliografía)
+
+8. [Conclusión](#conclusión)
+
+9. [Bibliografía](#bibliografía)
 
 ### Introducción
 
@@ -206,13 +211,85 @@ Estos métodos a su vez se pueden ordenar de manera ascendente y descendente, pa
 
 Veamos entonces que la idea de Singleton también se aplica para la *ColeccionRuta*.
 
-Destacar que también se han incluido los métodos que favorecen la manipulación de la colección como son *getRutas* y *getRuta*, funcionando del mismo modo que veiamos en la clase anterior.
+Destacar que también se han incluido los métodos que favorecen la manipulación de la colección como son *getRutas* y *getRuta*, funcionando del mismo modo que veíamos en la clase anterior.
 
-De la misma forma, hemos incluido los métodos *agregarRuta* y *eliminarRuta*
+De la misma forma, hemos incluido los métodos *agregarRuta* y *eliminarRuta* e *imprimirInformacion*.
+
+Finalemente, procedemos de la misma forma que lo hemos hecho antes en cuanto a los métodos de ordenamiento de la colección, en este caso encontramos los siguientes:
+
+- ordenarAlfabeticamente
+
+- ordenarId
+
+- ordenarCantidadUsuarios
+
+- ordenarDistancia
+
+- ordenarActividad
+
+- ordenarCalificacionMedia
 
 #### Coleccion Grupo
 
+Veamos entonces que la idea de Singleton también se aplica para la *ColeccionGrupos*.
+
+También se han incluido los métodos que favorecen la manipulación de la colección como son *getGrupos* y *getGrupo*, funcionando del mismo modo que veíamos en la clase anterior.
+
+De la misma forma, hemos incluido los métodos *agregarGrupo* y *eliminarGrupo* e *imprimirInformacion*.
+
+Finalemente, procedemos de la misma forma que lo hemos hecho antes en cuanto a los métodos de ordenamiento de la colección, en este caso encontramos los siguientes:
+
+- ordenarAlfabeticamente
+
+- ordenarId
+
+- ordenarCantidadUsuarios
+
+- ordenarDistancia
+
+- ordenarActividad
+
+- ordenarCalificacionMedia
+
+
 #### Coleccion Reto
+
+Veamos entonces que la idea de Singleton también se aplica para la *ColeccionRetos*.
+
+También se han incluido los métodos que favorecen la manipulación de la colección como son *getRetos* y *getReto*, funcionando del mismo modo que veíamos en la clase anterior.
+
+De la misma forma, hemos incluido los métodos *agregarReto* y *eliminarReto* e *imprimirInformacion*.
+
+Finalemente, procedemos de la misma forma que lo hemos hecho antes en cuanto a los métodos de ordenamiento de la colección, en este caso encontramos los siguientes:
+
+- ordenarAlfabeticamente
+
+- ordenarId
+
+- ordenarCantidadUsuarios
+
+- ordenarDistancia
+
+- ordenarActividad
+
+- ordenarCalificacionMedia
+
+
+### Utilidades
+
+Para la correcta implementación de la práctica tuvimos que hacer uso de unas clases que permitiesen la correcta manipulación de los datos en la base de datos y 
+
+
+#### Gestor
+
+La clase Gestor es el constructor de un rompecabezas, a lo largo del presente informe llevamos describiendo como desarrollamos cada una de las piezas y en esta clase nos hemos encargado de secuenciar las llamadas para definir cada uno de los posibles flujos de ejecución.g
+
+
+
+#### ManejadorJSON
+
+
+
 
 ### Enumerados
 
@@ -220,10 +297,15 @@ De la misma forma, hemos incluido los métodos *agregarRuta* y *eliminarRuta*
 ### Interfaces
 
 
-### Utilidades
 
 
 ### Conclusión
 
 
 ### Bibliografía
+
+[Patrón singleton](https://refactoring.guru/es/design-patterns/singleton)
+
+[Ejemplos de utilización del módulo Inquirer](https://snyk.io/advisor/npm-package/inquirer/example)
+
+[Ejemplo de utilización del módulo LowDB](https://stackoverflow.com/questions/52063654/how-to-create-lowdb-in-typescriptmain-ts-angular)
