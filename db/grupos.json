@@ -1,0 +1,61 @@
+{
+  "1000": {
+    "_id": 1000,
+    "_creador": 1000,
+    "_nombre": "grupo1",
+    "_participantes": [
+      1000,
+      1006,
+      1002,
+      1007,
+      1007,
+      1006,
+      1010
+    ],
+    "_estadistica": [
+      [
+        115,
+        103
+      ],
+      [
+        115,
+        103
+      ],
+      [
+        115,
+        103
+      ]
+    ],
+    "_clasificacion": [],
+    "_historicoFechas": [],
+    "_historicoRutas": []
+  },
+  "1001": {
+    "_id": 1001,
+    "_creador": 1001,
+    "_nombre": "grupo2",
+    "_participantes": [
+      1001,
+      1003,
+      1004,
+      1005
+    ],
+    "_estadistica": [
+      [
+        110,
+        173
+      ],
+      [
+        110,
+        173
+      ],
+      [
+        110,
+        173
+      ]
+    ],
+    "_clasificacion": [],
+    "_historicoFechas": [],
+    "_historicoRutas": []
+  }
+}

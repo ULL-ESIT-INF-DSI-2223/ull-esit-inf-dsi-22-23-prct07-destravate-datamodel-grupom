@@ -1,6 +1,7 @@
 import { Reto } from '../entidades/reto';
 import { ManeraOrdenar } from '../enumerados/enumerados';
 import { ManejadorJSON } from '../utilidades/manejadorJSON';
+import { ColeccionUsuarios } from './coleccionUsuarios';
 
 
 
@@ -41,14 +42,21 @@ export class ColeccionRetos {
     ColeccionRetos.coleccionRetos.retos.push(Reto);
   }
   
-  eliminarReto(Reto: Reto): Reto | undefined {
-    let tamanoOriginal = ColeccionRetos.coleccionRetos.retos.length;
-    ColeccionRetos.coleccionRetos.retos = ColeccionRetos.coleccionRetos.retos.filter((u) => u !== Reto);
-    let tamanoFinal = ColeccionRetos.coleccionRetos.retos.length;
+  eliminarReto(retoID: number): number | undefined {
+    const usuariosReto = ColeccionRetos.getColeccionRetos().getReto(retoID)?.usuarios;
+    let tamanoOriginal = ColeccionRetos.coleccionRetos.getNumeroRetos();
+    ColeccionRetos.getColeccionRetos().retos = ColeccionRetos.getColeccionRetos().getRetos().filter((u) => u.id !== retoID);
+    let tamanoFinal = ColeccionRetos.coleccionRetos.getNumeroRetos();
     if(tamanoFinal === tamanoOriginal) {
       return undefined;
     }
-    return Reto;
+    if(usuariosReto !== undefined) {
+      for (let i = 0; i < usuariosReto.length; i++) {
+        ColeccionUsuarios.getColeccionUsuarios().getUsuario(usuariosReto[i])?.eliminarReto(retoID)
+      }
+    }
+    ManejadorJSON.eliminarRetoDB(retoID);
+    return retoID;
   }
 
   imprimirInformacion(): void {

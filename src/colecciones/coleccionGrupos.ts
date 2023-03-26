@@ -2,6 +2,7 @@ import { ColeccionUsuarios } from './coleccionUsuarios';
 import { Grupo } from '../entidades/grupo';
 import { ManeraOrdenar } from '../enumerados/enumerados';
 import { ManejadorJSON } from '../utilidades/manejadorJSON';
+import * as fs from 'fs';
 
 
 
@@ -39,18 +40,20 @@ export class ColeccionGrupos {
     return undefined;
   }
 
-  agregarGrupo(Grupo: Grupo): void {
-    ColeccionGrupos.coleccionGrupos.Grupos.push(Grupo);
+  agregarGrupo(grupo: Grupo): void {
+    ColeccionGrupos.coleccionGrupos.Grupos.push(grupo);
   }
-  
-  eliminarGrupo(Grupo: Grupo): Grupo | undefined {
-    let tamanoOriginal = ColeccionGrupos.coleccionGrupos.Grupos.length;
-    ColeccionGrupos.coleccionGrupos.Grupos = ColeccionGrupos.coleccionGrupos.Grupos.filter((u) => u !== Grupo);
-    let tamanoFinal = ColeccionGrupos.coleccionGrupos.Grupos.length;
+
+
+  eliminarGrupo(grupoID: number): number | undefined {
+    let tamanoOriginal = ColeccionGrupos.coleccionGrupos.getNumeroGrupos();
+    ColeccionGrupos.getColeccionGrupos().Grupos = ColeccionGrupos.getColeccionGrupos().getGrupos().filter((u) => u.id !== grupoID);
+    let tamanoFinal = ColeccionGrupos.coleccionGrupos.getNumeroGrupos();
     if(tamanoFinal === tamanoOriginal) {
       return undefined;
     }
-    return Grupo;
+    ManejadorJSON.eliminarGrupoDB(grupoID);
+    return grupoID;
   }
 
   imprimirInformacion(): void {

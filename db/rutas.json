@@ -1,0 +1,129 @@
+{
+  "1000": {
+    "_id": 1000,
+    "_nombre": "ruta1",
+    "_geolocalizacionInicial": [
+      1,
+      2
+    ],
+    "_geolocalizacionFinal": [
+      3,
+      4
+    ],
+    "_distancia": 4,
+    "_desnivel": 5,
+    "_usuarios": [
+      1000,
+      1006
+    ],
+    "_tipoActividad": "Correr",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1001": {
+    "_id": 1001,
+    "_nombre": "ruta2",
+    "_geolocalizacionInicial": [
+      4,
+      8
+    ],
+    "_geolocalizacionFinal": [
+      30,
+      4
+    ],
+    "_distancia": 4,
+    "_desnivel": 7,
+    "_usuarios": [
+      1000,
+      1001,
+      1007,
+      1006
+    ],
+    "_tipoActividad": "Bicicleta",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1002": {
+    "_id": 1002,
+    "_nombre": "ruta3",
+    "_geolocalizacionInicial": [
+      1,
+      6
+    ],
+    "_geolocalizacionFinal": [
+      3,
+      4
+    ],
+    "_distancia": 43,
+    "_desnivel": 3,
+    "_usuarios": [
+      1001,
+      1002
+    ],
+    "_tipoActividad": "Bicicleta",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1003": {
+    "_id": 1003,
+    "_nombre": "ruta4",
+    "_geolocalizacionInicial": [
+      1,
+      2
+    ],
+    "_geolocalizacionFinal": [
+      3,
+      4
+    ],
+    "_distancia": 40,
+    "_desnivel": 50,
+    "_usuarios": [
+      1002,
+      1003
+    ],
+    "_tipoActividad": "Correr",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1004": {
+    "_id": 1004,
+    "_nombre": "ruta5",
+    "_geolocalizacionInicial": [
+      1,
+      2
+    ],
+    "_geolocalizacionFinal": [
+      3,
+      4
+    ],
+    "_distancia": 1,
+    "_desnivel": 51,
+    "_usuarios": [
+      1004
+    ],
+    "_tipoActividad": "Correr",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  },
+  "1005": {
+    "_id": 1005,
+    "_nombre": "ruta6",
+    "_geolocalizacionInicial": [
+      1,
+      2
+    ],
+    "_geolocalizacionFinal": [
+      3,
+      4
+    ],
+    "_distancia": 11,
+    "_desnivel": 31,
+    "_usuarios": [
+      1004,
+      1005
+    ],
+    "_tipoActividad": "Correr",
+    "_calificacion": [],
+    "_calificacionMedia": 0
+  }
+}

@@ -1,4 +1,3 @@
-import { Grupo } from "./grupo";
 import { Ruta } from "./ruta";
 import { EstadisticaUsuario } from "../tipos/tipos";
 import { Actividades } from "../enumerados/enumerados";
@@ -55,6 +54,8 @@ export class Usuario {
   esGrupoAmigo(idGrupo: number): boolean {
     return this._gruposAmigos.includes(idGrupo);
   }
+
+
   agregarRuta(ruta: Ruta) {
     let fecha: Date = new Date();
     let fechaString: string = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
@@ -94,13 +95,21 @@ export class Usuario {
     this._retosActivos = this._retosActivos.filter((elem) => elem !== id);
   }
 
-
-  agregarAmigo(amigo: Usuario) {
-    this._amigos.push(amigo.id);
+  agregarAmigo(amigo: number) {
+    this._amigos.push(amigo);
   }
 
-  agregarGrupoAmigo(grupoAmigo: Grupo) {
-    this._gruposAmigos.push(grupoAmigo.id);
+  eliminarAmigo(amigo: number) {
+    this._amigos = this._amigos.filter((elem) => elem !== amigo);
+  }
+
+  agregarGrupoAmigo(grupoAmigo: number) {
+    this._gruposAmigos.push(grupoAmigo);
+    ColeccionGrupos.getColeccionGrupos().getGrupo(grupoAmigo)?.agregarUsuario(this.id);
+  }
+
+  eliminarGrupoAmigo(grupoAmigo: number) {
+    this._gruposAmigos = this._gruposAmigos.filter((elem) => elem !== grupoAmigo);
   }
 
   rutasFavoritas(): number[] {

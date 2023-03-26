@@ -37,16 +37,18 @@ export class ColeccionRutas {
     ColeccionRutas.coleccionRutas.rutas.push(Ruta);
   }
   
-  eliminarRuta(Ruta: Ruta): Ruta | undefined {
-    let tamanoOriginal = ColeccionRutas.coleccionRutas.rutas.length;
-    ColeccionRutas.coleccionRutas.rutas = ColeccionRutas.coleccionRutas.rutas.filter((u) => u !== Ruta);
-    let tamanoFinal = ColeccionRutas.coleccionRutas.rutas.length;
+  eliminarRuta(rutaID: number): number | undefined {
+    let tamanoOriginal = ColeccionRutas.getNumeroRutas();
+    ColeccionRutas.coleccionRutas.rutas = ColeccionRutas.coleccionRutas.rutas.filter((u) => u.id !== rutaID);
+    let tamanoFinal = ColeccionRutas.getNumeroRutas();
     if(tamanoFinal === tamanoOriginal) {
       return undefined;
     }
-    return Ruta;
+    ManejadorJSON.eliminarRutaDB(rutaID);
+    return rutaID;
   }
 
+  
   imprimirInformacion(): void {
     ColeccionRutas.coleccionRutas.rutas.forEach(element => {
       console.log(element);

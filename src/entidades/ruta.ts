@@ -48,7 +48,17 @@ export class Ruta {
     this._usuarios.push(id);
   }
 
+  eliminarUsuario(id: number) {
+    this._usuarios = this._usuarios.filter((u) => u !== id);
+  }
+
   toString(): string {
-    return `Ruta ${this._id}: ${this._nombre} (${this._tipoActividad})`;
+    let info = `Ruta ${this._nombre} tiene la id ${this._id}\n`
+    info += `Sus actividades son ${this._tipoActividad}\n`;
+    info += `Su distancia es ${this._distancia} y su desnivel es ${this._desnivel}\n`;
+    info += `Su geolocalizacion inicial es ${this._geolocalizacionInicial} y su geolocalizacion final es ${this._geolocalizacionFinal}\n`;
+    info += `Sus participantes son ${this._usuarios.join(", ")}\n`;
+    info += `Su calificacion media es ${this._mediaCalificacion}\n`;
+    return info;
   }
 }

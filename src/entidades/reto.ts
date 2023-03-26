@@ -28,7 +28,6 @@ export class Reto {
     this._usuarios = usuarios;
   }
 
-  // TODO: REVISAR QUE ESTE BIEN métodos que agregan y quitan usuarios al reto
   agregarUsuario(id: number) {
     this._usuarios.push(id);
     ColeccionUsuarios.getColeccionUsuarios().getUsuario(id)?.agregarReto(this._id);

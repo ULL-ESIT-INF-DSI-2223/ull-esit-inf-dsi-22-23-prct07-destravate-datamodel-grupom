@@ -32,11 +32,16 @@ import { ColeccionGrupos } from "./colecciones/coleccionGrupos";
 import { ColeccionRutas } from "./colecciones/coleccionRutas";
 import { ColeccionRetos } from "./colecciones/coleccionRetos";
 import { Gestor } from "./utilidades/gestor";
+import { Ruta } from "./entidades/ruta";
+import { Actividades } from "./enumerados/enumerados";
+import { Usuario } from "./entidades/usuario";
+import { Grupo } from "./entidades/grupo";
+import { Reto } from "./entidades/reto";
 
-// const coleccionRutas = ColeccionRutas.getColeccionRutas();
-// const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
-// const coleccionGrupos = ColeccionGrupos.getColeccionGrupos();
-// const coleccionRetos = ColeccionRetos.getColeccionRetos();
+const coleccionRutas = ColeccionRutas.getColeccionRutas();
+const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
+const coleccionGrupos = ColeccionGrupos.getColeccionGrupos();
+const coleccionRetos = ColeccionRetos.getColeccionRetos();
 
 // let ruta1 = new Ruta('ruta1', [1,2], [3,4], 4, 5, Actividades.Correr);
 // let ruta2 = new Ruta('ruta2', [4,8], [30,4], 4, 7, Actividades.Bicicleta);
@@ -85,12 +90,12 @@ import { Gestor } from "./utilidades/gestor";
 // coleccionGrupos.agregarGrupo(grupo1);
 // coleccionGrupos.agregarGrupo(grupo2)
 
-// // grupo1.agregarUsuario(maria.id);
+// /////////grupo1.agregarUsuario(maria.id);
 // grupo2.agregarUsuario(roberto.id);
 // grupo2.agregarUsuario(manuel.id);
 // grupo2.agregarUsuario(alberto.id);
 
-// // grupo1.agregarUsuario(juan.id);
+// /////////grupo1.agregarUsuario(juan.id);
 // grupo1.agregarUsuario(alfonso.id);
 // grupo1.agregarUsuario(pepe.id);
 // grupo1.agregarUsuario(alvaro.id);
@@ -132,8 +137,11 @@ import { Gestor } from "./utilidades/gestor";
   
 // Gestor.registrarEnSistema();
 // Gestor.mostrarUsuarios();
+
+// ManejadorJSON.actualizarUsuariosDB();
 // ManejadorJSON.actualizarGruposDB();
 // ManejadorJSON.actualizarRutasDB();
 // ManejadorJSON.actualizarRetosDB();
 
 Gestor.inicio();
+

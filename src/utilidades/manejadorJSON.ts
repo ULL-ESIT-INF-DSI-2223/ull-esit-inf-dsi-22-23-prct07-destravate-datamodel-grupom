@@ -124,6 +124,11 @@ export class ManejadorJSON {
     return grupos;
   }
 
+  static eliminarGrupoDB(idGrupo: number) {
+    const dbGrupo = lowdb(new FileSync('./db/grupos.json'));
+    dbGrupo.unset(String(idGrupo)).write()
+  }
+
 
   /////////// RETOS ///////////
 
@@ -177,6 +182,11 @@ export class ManejadorJSON {
     return retos;
   }
 
+  
+  static eliminarRetoDB(idReto: number) {
+    const dbRetos = lowdb(new FileSync('./db/retos.json'));
+    dbRetos.unset(String(idReto)).write()
+  }
 
   /////////// RUTAS ///////////
 
@@ -221,6 +231,11 @@ export class ManejadorJSON {
       rutas.push(ruta);
     }
     return rutas;
+  }
+
+  static eliminarRutaDB(idRuta: number) {
+    const dbRutas = lowdb(new FileSync('./db/rutas.json'));
+    dbRutas.unset(String(idRuta)).write()
   }
 
 }

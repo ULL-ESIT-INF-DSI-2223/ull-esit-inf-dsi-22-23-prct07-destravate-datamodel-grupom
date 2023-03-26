@@ -102,4 +102,13 @@ export class Grupo {
     const desnivelAnio = this.participantes.reduce((acc, numUsuA) => acc + coleccionUsuarios.getEstadistica(numUsuA)[2][1], 0)
     this._estadistica = [[distanciaSemana, desnivelSemana], [distanciaMes, desnivelMes], [distanciaAnio, desnivelAnio]];
   }
+
+  public toString(): string {
+    let info = `Grupo ${this._nombre} tiene la id ${this._id} y su creador es ${this._creador}\n`;
+    info += `Sus participantes son ${this._participantes.join(", ")}\n`;
+    info += `Sus estadisticas son ${this._estadistica} \n`;
+    info += `Su clasificacion es ${this._clasificacion.join(", ")} \n`;
+    info += `Su histórico de rutas es ${Array.from(this._historicoRutas.keys()).join(", ")}\n`;
+    return info;
+  }
 }
