@@ -10,7 +10,6 @@ export class Grupo {
   private _estadistica: EstadisticaGrupo = [[0, 0], [0, 0], [0, 0]];
   private _clasificacion: number[] = [];
   private _participantes: number[] = [];
-  // Solo se puede borrar el grupo si id >= 1000 y si la id del creador coincide con el usuario q intenta borrar
   private _creador: number;
   private _historicoRutas: Map<string, number[]> = new Map();
 
@@ -20,6 +19,14 @@ export class Grupo {
     this._creador = idCreador;
     this.agregarUsuario(idCreador);
   }
+  
+  get id(): number { return this._id; }
+  get creador(): number { return this._creador; }
+  get nombre(): string { return this._nombre; }
+  get participantes(): number[] { return this._participantes; }
+  get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
+  get estadistica(): EstadisticaGrupo { return this._estadistica; }
+  get clasificacion(): number[] { return this._clasificacion; }
 
   public ContructorDBGrupo(participantes: number[], estadistica: EstadisticaGrupo, clasificacion: number[], historicoFechas: string[], historicoRutas: number[][]) {
     this._participantes = participantes;
@@ -37,14 +44,6 @@ export class Grupo {
       }
     }
   }
-  
-  get id(): number { return this._id; }
-  get creador(): number { return this._creador; }
-  get nombre(): string { return this._nombre; }
-  get participantes(): number[] { return this._participantes; }
-  get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
-  get estadistica(): EstadisticaGrupo { return this._estadistica; }
-  get clasificacion(): number[] { return this._clasificacion; }
 
   
   agregarUsuario(id: number) {
@@ -75,7 +74,7 @@ export class Grupo {
   }
 
   rutasFavoritas(): number[] {
-    const rutas: number[]= Array.from(this.historicoRutas.values()).flat();
+    const rutas: number[] = Array.from(this.historicoRutas.values()).flat();
     const contador = new Map();
     for (let ruta of rutas) {
       if (contador.has(ruta)) {

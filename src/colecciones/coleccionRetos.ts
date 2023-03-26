@@ -14,7 +14,7 @@ export class ColeccionRetos {
     this.retos = retosDB;
   }
 
-  public static getColeccionRetos(): ColeccionRetos{
+  public static getColeccionRetos(): ColeccionRetos {
     if (!ColeccionRetos.coleccionRetos) {
       ColeccionRetos.coleccionRetos = new ColeccionRetos(ManejadorJSON.extraccionRetosDB());
     }

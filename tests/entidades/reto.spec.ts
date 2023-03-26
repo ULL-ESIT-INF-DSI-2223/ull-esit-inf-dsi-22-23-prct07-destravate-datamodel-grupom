@@ -45,4 +45,10 @@ describe("Pruebas de Reto", () => {
     expect(reto1.usuarios).to.be.eql([usu1.id]);
   });
 
+  it("toString : método que devuelve la información del reto", () => {
+    expect(reto1.toString).to.be.a('function');
+    let stringReto = reto1.toString();
+    expect(reto1.toString()).to.be.equal(stringReto);
+  });
+
 });

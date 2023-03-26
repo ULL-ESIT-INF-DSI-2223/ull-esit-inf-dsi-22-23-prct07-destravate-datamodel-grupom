@@ -4,6 +4,7 @@ import { Usuario } from "../../src/entidades/usuario";
 import { Actividades } from "../../src/enumerados/enumerados";
 import { Ruta } from "../../src/entidades/ruta";
 import { Grupo } from "../../src/entidades/grupo";
+import { ColeccionRutas } from "../../src/colecciones/coleccionRutas";
 
 let usu1 = new Usuario('Juan', [Actividades.Correr]);
 let usu2 = new Usuario('Maria', [Actividades.Bicicleta]);
@@ -91,11 +92,8 @@ describe("Pruebas de Usuario", () => {
   });
 
   it("distanciaTotal : método que devuelve la distancia total recorrida por el usuario", () => {
-    let usuario = new Usuario('Juan', [Actividades.Correr]);
-    expect(usuario.distanciaTotal).to.be.a('function');
-    usuario.agregarRuta(ruta1);
-    usuario.agregarRuta(ruta2);
-    expect(usuario.distanciaTotal()).to.be.equal(0);
+    expect(usu1.distanciaTotal).to.be.a('function');
+    expect(usu1.distanciaTotal()).to.be.equal(0);
   });
 
   it("toString : método que devuelve la información del usuario", () => {

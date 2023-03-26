@@ -4,10 +4,24 @@ import { Actividades } from "../enumerados/enumerados";
 import { ColeccionGrupos } from "../colecciones/coleccionGrupos";
 import { ColeccionRutas } from "../colecciones/coleccionRutas";
 
-
+/**
+ * Clase Usuario que representa una persona que realiza actividad deportiva
+ */
 export class Usuario {
+
+  /**
+   * Contador que lleva la gestión de la asignación de los ID
+   */
   private static _contadorUsuario = 1000;
+
+  /**
+   * Propiedad ID de cada uno de los usuarios
+   */
   private _id: number;
+
+  /**
+   * 
+   */
   private _actividades: Set<Actividades>;
   private _historicoRutas: Map<string, number[]> = new Map();
   private _estadistica: EstadisticaUsuario = [[0, 0], [0, 0], [0, 0]];
@@ -20,6 +34,17 @@ export class Usuario {
     Usuario._contadorUsuario++;
     this._actividades = new Set(actividades);
   }
+  
+    get id(): number { return this._id; }
+    get nombre(): string { return this._nombre; }
+    get actividades(): Set<Actividades> { return this._actividades; }
+    get amigos(): number[] | undefined { return (this._amigos.length !== 0) ? this._amigos : undefined }
+    get gruposAmigos(): number[] | undefined { return (this._gruposAmigos.length !== 0) ? this._gruposAmigos : undefined }
+    get estadistica(): EstadisticaUsuario { return this._estadistica; }
+    get retosActivos(): number[] | undefined { return this._retosActivos; }
+    get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
+  
+    
 
   public ContructorDBUsuario(actividades: string[], historicoFechas: string[], historicoRutas: number[][], estadistica: EstadisticaUsuario, 
     amigos: number[] | undefined, gruposAmigos: number[] | undefined, retosActivos: number[]) {
@@ -39,17 +64,6 @@ export class Usuario {
     this._gruposAmigos = gruposAmigos === undefined ? [] : gruposAmigos;
     this._retosActivos = retosActivos;
   }
-
-  get id(): number { return this._id; }
-  get nombre(): string { return this._nombre; }
-  get actividades(): Set<Actividades> { return this._actividades; }
-  get amigos(): number[] | undefined { return (this._amigos.length !== 0) ? this._amigos : undefined }
-  get gruposAmigos(): number[] | undefined { return (this._gruposAmigos.length !== 0) ? this._gruposAmigos : undefined }
-  get estadistica(): EstadisticaUsuario { return this._estadistica; }
-  get retosActivos(): number[] | undefined { return this._retosActivos; }
-  get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
-
-  
 
   esGrupoAmigo(idGrupo: number): boolean {
     return this._gruposAmigos.includes(idGrupo);

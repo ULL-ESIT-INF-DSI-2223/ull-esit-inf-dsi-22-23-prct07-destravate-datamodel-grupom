@@ -15,14 +15,7 @@ export class Ruta {
     this._id = Ruta._contadorRuta;
     Ruta._contadorRuta++;
   }
-  
-  public ConstructorDBRuta(usuarios: number[], calificacion: number[], mediaCalificacion: number) {
-    this._calificacion = calificacion;
-    this._mediaCalificacion = mediaCalificacion;
-    this._usuarios = usuarios;
-  }
 
-  
   get id(): number { return this._id; }
   get usuarios(): number[] { return this._usuarios; }
   get nombre(): string { return this._nombre; }
@@ -34,6 +27,12 @@ export class Ruta {
   get calificacionMedia(): number { return this._mediaCalificacion; }
   get calificacion(): number[] { return this._calificacion; }
   
+  public ConstructorDBRuta(usuarios: number[], calificacion: number[], mediaCalificacion: number) {
+    this._calificacion = calificacion;
+    this._mediaCalificacion = mediaCalificacion;
+    this._usuarios = usuarios;
+  }
+ 
   calificar(calificacion: number): number {
     if(calificacion <= 10 && calificacion >= 0) {
       this._calificacion.push(calificacion);
