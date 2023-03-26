@@ -3,16 +3,51 @@ import { EstadisticaGrupo } from "../tipos/tipos";
 import { Ruta } from "./ruta";
 
 
-
+/**
+ * Clase que representa un grupo de usuarios
+ */
 export class Grupo {
+
+  /**
+   * Contador que lleva la gestión de la asignación de los ID
+   */
   private static _contadorGrupo = 1000;
+
+  /**
+   * Identificador del grupo
+   */
   private _id: number;
+
+  /**
+   * Estadística del grupo, total acumulado de cada uno de los usuarios
+   */
   private _estadistica: EstadisticaGrupo = [[0, 0], [0, 0], [0, 0]];
+
+  /**
+   * Clasificación de los usuarios del grupo, calculada en base a los Kilómetros recorridos de cada usuario
+   */
   private _clasificacion: number[] = [];
+
+  /**
+   * Array de identificadores de usuarios que son miembros del grupo
+   */
   private _participantes: number[] = [];
+
+  /**
+   * Identificador del usuario que ha creado el grupo
+   */
   private _creador: number;
+
+  /**
+   * Historial de rutas que ha realizado el grupo, con sus respectivas fechas
+   */
   private _historicoRutas: Map<string, number[]> = new Map();
 
+  /**
+   * Constructor de la clase, el cual crea instancias de la clase Grupo
+   * @param _nombre Nombre del grupo
+   * @param idCreador identificador del creador
+   */
   constructor(private _nombre: string, idCreador: number) {
     this._id = Grupo._contadorGrupo;
     Grupo._contadorGrupo++;
@@ -20,14 +55,49 @@ export class Grupo {
     this.agregarUsuario(idCreador);
   }
   
+  /**
+   * Getter del identificador del grupo
+   */
   get id(): number { return this._id; }
+
+  /**
+   * Getter del identificador del creador del grupo
+   */
   get creador(): number { return this._creador; }
+
+  /**
+   * Getter del nombre del grupo
+   */
   get nombre(): string { return this._nombre; }
+  
+  /**
+   * Getter de los participantes del grupo
+   */
   get participantes(): number[] { return this._participantes; }
+
+  /**
+   * Getter del historico de rutas del grupo, en el que se almacena la fecha y las rutas realizadas en dicha fecha
+   */
   get historicoRutas(): Map<string, number[]> { return this._historicoRutas; }
+
+  /**
+   * Getter de la estadística del grupo
+   */
   get estadistica(): EstadisticaGrupo { return this._estadistica; }
+
+  /**
+   * Getter de la clasificación del grupo, en base a las distancias recorridas por cada usuario
+   */
   get clasificacion(): number[] { return this._clasificacion; }
 
+  /**
+   * Método que crea una instancia de la clase Grupo a partir de los datos de la base de datos
+   * @param participantes lista de participantes del grupo
+   * @param estadistica estadística grupal calculada a partir de los participantes
+   * @param clasificacion lista de participantes ordenados por distancia recorrida
+   * @param historicoFechas lista de fechas en las que se han realizado rutas
+   * @param historicoRutas lista de rutas realizadas en cada fecha
+   */
   public ContructorDBGrupo(participantes: number[], estadistica: EstadisticaGrupo, clasificacion: number[], historicoFechas: string[], historicoRutas: number[][]) {
     this._participantes = participantes;
     this._estadistica = estadistica;
@@ -45,12 +115,19 @@ export class Grupo {
     }
   }
 
-  
+  /**
+   * Método que agrega un usuario al grupo
+   * @param id identificador del usuario a añadir al grupo
+   */
   agregarUsuario(id: number) {
     this._participantes.push(id);
     this.actualizarEstadistica();
   }
   
+  /**
+   * Método que ordena los participantes del grupo en base a la distancia recorrida por cada uno de ellos
+   * @returns devuelve el array ordenado en base a la distancia recorrida por cada usuario
+   */
   clasificacionUsuarios(): number[] {
     let arrayOrdenado = this.participantes;
     arrayOrdenado.sort((a, b) => (ColeccionUsuarios.getColeccionUsuarios().getUsuario(b)?.distanciaTotal() ?? 0) - 
@@ -58,6 +135,10 @@ export class Grupo {
     return arrayOrdenado;
   }
   
+  /**
+   * Método que añade una ruta al historico de rutas del grupo
+   * @param ruta ruta a añadir al historico de rutas del grupo
+   */
   agregarRuta(ruta: Ruta) {
     let fecha: Date = new Date();
     let fechaString: string = fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear();
@@ -73,6 +154,10 @@ export class Grupo {
     });
   }
 
+  /**
+   * Método que devuelve las 3 rutas más repetidas en el historico de rutas del grupo, es decir, las favoritas del grupo
+   * @returns devuelve un array con los 3 identificadores de rutas más repetidas en el historico de rutas del grupo
+   */
   rutasFavoritas(): number[] {
     const rutas: number[] = Array.from(this.historicoRutas.values()).flat();
     const contador = new Map();
@@ -89,8 +174,9 @@ export class Grupo {
     return numerosMasRepetidos;
   }
 
-
-
+  /**
+   * Método que actualiza la estadística del grupo
+   */
   actualizarEstadistica() {
     const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
     const distanciaSemana = this.participantes.reduce((acc, numUsuA) => acc + coleccionUsuarios.getEstadistica(numUsuA)[0][0], 0)
@@ -102,6 +188,10 @@ export class Grupo {
     this._estadistica = [[distanciaSemana, desnivelSemana], [distanciaMes, desnivelMes], [distanciaAnio, desnivelAnio]];
   }
 
+  /**
+   * Método que devuelve toda la información del grupo
+   * @returns devuelve un string con toda la información del grupo
+   */
   public toString(): string {
     let info = `Grupo ${this._nombre} tiene la id ${this._id} y su creador es ${this._creador}\n`;
     info += `Sus participantes son ${this._participantes.join(", ")}\n`;

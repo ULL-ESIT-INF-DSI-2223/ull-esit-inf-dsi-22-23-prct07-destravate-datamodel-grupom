@@ -20,6 +20,8 @@
 
 3. [Colecciones](#colecciones)
 
+    3.1. [Singleton el patrón de ahorro](#singleton-el-patrón-de-ahorro)
+
     3.1. [Coleccion Usuario](#coleccion-usuario)
 
     3.2. [Coleccion Ruta](#coleccion-ruta)
@@ -74,8 +76,6 @@ El Constructor de la clase es realmente sencillo, define mediante los parámetro
 
 Luego simplemente haremos uso de la tecnica que comentamos con la variable de clase *_contadorUsuario* para definir un *id* único a dicho usuario.
 
-CCCCCCCCCCCCCCCCCCCContructor?
-
 Como hemos visto anteriormente, todas nuestras propiedades son *private*, sin embargo, necesitamos hacer uso de sus valores en ocasiones, es por esto que definimos *getters* para rodas las propiedades.
 
 Debemos tener presente siempre que este programa tendrá persistencia en memoria y esto significa que debemos estar preparados apra recurperar datos que se han guardado de sesiones previas. Para esto nos apoyamos en clases que hablaremos más adelante como es el caso de ManejadorJSON o ColeccionUsuarios. De momento lo que debemos tener presente es que tenemos un *ContructorDBUsuario* este método reconstruye las propiedades de los usarios a partir de los argumentos recibidos.
@@ -94,17 +94,30 @@ Respecto a la actualización de estadísiticas antes mencionada, hemos desarroll
 
 El programa permitirá al usuario reliazar acciones de gestión como puede ser la creación y borraod de *Retos y Amigos*. Desarrollamos diferentes funciones que nos permiten modificar nuestras prpiedades según lo vayamos requiriendo.
 
-Algunos de los
+Algunos de los requisitos de la práctica para la clase *Usuarios* hemos decidido desarrollarlos a travez de métodos en lugar de propiedades, esto se debe a que son propiedades muy cambiantes en el tiempo y que dependen directamente de otras porpiedades, siendo mejor calcularlar cada vez que se requieran, ya que siempre se tendrá el dato actualizado sin abusar de memoria. 
+
+Lo anterior hace presencia en el método *rutasFavoritas* y la *distanciaTotal*. Datos que son fáciles de calcular a partir de las demás propiedades.
+
+Finalemente, encontramos el método *toString* que nos permite poder definir un formato de impresión a la hora de convertir nuestros objetos *Usuario*, como por ejemplo al invocarlos con ${usu1}.
 
 #### Ruta
 
+Para modelar una *Ruta* debemos tener presente que necesitaremos algunos atributos ya mencionados en la clase *Usuario*. Un ejemplo de esto es el *_id* el cual sigue la misma lógica antes planteada, apoyandose de la variable de clase *_contadorRuta*.
 
+Nuestra *Ruta* tendrá un *array* *_usuarios* donde se alamacenarán todos los *id's* de los integrantes de la Ruta. Además tendremos una calificación que será dado por los usuarios.
 
+Además, es importante destacar que las rutas cuentan con propiedades de localización como *_geolocalizacionInicial* y *_geolocalizacionFinal*. Propiedades de tipo *Coordenadas* que se describirán más adelante.
 
+Finalemente, sabemos que una *Ruta* debe tener una *_distancia* y un *_desnivel*, que será recorrido de una determinada forma, por tanto también contará con *_tipoActividad*.
 
+Como ya mencionamos Anteriormente, pretendemos trabajar con persistencia en memoria, por tanto debemos recuperar los datos del usuarios de forma correcta, para esto nos apoyamos del *ConstructorDBRuta*.
 
--------------------------------------------------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------------------------------------------------
+Otro método interesante de destacar es *calificar* que no permite limitar la forma de calificar de un *Ususario* frente a la *Ruta*.
+
+Para permitir la interacción de Usuarios con entidades, añadimos los métodos *agregarUsuario* y *eliminarUsuario*, que como sus nombres indican, sirven para añadir y eliminar a un usuario de nuestra lista de usuarios.
+
+Finalmente, incluimos nuestro método *toString* que nos permite definir el formato de conversión a *String* para nuestro objeto, función interesante para las llamadas del tipo ${ruta1}.
+
 
 #### Grupo
 
@@ -132,9 +145,24 @@ Y con esto, hemos llegado al final de la clase, al método *toString*, el cual s
 
 #### Reto
 
+Los *Retos* están conformados por una serie de *Rutas* *_rutas*, que determinados *Usuarios* *_usuarios* pretenden recorrer. Evidentemente podemos determinar una distancia total *_distanciaTotal* que se calcula de la suma de cada distancia individual de las *Rutas* que componen al *Reto*. Además, esta distancia se pretende recorrer de una forma en concreto, por lo que podemos definir un *_tipoActividad* del *Reto*.
+
+Finalmente, debemos tener los demás elementos básicos que incluyen las clases restantes como son el  identificador único de la isntancia *_id*, calculado a partir de la variable de clase *_contadorReto*. Además el reto contará con un nombre *_nombre*.
+
+Incluimos todos los *getters* correspondeintes a las propiedades antes mencionadas.
+
+Además incluiremos métodos de control de las propiedades como es el caso de *agregarUsuario* y *quitarUsuario*, que como sus nombres indican, nos permiten agregar y eleiminar usuarios que participan en el *Reto*.
+
+Fianlemente, como ya pasaba con las otras entidades mencionadas incluimos el método *toString*, que nos permite definir el formato de conversión a *String*, para nuestro objeto. Función interesante para las llamadas del tipo ${reto1}.
 
 
 ### Colecciones
+
+Una vez definidad las entidades que intervienen en nuestor programa, es interesante ver como trabajar con ellas de forma conjunta y relacionandolas. Tengamos presente entonces que deseamos trabjar con uan serie de *Usuarios* que pueden estar relacionados entre ellos en *Grupos*. Además podemos ver como los *Retos* se componen de *Rutas*. A su vez, los *Usuarios* pueden realziar *Rutas*, e incluso los *Grupos* realizan dichas *Rutas*. En definitiva nos encontramos frenete a un programa que necesita de varias instancias de las entidades mencioandas y manipular estos datos puede llegar a ser complicado si hacemos solo uso de una estructura de datos que nos ofrezca el lenguaje. 
+
+Es por esto que hemos decidido hacer colecciones de entidades, que agrupan a las entides y permiten desarrollar diferentes operaciones sobre las mismas.
+
+#### Singleton 
 
 #### Coleccion Usuario
 
