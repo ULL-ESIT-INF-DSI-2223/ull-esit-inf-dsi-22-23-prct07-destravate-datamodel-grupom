@@ -14,12 +14,19 @@ import { Actividades } from "../enumerados/enumerados";
 import * as fs from 'fs';
 
 
-
+/**
+ * Clase que gestiona todas las interacciones con la base de datos
+ */
 export class ManejadorJSON {
+
+  /**
+   * Constructor privado ya que no se emplea ninguna instancia de la clase
+   */
   private constructor() {};
 
-  
-  // Pilla la coleccion de usuarios y la guarda en la bd
+  /**
+   * Método que lleva la información referente a los usuarios a la base de datos
+   */
   static actualizarUsuariosDB() {
     fs.writeFileSync('db/usuarios.json', '');
     const coleccionUsuarios = ColeccionUsuarios.getColeccionUsuarios();
@@ -28,7 +35,10 @@ export class ManejadorJSON {
     });
   }
 
-  // Agrega un usuario a la bd
+  /**
+   * Método que agrega un usuario a la base de datos
+   * @param usu Usuario que se desea añadir a la base de datos
+   */
   static agregarUsuarioDB(usu: Usuario): void {
     const arrayFecha: string[] = [];
     const arrayRuta: number[][] = [];
@@ -54,7 +64,10 @@ export class ManejadorJSON {
     dbUsuario.set(usuario._id, usuario).write();
   }
 
-  // Pilla la bd y la guarda en la coleccion de usuarios
+  /**
+   * Método que rescata la colección de usuarios de la base de datos
+   * @returns Devuelve un array de usuarios
+   */
   static extraccionUsuariosDB(): Usuario[] {
     const dbUsuario = lowdb(new FileSync('./db/usuarios.json'));
     let usuarios: Usuario[] = [];
@@ -68,9 +81,12 @@ export class ManejadorJSON {
     return usuarios;
   }
 
-  /////////// GRUPOS ///////////
 
-  // Pilla la coleccion de grupos y la guarda en la bd
+
+
+  /**
+   * Método que lleva la información referente a los grupos a la base de datos
+   */
   static actualizarGruposDB() {
     fs.writeFileSync('db/grupos.json', '');
     const coleccionGrupos = ColeccionGrupos.getColeccionGrupos();
@@ -80,7 +96,10 @@ export class ManejadorJSON {
     });
   }
 
-  // Agrega un grupo a la bd
+  /**
+   * Método que agrega un grupo a la base de datos
+   * @param grupo grupo que se desea añadir a la base de datos
+   */
   static agregarGrupoDB(grupo: Grupo): void {
     const array1: string[] = [];
     const array2: number[][] = [];
@@ -106,7 +125,10 @@ export class ManejadorJSON {
   }
   
 
-  // Pilla la bd y la guarda en la coleccion de grupos
+  /**
+   * Método que rescata la colección de grupos de la base de datos
+   * @returns Devuelve un array de grupos
+   */
   static extraccionGruposDB(): Grupo[] {
     const dbGrupo = lowdb(new FileSync('./db/grupos.json'));
     let grupos: Grupo[] = [];
@@ -120,15 +142,21 @@ export class ManejadorJSON {
     return grupos;
   }
 
+  /**
+   * Método que elimina un grupo de la base de datos
+   * @param idGrupo ID del grupo que se desea eliminar
+   */
   static eliminarGrupoDB(idGrupo: number) {
     const dbGrupo = lowdb(new FileSync('./db/grupos.json'));
     dbGrupo.unset(String(idGrupo)).write()
   }
 
 
-  /////////// RETOS ///////////
 
-  // Pilla la coleccion de retos y la guarda en la bd
+
+  /**
+   * Método que lleva la información referente a las rutas a la base de datos
+   */
   static actualizarRetosDB() {
     fs.writeFileSync('db/retos.json', '');
     const coleccionRetos = ColeccionRetos.getColeccionRetos();
@@ -137,7 +165,10 @@ export class ManejadorJSON {
     });
   }
 
-  // Agrega un reto a la bd
+  /**
+   * Método que agrega un reto a la base de datos
+   * @param reto Reto que se desea añadir a la base de datos
+   */
   static agregarRetoDB(reto: Reto): void {
     let rutasID: number[] = []
     reto.rutas.forEach((ruta) => {
@@ -157,7 +188,10 @@ export class ManejadorJSON {
   }
   
 
-  // Pilla la bd y la guarda en la coleccion de retos
+  /**
+   * Método que rescata la colección de retos de la base de datos
+   * @returns Devuelve un array de retos
+   */  
   static extraccionRetosDB(): Reto[] {
     const dbRetos = lowdb(new FileSync('./db/retos.json'));
     let retos: Reto[] = [];
@@ -178,15 +212,21 @@ export class ManejadorJSON {
     return retos;
   }
 
-  
+  /**
+   * Método que elimina un reto de la base de datos
+   * @param idReto ID del reto que se desea eliminar
+   */
   static eliminarRetoDB(idReto: number) {
     const dbRetos = lowdb(new FileSync('./db/retos.json'));
     dbRetos.unset(String(idReto)).write()
   }
 
-  /////////// RUTAS ///////////
 
-  // Pilla la coleccion de rutas y la guarda en la bd
+
+
+  /**
+   * Método que lleva la información referente a las rutas a la base de datos
+   */
   static actualizarRutasDB() {
     fs.writeFileSync('db/rutas.json', '');
     const coleccionRutas = ColeccionRutas.getColeccionRutas();
@@ -195,7 +235,10 @@ export class ManejadorJSON {
     });
   }
 
-  // Agrega una ruta a la bd
+  /**
+   * Método que agrega una ruta a la base de datos
+   * @param ruta Ruta que se desea añadir a la base de datos
+   */
   static agregarRutaDB(ruta: Ruta): void {
     const rutaDB: RutaDB = {
       _id: ruta.id,
@@ -214,7 +257,11 @@ export class ManejadorJSON {
     dbRutas.set(rutaDB._id, rutaDB).write();
   }
   
-  // Pilla la bd y la guarda en la coleccion de rutas
+
+  /**
+   * Método que rescata la colección de rutas de la base de datos
+   * @returns Devuelve un array de rutas
+   */
   static extraccionRutasDB(): Ruta[] {
     const dbRutas = lowdb(new FileSync('./db/rutas.json'));
     let rutas: Ruta[] = [];
@@ -229,6 +276,10 @@ export class ManejadorJSON {
     return rutas;
   }
 
+  /**
+   * Método que elimina una ruta de la base de datos
+   * @param idRuta ID de la ruta que se desea eliminar
+   */
   static eliminarRutaDB(idRuta: number) {
     const dbRutas = lowdb(new FileSync('./db/rutas.json'));
     dbRutas.unset(String(idRuta)).write()

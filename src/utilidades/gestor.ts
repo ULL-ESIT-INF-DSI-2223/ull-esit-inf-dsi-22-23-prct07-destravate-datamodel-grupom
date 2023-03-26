@@ -11,11 +11,24 @@ import { Ruta } from "../entidades/ruta";
 import { Coordenadas } from "../tipos/tipos";
 import * as inquirer from 'inquirer';
 
-
+/**
+ * Clase Gestor, la cual permite gestionar la interacción con el usuario
+ */
 export class Gestor {
+
+  /**
+   * Persona que se ha logueado en el sistema
+   */
   private static idPersona: number;
+
+  /**
+   * No se permite la creación de objetos de esta clase, por lo que declaramos el constructor privado
+   */
   private constructor() {};
 
+  /**
+   * Método que permite iniciar el programa y dar las primeras opciones al usuario
+   */
   public static inicio(): void {
     // Primera parte del programa
     console.clear();
@@ -43,6 +56,10 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que da al usuario las siguientes opciones que permite el programa
+   * @param mensajeControl Mensaje que se muestra al usuario (al ser opcional, no es necesario pasarlo)
+   */
   public static principal(mensajeControl?: string): void {
     // Segunda parte del programa
     console.clear();
@@ -116,6 +133,9 @@ export class Gestor {
     });
   }
   
+  /**
+   * Método que permite al usuario registrarse en el sistema
+   */
   private static registrarEnSistema() {
     inquirer.prompt([
       {
@@ -139,6 +159,9 @@ export class Gestor {
 
   }
 
+  /**
+   * Método que permite mostrar la lista de usuarios ordenada de la manera que el usuario desee
+   */
   private static OrdenarListaUsuarios () {
     inquirer.prompt([
       {
@@ -192,7 +215,9 @@ export class Gestor {
     });
   }
 
-
+  /**
+   * Método que permite mostrar la lista de rutas ordenada de la manera que el usuario desee
+   */
   private static OrdenarListaRutas () {
     inquirer.prompt([
       {
@@ -253,6 +278,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite mostrar la lista de rutas ordenada por actividad
+   */
   private static ordenarRutasActividad () {
     inquirer.prompt([
     {
@@ -273,6 +301,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite mostrar la lista de grupos ordenada de la manera que el usuario desee
+   */
   private static OrdenarListaGrupo () {
     inquirer.prompt([
       {
@@ -334,6 +365,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite mostrar la lista de retos ordenada de la manera que el usuario desee
+   */
   private static OrdenarListaRetos () {
     inquirer.prompt([
       {
@@ -379,6 +413,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite mostrar la lista de usuarios
+   */
   private static verListaUsuarios() {
     const nombresUsuarios = ColeccionUsuarios.getColeccionUsuarios().getUsuarios().map((usuario) => {
       return usuario.id + ' ' + usuario.nombre ;
@@ -409,6 +446,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite mostrar la lista de rutas
+   */
   private static verListaRutas() {
     const nombresRutas = ColeccionRutas.getColeccionRutas().getRutas().map((ruta) => {
       return ruta.id + ' ' + ruta.nombre ;
@@ -439,6 +479,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite mostrar la lista de grupos
+   */
   private static verListaGrupos() {
     const nombresGrupos = ColeccionGrupos.getColeccionGrupos().getGrupos().map((grupo) => {
       return grupo.id + ' ' + grupo.nombre ;
@@ -469,6 +512,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite mostrar la lista de retos
+   */
   private static verListaRetos() {
     const nombresRetos = ColeccionRetos.getColeccionRetos().getRetos().map((reto) => {
       return reto.id + ' ' + reto.nombre ;
@@ -499,7 +545,9 @@ export class Gestor {
     });
   }
 
-
+  /**
+   * Método que permite a un usuario iniciar sesión
+   */
   private static iniciarSesion() {
     inquirer.prompt([
       {
@@ -518,6 +566,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite a un usuario agregar un amigo
+   */
   private static agregarAmigo() {
     inquirer.prompt([
       {
@@ -538,6 +589,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite a un usuario eliminar un amigo
+   */
   private static eliminarAmigo() {
     inquirer.prompt([
       {
@@ -558,6 +612,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite a un usuario unirse a un grupo
+   */
   private static unirseGrupo() {
     inquirer.prompt([
       {
@@ -579,6 +636,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite a un usuario crear un grupo
+   */
   private static crearGrupo() {
     inquirer.prompt([
       {
@@ -605,6 +665,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite a un usuario eliminar un grupo (solo si es el creador)
+   */
   private static eliminarGrupo() {
     inquirer.prompt([
       {
@@ -630,8 +693,9 @@ export class Gestor {
     });
   }
 
-
-  ////////////////////////////////Si falla puede ser los stirngs, los numbers
+  /**
+   * Método que permite a un usuario crear un reto
+   */
   private static crearReto() {
     const nombresRutas = ColeccionRutas.getColeccionRutas().getRutas().map((ruta) => {
       return ruta.id + ' ' + ruta.nombre ;
@@ -671,7 +735,9 @@ export class Gestor {
     });
   }
 
-
+  /**
+   * Método que permite a un usuario eliminar un reto
+   */
   private static eliminarReto() {
     const nombreReto = ColeccionRetos.getColeccionRetos().getRetos().map((reto) => {
       return reto.id + ' ' + reto.nombre ;
@@ -691,7 +757,9 @@ export class Gestor {
     });
   }
 
-  
+  /**
+   * Método que permite a un usuario crear una ruta
+   */
   private static crearRuta() {
     inquirer.prompt([
       {
@@ -746,6 +814,9 @@ export class Gestor {
     });
   }
 
+  /**
+   * Método que permite a un usuario eliminar una ruta
+   */
   private static eliminarRuta() {
     const nombresRutas = ColeccionRutas.getColeccionRutas().getRutas().map((ruta) => {
       return ruta.id + ' ' + ruta.nombre ;
@@ -763,5 +834,4 @@ export class Gestor {
       this.principal();
     });
   }
-  
 }

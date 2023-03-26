@@ -174,11 +174,41 @@ A continuación pasaremos a describir más a fondo el comportamiento de cada una
 
 Primeramente tengamos presente lo que vimos antes, hemos desarrollado la estructura de una clase Singleton, contamos con una colección de *Usuario* privada, con una variable de clase rpivada y estática *coleccionUsuarios* que almacena la única instancia de la clase. 
 
-Además contamos con el contructor privado, para impedir las llamadas desde fuera de la clase, ya que la creación de la única instancia se hace a partir del método público estático *getColeccionUsuarios* que en caso de ser la priemra vez que se llame, crea la isntancia y la retorna, en llamadas posteriores simplemente se retorna la isntancia almacenada en la variable de clase.
+Además contamos con el contructor privado, para impedir las llamadas desde fuera de la clase, ya que la creación de la única instancia se hace a partir del método público estático *getColeccionUsuarios* que en caso de ser la priemra vez que se llame, crea la isntancia y la retorna, en llamadas posteriores simplemente se retorna la instancia almacenada en la variable de clase.
 
-En cuanto
+En cuanto a los métodos, encontramos métodos como *getNumeroUsuarios* que como su nombre indica, retorna el número de usuarios en la colección. 
+
+Contamos además con métodos que nos deculven elementos de la colección como, *getUsuarios* que devulve la colección entera o *getUsuario* que nos da un usuario determiando según un *id* dado por parámetros.
+
+Tambien podemos conseguir información del conjunto de *Usuario* como las estadísticas de un determiando usuario dado su *id*.
+
+Para simplificar la manipulación de la colección hemos añadido métodos de manejo de la clase, como *agregarUsuario* y *eliminarUsuario* que como sus nombres indican agregan y eliminan a un usuario de la colección.
+
+De cara a la gestión de la base de datos y la depuración, hemos añadido el método *imprimirInformacion* que permite imprimir a cada usuario que conforma la colección.
+
+Además, para satisfacer la solicitud propuesta en el guión de la práctica de tener determinados métodos de ordenamiento de la información, hemos desarrollado uan serie de métodos que ordenan según:
+
+- ordenarAlfabeticamente
+
+- ordenarId
+
+- ordenarDistanciaSemana
+
+- ordenarDistanciaMes
+
+- ordenarDistanciaAnio
+
+- ordenarNumeroRutas
+
+Estos métodos a su vez se pueden ordenar de manera ascendente y descendente, para evitar crear los mismos métodos con la lógica inversa, hemos decisido incluir en sus parámetros la opción de ordenar. De esta forma mediante la intrucción ManeraOrdenar.Ascendente o ManeraOrdenar.Descendente, podemos definir el tipo de ordenamiento, donde seimrpe se ordena de uan forma **x** y se invierte con el método *.reverse* si se requiere por parámetros.
 
 #### Coleccion Ruta
+
+Veamos entonces que la idea de Singleton también se aplica para la *ColeccionRuta*.
+
+Destacar que también se han incluido los métodos que favorecen la manipulación de la colección como son *getRutas* y *getRuta*, funcionando del mismo modo que veiamos en la clase anterior.
+
+De la misma forma, hemos incluido los métodos *agregarRuta* y *eliminarRuta*
 
 #### Coleccion Grupo
 
