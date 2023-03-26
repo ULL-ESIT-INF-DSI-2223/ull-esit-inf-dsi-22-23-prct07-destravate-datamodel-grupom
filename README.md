@@ -2,6 +2,9 @@
 ## Por Daniel Felipe Gómez Aristizabal y Facundo José García Gallo
 
 
+[![Tests](https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom/actions/workflows/node.js.yml/badge.svg)](https://github.com/ULL-ESIT-INF-DSI-2223/ull-esit-inf-dsi-22-23-prct07-destravate-datamodel-grupom/actions/workflows/node.js.yml)
+
+
 ### Índice
 
 1. [Introducción](#introducción)
